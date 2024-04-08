@@ -14,6 +14,9 @@ Unitclass::Unitclass(int id, int h, int ac, int p, int jt, string type)
 }
 void attack() {
 }
+void Unitclass::SetID(int id) {
+	ID=id;
+}
 void Unitclass::Settype(string type) {
 	Type = type;
 }

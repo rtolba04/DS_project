@@ -1,18 +1,11 @@
-#pragma once
-#include "Unitclass.h"
-class Earthgunnery :
-	public Unitclass
+#include "Aliensoldiers.h"
+#include <iostream>
+using namespace std;
+
+Aliensoldiers::Aliensoldiers(int id, int jt, int h, int p, int ac) :Unitclass(id, jt, h, p, ac, "AS")
 {
-private:
-	int ID;
-	int Jointime;
-	int Health;
-	int Power;
-	int Attackcapacity;
-public:
-	Earthgunnery(int id, int jt, int h, int p, int ac);
 
+}
+void attack() {
 
-};
-
-
+}

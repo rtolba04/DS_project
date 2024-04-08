@@ -1,8 +1,8 @@
-#include "Earthtanks.h"
+#include "Earthgunnery.h"
 #include <iostream>
 using namespace std;
 
-Earthtanks::Earthtanks(int id, int jt, int h, int p, int ac) :Unitclass(id, jt, h, p, ac, "ET")
+Earthgunnery::Earthgunnery(int id, int jt, int h, int p, int ac) :Unitclass(id, jt, h, p, ac, "ET")
 {
 }
 void attack() {

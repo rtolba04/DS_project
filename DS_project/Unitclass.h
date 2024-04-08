@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-
+#include "Game.h"
 using namespace std;
 
 class Unitclass
@@ -12,11 +12,9 @@ private:
 	int Health;
 	int Power;
 	int Attackcapacity;
-	//int* ptr;
+	Game* ptr;
 public:
-	Unitclass();
 	Unitclass(int id, int h, int ac, int p, int jt, string type);
-	void print();
 	void Settype(string type);
 	void SetHealth(int h);
 	void Setattackcapacity(int n);

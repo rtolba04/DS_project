@@ -133,6 +133,7 @@
     <ClInclude Include="Earthgunnery.h" />
     <ClInclude Include="Earthsoldiers.h" />
     <ClInclude Include="Earthtanks.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="Unitclass.h" />
   </ItemGroup>
   <ItemGroup>
@@ -142,6 +143,7 @@
     <ClCompile Include="Earthgunnery.cpp" />
     <ClCompile Include="Earthsoldiers.cpp" />
     <ClCompile Include="Earthtanks.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="Unitclass.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

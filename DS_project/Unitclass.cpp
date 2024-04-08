@@ -2,20 +2,15 @@
 #include <iostream>
 #include <sstream>
 using namespace std;
-Unitclass::Unitclass() {
-	ID = 0;
-	Jointime = 0;
-	Health = 0;
-	Power = 0;
-	Attackcapacity = 0;
-	Type = "army";
-}
-Unitclass::Unitclass(int id, int h, int ac, int p, int jt, string type) : ID(id), Health(h), Attackcapacity(ac), Power(p), Jointime(jt), Type(type)
+
+Unitclass::Unitclass(int id, int h, int ac, int p, int jt, string type)
 {
-}
-void Unitclass::print() {
-	cout << "the unit ID is : " << ID << "With the Health :" << Health << " Power :" << Power << "and attack capacity= " << Attackcapacity << endl;
-	cout << "the join time of the unit is :" << Jointime << endl;
+	ID = id;
+	Jointime = h;
+	Health = ac;
+	Power = p;
+	Attackcapacity = ac;
+	Type = type;
 }
 void attack() {
 }

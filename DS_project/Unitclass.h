@@ -21,7 +21,7 @@ public:
 	void Setjointime(int jt);
 	void SetPower(int p);
 	int GetHealth();
-	int Getid();
+	void Getid();
 	void SetID(int id);
 	int Getjointime();
 	int GetPower();

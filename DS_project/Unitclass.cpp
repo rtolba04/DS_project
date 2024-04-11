@@ -2,7 +2,7 @@
 #include <iostream>
 #include <sstream>
 using namespace std;
-
+// manage conflict motherfuckers
 Unitclass::Unitclass(int id, int h, int ac, int p, int jt, string type)
 {
 	ID = id;
@@ -25,8 +25,8 @@ string Unitclass::Gettype() {
 }
 void Unitclass::SetID(int id) {
 }
-int Unitclass::Getid() {
-	return ID;
+void Unitclass::Getid() {
+	cout<<"wow";
 }
 void Unitclass::SetHealth(int n) {
 	if (n > 0 && n <= 100) {

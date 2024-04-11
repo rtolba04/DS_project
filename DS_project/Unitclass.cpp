@@ -2,7 +2,7 @@
 #include <iostream>
 #include <sstream>
 using namespace std;
-
+// manage conflict motherfuckers
 Unitclass::Unitclass(int id, int h, int ac, int p, int jt, string type)
 {
 	ID = id;

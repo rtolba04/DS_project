@@ -56,4 +56,8 @@ void earthArmy::removeUnit(Unitclass* unit)
 	//check if we need to add the killed to a list
 }
 
-void 
+void print() {
+
+
+
+}

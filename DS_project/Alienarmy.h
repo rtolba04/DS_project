@@ -7,6 +7,7 @@
 #include"ArrayStack.h"
 #include"priQueue.h"
 #include"Unitclass.h"
+#include "arr"
 class alienArmy
 {
 private:

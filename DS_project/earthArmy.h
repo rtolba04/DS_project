@@ -14,7 +14,7 @@ class earthArmy
 public:
 	void attack();
 	void addUnit(Unitclass* unit);
-	void removeUnit();
+	void removeUnit(Unitclass* unit);
 	void print();
 };
 

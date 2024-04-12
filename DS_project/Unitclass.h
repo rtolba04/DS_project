@@ -27,6 +27,7 @@ public:
 	int GetPower();
 	string Gettype();
 	int Getattackcapacity();
+	void print();
 	virtual void attack() = 0;
 	~Unitclass();
 

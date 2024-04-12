@@ -56,8 +56,7 @@ void alienArmy::removeUnit(Unitclass* unit)
 	//check if we need to add the killed to a list
 }
 
-void print() {
-
-
-
+void alienArmy::print()
+{
 }
+

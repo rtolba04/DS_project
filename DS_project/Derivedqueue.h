@@ -6,10 +6,9 @@ class Derivedqueue :  public LinkedQueue<T>
 private:
 
 public:
-	bool Enqueuefront(const T& newentry) {
 
-	}
-	bool Dequeueend(T& bckEntry) {
-	}
+	bool Enqueuefront(const T& newEntry);
+
+	bool Dequeueback(T& backEntry);
 
 };

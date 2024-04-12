@@ -130,6 +130,7 @@
     <ClInclude Include="Aliendrones.h" />
     <ClInclude Include="Alienmonsters.h" />
     <ClInclude Include="Aliensoldiers.h" />
+    <ClInclude Include="earthArmy.h" />
     <ClInclude Include="Earthgunnery.h" />
     <ClInclude Include="Earthsoldiers.h" />
     <ClInclude Include="Earthtanks.h" />
@@ -146,6 +147,7 @@
     <ClCompile Include="Aliendrones.cpp" />
     <ClCompile Include="Alienmonsters.cpp" />
     <ClCompile Include="Aliensoldiers.cpp" />
+    <ClCompile Include="earthArmy.cpp" />
     <ClCompile Include="Earthgunnery.cpp" />
     <ClCompile Include="Earthsoldiers.cpp" />
     <ClCompile Include="Earthtanks.cpp" />

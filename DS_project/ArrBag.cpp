@@ -5,6 +5,13 @@ inline ArrBag<T>::ArrBag()
 	count = 0;
 }
 template<class T>
+int ArrBag<T>::getCount() {
+	return count;
+
+
+};
+
+template<class T>
 int ArrBag<T>::getIndex(const T& anEntry)
 {
 	bool found = false;

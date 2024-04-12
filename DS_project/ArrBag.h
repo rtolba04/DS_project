@@ -12,7 +12,10 @@ public:
 	bool isEmpty()const;
 	bool add(const T& newEntry);
 	int ArrBag<T>::getIndex(const T& anEntry);
+	int getCount();
 	bool remove(const T& anEntry);
 };
+
+
 
 #endif // !ARR_BAG

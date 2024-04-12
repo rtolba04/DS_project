@@ -8,12 +8,13 @@
 #include"priQueue.h"
 #include"Unitclass.h"
 #include "ArrBag.h"
+#include "Derivedqueue.h"
 class alienArmy
 {
 private:
 	LinkedQueue<Aliensoldiers*>ASqueue;
 	ArrBag<Alienmonsters*>AMarray;
-	//<Aliendrones*>; ADqueue;
+	Derivedqueue<Aliendrones*> ADqueue;
 public:
 	void attack();
 	void addUnit(Unitclass* unit);

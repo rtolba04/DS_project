@@ -16,44 +16,42 @@ void alienArmy::attack()
 
 void alienArmy::addUnit(Unitclass* unit)
 {
-	if (unit->Gettype() == "ET")
+	if (unit->Gettype() == "AM")
 	{
-		Earthtanks* typePtr = dynamic_cast<Earthtanks*>(unit);
-		ETstack.push(typePtr);
+		Alienmonsters* typePtr = dynamic_cast<Alienmonsters*>(unit);
+		AMarray.add(typePtr);
 	}
-	if (unit->Gettype() == "ES")
+	if (unit->Gettype() == "AS")
 	{
-		Earthsoldiers* typePtr = dynamic_cast<Earthsoldiers*>(unit);
-		ESqueue.enqueue(typePtr);
+		Aliensoldiers* typePtr = dynamic_cast<Aliensoldiers*>(unit);
+		ASqueue.enqueue(typePtr);
 	}
-	if (unit->Gettype() == "EG")
+	if (unit->Gettype() == "ED")
 	{
-		Earthgunnery* typePtr = dynamic_cast<Earthgunnery*>(unit);
-
-		int pri;
-		pri = ((typePtr->GetHealth() + typePtr->GetPower()) / 2);
-		EGpriqueue.enqueue(typePtr, pri);
+		Aliendrones* typePtr = dynamic_cast<Aliendrones*>(unit);
+		ADqueue.enqueue(typePtr);
 	}
 }
 
-void earthArmy::removeUnit(Unitclass* unit)
+void alienArmy::removeUnit(Unitclass* unit)
 {
-	if (unit->Gettype() == "ET")
+	if (unit->Gettype() == "AS")
 	{
-		Earthtanks* et;
-		ETstack.pop(et);
+		Aliensoldiers* as;
+		ASqueue.dequeue(as);
 	}
-	if (unit->Gettype() == "ES")
+	if (unit->Gettype() == "AD")
 	{
-		Earthsoldiers* es;
-		ESqueue.dequeue(es);
-	}
-	if (unit->Gettype() == "EG")
+		Aliendrones* as1;
+		Aliendrones* as2;
+		ADqueue.dequeue(as1);
+		ADqueue.Dequeueback(as2);
+	}//////
+	if (unit->Gettype() == "AM")
 	{
-		Earthgunnery* eg;
-		int pri;
-		pri = ((unit->GetHealth() + unit->GetPower()) / 2);
-		EGpriqueue.enqueue(eg, pri);
+		Alienmonsters* am;
+		
+		AMarray.remove(am);
 	}
 	//check if we need to add the killed to a list
 }

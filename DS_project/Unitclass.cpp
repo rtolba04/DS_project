@@ -54,6 +54,20 @@ int Unitclass::GetPower() {
 int Unitclass::Getattackcapacity() {
 	return Attackcapacity;
 }
+
+void Unitclass::print()
+{
+	cout <<"ID: "<< ID << endl;
+	cout <<"Join time: "<< Jointime << endl;
+	cout <<"Health: " << Health << endl;
+	cout <<"Power: "<< Power<< endl;
+	cout <<"Attack capacity: " <<  Attackcapacity<< endl;
+	cout <<"Type: "<<  Type<< endl;
+
+
+}
+
+
 Unitclass::~Unitclass()
 {
 }

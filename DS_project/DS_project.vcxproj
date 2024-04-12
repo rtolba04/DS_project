@@ -150,6 +150,7 @@
     <ClCompile Include="Earthsoldiers.cpp" />
     <ClCompile Include="Earthtanks.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="trial.cpp" />
     <ClCompile Include="Unitclass.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

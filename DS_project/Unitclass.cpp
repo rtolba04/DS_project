@@ -25,8 +25,8 @@ string Unitclass::Gettype() {
 }
 void Unitclass::SetID(int id) {
 }
-void Unitclass::Getid() {
-	cout<<"wow";
+int Unitclass::Getid() {
+	return ID;
 }
 void Unitclass::SetHealth(int n) {
 	if (n > 0 && n <= 100) {
@@ -54,6 +54,20 @@ int Unitclass::GetPower() {
 int Unitclass::Getattackcapacity() {
 	return Attackcapacity;
 }
+
+void Unitclass::print()
+{
+	cout <<"ID: "<< ID << endl;
+	cout <<"Join time: "<< Jointime << endl;
+	cout <<"Health: " << Health << endl;
+	cout <<"Power: "<< Power<< endl;
+	cout <<"Attack capacity: " <<  Attackcapacity<< endl;
+	cout <<"Type: "<<  Type<< endl;
+
+
+}
+
+
 Unitclass::~Unitclass()
 {
 }

@@ -34,3 +34,9 @@ public:
 };
 
 
+ostream& operator <<(ostream& output, Unitclass& unit)
+{
+	output << "ID: "<< unit.Getid() << endl;
+	return output;
+	
+}

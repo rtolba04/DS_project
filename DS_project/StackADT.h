@@ -33,6 +33,9 @@ public:
        has been copied to TopEntry parameter.
     @return  True if stack is not empty or false if not. */
    virtual bool peek(T& TopEntry) const = 0 ;
+
+
+   virtual void print() = 0;
    
    /** Destroys this stack and frees its assigned memory. */
    virtual ~StackADT() { }

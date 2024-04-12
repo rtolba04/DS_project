@@ -22,8 +22,7 @@ void Unitclass::Settype(string type) {
 string Unitclass::Gettype() {
 	return Type;
 }
-void Unitclass::SetID(int id) {
-}
+
 int Unitclass::Getid() {
 	return ID;
 }

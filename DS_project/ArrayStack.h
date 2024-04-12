@@ -57,6 +57,14 @@ public:
 		return true;
 	}  // end peek
 
+	void print()
+	{
+		T x;
+		pop(x);
+		
+		
+	}
+
 }; // end ArrayStack
 
 #endif

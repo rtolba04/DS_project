@@ -8,6 +8,8 @@ private:
 public:
 	Aliensoldiers(int id, int jt, int h, int p, int ac);
 
+	void attack();
+
 
 };
 

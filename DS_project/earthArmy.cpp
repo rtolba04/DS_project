@@ -58,5 +58,5 @@ void earthArmy::removeUnit(Unitclass* unit)
 
 void earthArmy::print()
 {
-
+	ESqueue.printqueue();
 }

@@ -27,16 +27,9 @@ public:
 	int GetPower();
 	string Gettype();
 	int Getattackcapacity();
-	void print();
 	virtual void attack() = 0;
 	~Unitclass();
 
 };
 
 
-ostream& operator <<(ostream& output, Unitclass& unit)
-{
-	output << "ID: "<< unit.Getid() << endl;
-	return output;
-	
-}

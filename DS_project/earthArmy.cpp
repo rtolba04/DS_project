@@ -27,10 +27,7 @@ void earthArmy::addUnit(Unitclass* unit)
 	if (unit->Gettype() == "EG")
 	{
 		Earthgunnery* typePtr = dynamic_cast<Earthgunnery*>(unit);
-
-		int pri;
-		pri = ((typePtr->GetHealth() + typePtr->GetPower()) / 2);
-		EGpriqueue.enqueue(typePtr,pri);
+		EGpriqueue.enqueue(typePtr,typePtr->getpri());
 	}
 }
 
@@ -58,5 +55,15 @@ void earthArmy::removeUnit(Unitclass* unit)
 
 void earthArmy::print()
 {
+	cout << ESqueue.getcount() << " ES ";
 	ESqueue.printqueue();
+	cout << endl;
+
+	cout << ETstack.getcount() << " ET ";
+	ETstack.printstack();
+	cout << endl;
+
+	cout << EGpriqueue.getcount() << " EG ";
+	EGpriqueue.printpri();
+	cout << endl;
 }

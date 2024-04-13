@@ -57,13 +57,24 @@ public:
 		return true;
 	}  // end peek
 
-	void print()
+	void printstack()
 	{
-		T x;
-		pop(x);
-		
+		cout << "[";
+		for (int i = 0; i <= top; i++)
+		{
+			cout << items[i]<<", ";
+		}
+		cout << "] \n";
 		
 	}
+
+	int getcount()
+	{
+		int count = top + 1;
+		return count;
+	}
+
+
 
 }; // end ArrayStack
 

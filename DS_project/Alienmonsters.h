@@ -11,3 +11,11 @@ public:
 	void attack();
 };
 
+inline ostream& operator <<(ostream& out, Alienmonsters*& am)
+{
+	out << am->Getid();
+	return out;
+}
+
+
+

@@ -15,3 +15,10 @@ public:
 
 };
 
+ inline ostream& operator <<(ostream& out, Earthsoldiers* es)
+{
+	out << es->Getid();
+	return out;
+}
+
+

@@ -13,3 +13,11 @@ public:
 
 };
 
+inline ostream& operator <<(ostream& out, Aliendrones*& ad)
+{
+	out << ad->Getid();
+	return out;
+}
+
+
+

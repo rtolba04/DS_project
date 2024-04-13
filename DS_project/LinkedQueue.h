@@ -53,12 +53,15 @@ class LinkedQueue:public QueueADT<T>
 private :
 	Node<T>* backPtr;
 	Node<T>* frontPtr;
+	int count;
 public :
 	LinkedQueue();	
 	bool isEmpty() const ;
 	bool enqueue(const T& newEntry);
 	bool dequeue(T& frntEntry);  
 	bool peek(T& frntEntry)  const;	
+	void printqueue();
+	int getcount();
 	~LinkedQueue();
 };
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -72,8 +75,10 @@ The constructor of the Queue class.
 template <typename T>
 LinkedQueue<T>::LinkedQueue()
 {
+	
 	backPtr=nullptr;
 	frontPtr=nullptr;
+	count = 0;
 
 }
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -183,5 +188,46 @@ LinkedQueue<T>::~LinkedQueue()
 	cout<<"\n Is LinkedQueue Empty now?? ==> "<<boolalpha<<isEmpty();
 	cout<<"\nEnding LinkedQueue destructor..."<<endl;
 }
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+template <typename T>
+int LinkedQueue<T>::getcount()
+{
+	int count = 0;
+	if (isEmpty())
+		return count;
+	
+	Node<T>* ptr = frontPtr;
+	
+	
+	while (ptr)
+	{
+	
+		count++;
+		ptr = ptr->getNext();
+		
+	}
+	return count;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+template <typename T>
+void LinkedQueue<T>::printqueue()
+{
+	
+	if (isEmpty())
+		return;
+	cout << "[";
+	Node<T>* ptr = frontPtr;
+	
+	while (ptr)
+	{
+		cout << ptr->getItem()<< ", ";
+		ptr = ptr->getNext();
+	}
+	cout << "]";
+
+}
+
 
 #endif

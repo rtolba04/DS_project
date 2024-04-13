@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "Earthsoldiers.h"
+#include <iostream>
 
 int main()
 {

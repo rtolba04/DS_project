@@ -2,7 +2,6 @@
 #include <iostream>
 #include <sstream>
 using namespace std;
-// manage conflict motherfuckers
 Unitclass::Unitclass(int id, int h, int ac, int p, int jt, string type)
 {
 	ID = id;
@@ -23,8 +22,7 @@ void Unitclass::Settype(string type) {
 string Unitclass::Gettype() {
 	return Type;
 }
-void Unitclass::SetID(int id) {
-}
+
 int Unitclass::Getid() {
 	return ID;
 }

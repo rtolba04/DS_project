@@ -18,6 +18,7 @@ private:
 public:
 	void attack();
 	void addUnit(Unitclass* unit);
+	void removeUnit(Unitclass* unit1, Unitclass* unit2);
 	void removeUnit(Unitclass* unit);
 	void print();
 };

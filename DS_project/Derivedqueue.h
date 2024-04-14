@@ -82,25 +82,34 @@ bool Derivedqueue<T>::Enqueuefront(const T& newEntry)
 template <typename T>
 bool Derivedqueue<T>::Dequeueback(T& backEntry)
 {
+	if (this->isEmpty())
+		return false;
+
 	Node<T>* currPtr = this->frontPtr;
 	Node<T>* prevPtr = nullptr;
+
+	// Traverse the queue to find the node before the last node
 	while (currPtr->getNext() != nullptr) {
 		prevPtr = currPtr;
 		currPtr = currPtr->getNext();
 	}
-	if (this->isEmpty())
-		return false;
 
-	Node<T>* nodeToDeletePtr = this->backPtr;
-	backEntry = this->backPtr->getItem(); // Corrected 'backtPtr' to 'backPtr'
+	// Now 'currPtr' points to the last node (backPtr)
+	backEntry = currPtr->getItem();
+
+	// Update backPtr to point to the previous node
 	this->backPtr = prevPtr;
-	this->backPtr->setNext(nullptr); // Corrected 'backptr' to 'backPtr'
-	// Queue is not empty; remove back
-	if (nodeToDeletePtr == this->frontPtr)    // Special case: last node in the queue
-		this->frontPtr = nullptr;
+
+	// Special case: if backPtr is null, meaning there was only one node in the queue
+	if (prevPtr == nullptr)
+		this->frontPtr = nullptr; // Set frontPtr to null as well
 
 	// Free memory reserved for the dequeued node
-	delete nodeToDeletePtr;
+	delete currPtr;
+
+	// Set the next pointer of prevPtr to nullptr
+	if (prevPtr != nullptr)
+		prevPtr->setNext(nullptr);
 
 	return true;
 }

@@ -18,6 +18,7 @@ int main()
 	Alienmonsters* am2 = new Alienmonsters(4, 2, 3, 4, 5);
 	Aliendrones* ad1 = new Aliendrones(5, 2, 3, 4, 5);
 	Aliendrones* ad2 = new Aliendrones(6, 2, 7, 2, 5);
+	Aliendrones* ad3 = new Aliendrones(6, 2, 7, 2, 5);
 	Aliensoldiers* as3 = new Aliensoldiers(1, 4, 6, 1, 6);
 	Aliensoldiers* as4 = new Aliensoldiers(1, 4, 6, 1, 6);
 	Aliensoldiers* as5 = new Aliensoldiers(1, 4, 6, 1, 6);
@@ -30,8 +31,10 @@ int main()
 	a1.addUnit(am2);
 	a1.addUnit(ad1);
 	a1.addUnit(ad2);
-	a1.removeUnit(am1);
-	a1.removeUnit(am2);
+	a1.addUnit(ad3);
+	a1.removeUnit(ad1,ad2);
+
+
 	a1.print();
 
 }

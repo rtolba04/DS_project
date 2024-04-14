@@ -35,6 +35,19 @@ void alienArmy::addUnit(Unitclass* unit)
 	}
 }
 
+void alienArmy::removeUnit(Unitclass* unit1, Unitclass* unit2) {
+	if (unit1->Gettype() == "AD" && unit2->Gettype() == "AD") {
+		// Check if the ADqueue has at least two elements
+		if (ADqueue.getcount() >= 2) {
+			// Dequeue the first Aliendrones object
+			Aliendrones* as1;
+			ADqueue.dequeue(as1);
+			// Dequeue the second Aliendrones object
+			Aliendrones* as2;
+			ADqueue.Dequeueback(as2);
+		}
+	}
+}
 void alienArmy::removeUnit(Unitclass* unit)
 {
 	if (unit->Gettype() == "AS")

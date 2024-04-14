@@ -11,7 +11,7 @@ Unitclass::Unitclass(int id, int h, int ac, int p, int jt, string type)
 	Attackcapacity = ac;
 	Type = type;
 }
-void attack() {
+void Unitclass::attack() {
 }
 void Unitclass::SetID(int id) {
 	ID=id;

@@ -87,27 +87,19 @@ bool Derivedqueue<T>::Dequeueback(T& backEntry)
 
 	Node<T>* currPtr = this->frontPtr;
 	Node<T>* prevPtr = nullptr;
-
-	// Traverse the queue to find the node before the last node
 	while (currPtr->getNext() != nullptr) {
 		prevPtr = currPtr;
 		currPtr = currPtr->getNext();
 	}
 
-	// Now 'currPtr' points to the last node (backPtr)
 	backEntry = currPtr->getItem();
 
-	// Update backPtr to point to the previous node
 	this->backPtr = prevPtr;
 
-	// Special case: if backPtr is null, meaning there was only one node in the queue
 	if (prevPtr == nullptr)
-		this->frontPtr = nullptr; // Set frontPtr to null as well
-
-	// Free memory reserved for the dequeued node
+		this->frontPtr = nullptr; 
 	delete currPtr;
 
-	// Set the next pointer of prevPtr to nullptr
 	if (prevPtr != nullptr)
 		prevPtr->setNext(nullptr);
 

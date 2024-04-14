@@ -48,12 +48,12 @@ void randGen::setstatusalien(int& p, int& h, int& ac)
 }
 void randGen::setstatusearth(int& p, int& h, int& ac)
 {
-	Ep = e_minpower + random(e_maxpower - e_minpower + 1);
+	Ep = e_minpower + random(e_maxpower - e_minpower + 1);      
 	Eh = e_minhealth + random(e_maxhealth - e_minhealth + 1);
 	Eac = e_minac + random(e_maxac - e_minac + 1);
 }
 
-int randGen::random(int r)
+int randGen::random(int r) 
 {
 	return rand()%r ;
 }    
@@ -84,6 +84,7 @@ Unitclass* randGen::generateunitearth(int& t)
 		{
 			Earthgunnery* eg = new Earthgunnery(earth_counter++, t, Eh, Ep, Eac);
 			return eg;
+			//dont forget to tcalculate el function priority
 		}
 	}
 }

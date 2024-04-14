@@ -30,6 +30,8 @@ int main()
 	a1.addUnit(am2);
 	a1.addUnit(ad1);
 	a1.addUnit(ad2);
+	a1.removeUnit(am1);
+	a1.removeUnit(am2);
 	a1.print();
 
 }

@@ -44,15 +44,13 @@ void alienArmy::removeUnit(Unitclass* unit)
 	}
 	if (unit->Gettype() == "AD")
 	{
-		Aliendrones* as1;
-		Aliendrones* as2;
-		ADqueue.dequeue(as1);
-		ADqueue.Dequeueback(as2);
+		Aliendrones* as;
+		ADqueue.dequeue(as);
+		
 	}//////
 	if (unit->Gettype() == "AM")
 	{
-		Alienmonsters* am;
-		
+		Alienmonsters* am = dynamic_cast<Alienmonsters*>(unit);
 		AMarray.remove(am);
 	}
 	//check if we need to add the killed to a list

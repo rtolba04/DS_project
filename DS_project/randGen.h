@@ -18,8 +18,8 @@ public:
 	void setpercentage(int e1,int e2,int e3,int a1, int a2, int a3);
 	void setstatusearth(int& p, int& h, int& ac);
 	void setstatusalien(int& p, int& h, int& ac);
+	void setProb(int p);
 	int random(int r);
-	Unitclass* createunit();
 	Unitclass* generateunitearth(int& t);
 	Unitclass* generateunitalien(int& t);
 };

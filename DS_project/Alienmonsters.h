@@ -8,4 +8,9 @@ public:
 	Alienmonsters(int id, int jt, int h, int p, int ac);
 	void attack();
 };
+inline ostream& operator <<(ostream& out, Alienmonsters* am)
+{
+	out << am->Getid();
+	return out;
+}
 

@@ -29,7 +29,6 @@ public:
 	int Getattackcapacity();
 	virtual void attack() = 0;
 	~Unitclass();
-
 };
 
 

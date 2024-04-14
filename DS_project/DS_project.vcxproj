@@ -141,6 +141,7 @@
     <ClInclude Include="priNode.h" />
     <ClInclude Include="priQueue.h" />
     <ClInclude Include="QueueADT.h" />
+    <ClInclude Include="randGen.h" />
     <ClInclude Include="StackADT.h" />
     <ClInclude Include="Unitclass.h" />
   </ItemGroup>
@@ -154,6 +155,7 @@
     <ClCompile Include="Earthsoldiers.cpp" />
     <ClCompile Include="Earthtanks.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="randGen.cpp" />
     <ClCompile Include="Unitclass.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

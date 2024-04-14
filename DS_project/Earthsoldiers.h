@@ -7,7 +7,7 @@ class Earthsoldiers : public Unitclass
 {
 private:
 public:
-	Earthsoldiers(int id, int jt, int h, int p, int ac);
+	Earthsoldiers(int id = 0, int jt = 0, int h = 0, int p = 0, int ac = 0);
 	void attack();
 	
 	

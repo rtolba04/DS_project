@@ -2,18 +2,20 @@
 #include "LinkedQueue.h"
 #include "randGen.h"
 #include "earthArmy.h"
-#include "Alienarmy.h"
+#include "alienArmy.h"
 class Game
 {private:
-	randGen randgen_obj;
-	earthArmy EA_obj;
-	Alienarmy AA_obj;
+	randGen random; //randgen obj
+	earthArmy Earth;//Earth obj
+	alienArmy Alien;//alien obj
 
 	
 	
 public:
 	randGen* getrand();
 	earthArmy* getEA();
-	Alienarmy* getAA();
+	alienArmy* getAA();
+	bool loadfromfile();
+
 };
 

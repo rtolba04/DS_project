@@ -1,19 +1,68 @@
 #include "randGen.h"
 
-void randGen::setpwr(int p)
+void randGen::setEpwr(int p)
 {
-	pwr = p;
+	Ep = p;
 }
 
-void randGen::sethealth(int h)
+void randGen::setEhealth(int h)
 {
-	health = h;
+	Eh = h;
 }
-void randGen::setattack(int ac)
+void randGen::setEattack(int ac)
 {
-	attackcap = ac;
+	Eac = ac;
 }
+void randGen::setAattack(int ac)
+{
+	Aac = ac;
+}
+void randGen::setAhealth(int h)
+{
+	Ah=h;
+}
+void randGen::setApwr(int p)
+{
+	Ap=p;
+}
+
 Unitclass* randGen::createunit()
 {
+	if (B <= ESpr)
+	{
+		Earthsoldiers* es = new Earthsoldiers;
+		return es;
+	}
+
+	if (B <= ESpr + ETpr)
+	{
+		Earthsoldiers* es = new Earthsoldiers;
+		return es;
+	}
+
+	if (B <= ESpr + ETpr + EGpr)
+	{
+		Earthsoldiers* es = new Earthsoldiers;
+		return es;
+	}
+
+	if (B <= ASpr)
+	{
+		Earthsoldiers* es = new Earthsoldiers;
+		return es;
+	}
+
+	if (B <= AMpr)
+	{
+		Earthsoldiers* es = new Earthsoldiers;
+		return es;
+	}
+
+	if (B <= ADpr)
+	{
+		Earthsoldiers* es = new Earthsoldiers;
+		return es;
+	}
+		 
 
 }

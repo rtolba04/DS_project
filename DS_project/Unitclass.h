@@ -30,7 +30,6 @@ public:
 	void print();
 	virtual void attack() = 0;
 	~Unitclass();
-
 };
 
 

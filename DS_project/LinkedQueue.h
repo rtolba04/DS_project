@@ -44,7 +44,8 @@ Single Node Case:
 
 #include "Node.h"
 #include "QueueADT.h"
-
+#include <iostream>
+using namespace std;
 template <typename T>
 class LinkedQueue:public QueueADT<T>
 {
@@ -56,7 +57,9 @@ public :
 	bool isEmpty() const ;
 	bool enqueue(const T& newEntry);
 	bool dequeue(T& frntEntry);  
-	bool peek(T& frntEntry)  const;	
+	int getcount();
+	void printqueue();
+	bool peek(T& frntEntry)  const;
 	~LinkedQueue();
 };
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -142,7 +145,43 @@ bool LinkedQueue<T>:: dequeue(T& frntEntry)
 	return true;
 }
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+template <typename T>
+int LinkedQueue<T>::getcount()
+{
+	int count = 0;
+	if (isEmpty())
+		return count;
 
+	Node<T>* ptr = frontPtr;
+
+
+	while (ptr)
+	{
+
+		count++;
+		ptr = ptr->getNext();
+
+	}
+	return count;
+}
+template <typename T>
+void LinkedQueue<T>::printqueue()
+{
+
+	if (isEmpty())
+		return;
+	cout << "[";
+	Node<T>* ptr = frontPtr;
+
+	while (ptr)
+	{
+		cout << ptr->getItem() << ", ";
+		ptr = ptr->getNext();
+	}
+	cout << "]";
+
+}
 
 /////////////////////////////////////////////////////////////////////////////////////////
 

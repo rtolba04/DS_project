@@ -59,7 +59,7 @@ void alienArmy::removeUnit(Unitclass* unit)
 	{
 		Aliendrones* as;
 		ADqueue.dequeue(as);
-
+		
 	}//////
 	if (unit->Gettype() == "AM")
 	{
@@ -72,7 +72,7 @@ void alienArmy::removeUnit(Unitclass* unit)
 void alienArmy::print()
 {
 
-	cout << ASqueue.getcount() << " " << "AS" << " ";
+	cout << ASqueue.getcount()<<" " << "AS" << " ";
 	ASqueue.printqueue();
 	cout << endl;
 
@@ -80,9 +80,9 @@ void alienArmy::print()
 	ADqueue.printqueue();
 	cout << endl;
 
-	cout << AMarray.getCount() << " AM ";
+    cout << AMarray.getCount() << " AM ";
 	AMarray.printarr();
 	cout << endl;
-
+	
 }
 

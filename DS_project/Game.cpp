@@ -5,33 +5,32 @@
 #include <iostream>
 #include "earthArmy.h"
 #include "Alienarmy.h"
+#include "fstream"
+#include "randGen.h"
+#include "Randomgen.h"
 using namespace std;
 
-int main()
-{
-	earthArmy e1;
-	Earthsoldiers* es1 = new Earthsoldiers(1, 2, 3, 4, 5);
-	Earthsoldiers* es2 = new Earthsoldiers(2, 7, 3, 4, 5);
-	Earthtanks* et1 = new Earthtanks(3, 2, 3, 4, 5);
-	Earthtanks* et2 = new Earthtanks(4, 2, 3, 4, 5);
-	Earthgunnery* eg1 = new Earthgunnery(5, 2, 3, 4, 5);
-	Earthgunnery* eg2 = new Earthgunnery(6, 2, 7, 2, 5);
+
+bool Game::loadfromfile() {
+    ifstream input("inputfile.txt");
+    if (!input) {
+        cerr << "Error: Unable to open input file." << endl;
+        return false; // Return error code
+    }
+    input.close();
+    // Check if the read was successful
+    if (input.fail()) {
+        cerr << "Error: Failed to read range from input file." << endl;
+        return false; // Return error code
+    }
+	int N, Prob, ESpr, ETpr, EGpr, ASpr, AMpr, ADpr, Ep, Eh, Eac, Ap, Ah, Aac, A, B, e_minpower, e_maxpower, e_minhealth, e_maxhealth;
+	int e_minac, e_maxac, a_minpower, a_maxpower, a_minhealth, a_maxhealth, a_minac, a_maxac;
+	input >> N >> ESpr >> ETpr >> EGpr >> ASpr >> AMpr >> ADpr >> Prob >> e_minpower >> e_maxpower >> e_minhealth >> e_maxhealth;
+	input >> e_minac >> e_maxac >> a_minpower>> a_maxpower>> a_minhealth>> a_maxhealth>> a_minac>> a_maxac;
 
 
 
-	e1.addUnit(es1);
-	e1.addUnit(es2);
-	e1.addUnit(et1);
-	e1.addUnit(et2);
-
-	e1.addUnit(eg1);
-	e1.addUnit(eg2);
-
-	e1.print();
 
 
+	return true;
 }
-
-
-
-

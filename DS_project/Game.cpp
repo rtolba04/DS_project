@@ -8,6 +8,7 @@ using namespace std;
 
 Game::Game()
 {
+    loadfromfile();
     time = 1;
     killed = new LinkedQueue<Unitclass*>;
     temp = new LinkedQueue<Unitclass*>;
@@ -34,7 +35,7 @@ bool Game::loadfromfile() {
         cerr << "Error: Unable to open input file." << endl;
         return false; // Return error code
     }
-    input.close();
+   
     // Check if the read was successful
     if (input.fail()) {
         cerr << "Error: Failed to read range from input file." << endl;
@@ -52,6 +53,7 @@ bool Game::loadfromfile() {
         randomgen.setProb(Prob);
         randomgen.setstatusearth(Ep, Eh, Eac);
         randomgen.setstatusalien(Ap, Ah, Aac);
+        input.close();
         return true;
  
 }
@@ -69,8 +71,7 @@ void Game::printKill()
 
 void Game::test()
 {
-    Game();
-    loadfromfile();
+   
     for (time; time < 51; time++)
     {
         cout << "Current Timestep " << time << endl;

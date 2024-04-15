@@ -10,7 +10,8 @@ class Game
 	randGen randomgen; //randgen obj
 	earthArmy Earth;//Earth obj
 	alienArmy Alien;//alien obj
-
+	LinkedQueue<Unitclass*>* killed;
+	LinkedQueue<Unitclass*>* temp;
 	
 	
 public:

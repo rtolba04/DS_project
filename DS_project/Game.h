@@ -20,6 +20,7 @@ public:
 	earthArmy* getEA();
 	alienArmy* getAA();
 	bool loadfromfile();
+	void PrintKilledList();
 
 	void kill(Unitclass* unit);
 	void printKill();

@@ -62,13 +62,36 @@ void Game::kill(Unitclass* unit)
 {
     killed->enqueue(unit);
 }
-
-void Game::printKill()
-{
+void Game::PrintKilledList() {
     cout << "=======================killed/destructed units=================" << endl;
-    cout << killed->getcount() << "units" << endl;
-    killed->printqueue();
+    cout << killed->getcount() << " units ";
+
+    if (killed->isEmpty())
+        return;
+    cout << "[";
+    Node<Unitclass*>* ptr = killed->getfrontPtr();
+
+    while (ptr)
+    {
+        if (ptr->getNext() == nullptr) {
+            cout << ptr->getItem()->Getid();
+            ptr = ptr->getNext();
+        }
+        else {
+            cout << ptr->getItem()->Getid() << ", ";
+            ptr = ptr->getNext();
+        }
+    }
+    cout << "]";
+
 }
+//void Game::printKill()
+//{
+//    cout << "=======================killed/destructed units=================" << endl;
+//    cout << killed->getcount() << " units " << endl;
+//    killed->printqueue_ptr(killed);
+//    cout << endl;
+//}
 
 void Game::test()
 {
@@ -232,7 +255,7 @@ void Game::test()
         getAA()->print();
      getEA()->print();
       
-        printKill();
+       PrintKilledList();
     }
 }
 

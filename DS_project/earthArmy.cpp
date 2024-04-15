@@ -49,8 +49,7 @@ void earthArmy::removeUnit(Unitclass* unit, string type)
 	{
 		Earthgunnery* eg;
 		int pri;
-		pri = ((unit->GetHealth() + unit->GetPower()) / 2);
-		EGpriqueue.enqueue(eg, pri);
+		EGpriqueue.dequeue(eg, pri);
 		unit =eg;
 	}
 	//check if we need to add the killed to a list

@@ -30,7 +30,8 @@ public:
 	void setProb(int p);
 	int random(int r);
 	void setGame(Game*);
-	Unitclass* generateunitearth(int& t);
-	Unitclass *generateunitalien(int& t);
+void generateunitearth(int& t);
+	void generateunitalien(int& t);
+	void createunits(int& t);
 };
 

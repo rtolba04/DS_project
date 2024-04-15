@@ -57,6 +57,9 @@ void earthArmy::removeUnit(Unitclass* unit, string type)
 
 void earthArmy::print()
 {
+	cout << "=========== Earth Army Alive Units ===========" << endl;
+	
+	
 	cout << ESqueue.getcount() << " ES ";
 	ESqueue.printqueue();
 	cout << endl;

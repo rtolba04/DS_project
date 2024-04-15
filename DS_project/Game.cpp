@@ -70,13 +70,13 @@ void Game::printKill()
 
 void Game::test()
 {
-    Game();
     loadfromfile();
-    for (time; time < 51; time++)
+    for (int time=1; time < 51; time++)
     {
         cout << "Current Timestep " << time << endl;
-        randomgen.generateunitalien(time);
-        randomgen.generateunitearth(time);
+       
+            getrand()->createunits(time);
+            
         int x;
         x = rand() % 100 + 1;
         if (x >= 0 && x <= 10)
@@ -176,12 +176,24 @@ void Game::test()
             if (ad5) kill(ad5);
             if (ad6) kill(ad6);
         }
-        cout << "=========== Earth Army Alive Units ===========" << endl;
-        Earth.print();
-        cout << "=========== Alien Army Alive Units ===========" << endl;
-        Alien.print();
-        cout << "=========== Killed/Destructed Units ===========" << endl;
+        
+    //    Earth.print();
+    
+      //  Alien.print();
+        getAA()->print();
+        getEA()->print();
+      
         printKill();
+    }
+}
+
+void Game::testnew() {
+    for (int time = 1; time <= 50; time++)
+    {
+        cout << "Current Timestep " << time << endl;
+        getrand()->createunits(time);
+        getAA()->print();
+        getEA()->print();
     }
 }
 

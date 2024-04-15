@@ -9,8 +9,7 @@ class Game
 	earthArmy Earth;//Earth obj
 	alienArmy Alien;//alien obj
 
-	
-	
+	//
 public:
 	randGen* getrand();
 	earthArmy* getEA();
@@ -19,3 +18,4 @@ public:
 
 };
 
+.6++

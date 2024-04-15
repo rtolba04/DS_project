@@ -1,5 +1,5 @@
 #include "randGen.h"
-
+#include "Game.h"
 void randGen::setpwr(int ep1, int ep2, int ap1, int ap2)
 {
 	e_minpower = ep1;
@@ -129,3 +129,5 @@ Unitclass* randGen::generateunitalien(int& t) //adjusted so it creates and adds 
 }
 
 
+int randGen::alien_counter{ 2000 };
+int randGen::earth_counter{ 1};

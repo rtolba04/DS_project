@@ -31,24 +31,27 @@ void earthArmy::addUnit(Unitclass* unit)
 	}
 }
 
-void earthArmy::removeUnit(Unitclass* unit)
+void earthArmy::removeUnit(Unitclass* unit, string type)
 {
-	if (unit->Gettype() == "ET")
+	if (type == "ET")
 	{
 		Earthtanks* et;
 		ETstack.pop(et);
+		unit = et;
 	}
-	if (unit->Gettype() == "ES")
+	if (type == "ES")
 	{
 		Earthsoldiers* es;
 		ESqueue.dequeue(es);
+		unit = es;
 	}
-	if (unit->Gettype() == "EG")
+	if (type == "EG")
 	{
 		Earthgunnery* eg;
 		int pri;
 		pri = ((unit->GetHealth() + unit->GetPower()) / 2);
 		EGpriqueue.enqueue(eg, pri);
+		unit =eg;
 	}
 	//check if we need to add the killed to a list
 }

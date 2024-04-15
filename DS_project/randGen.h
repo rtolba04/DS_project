@@ -1,6 +1,15 @@
 #pragma once
-#include "Game.h"
 #include "Unitclass.h"
+#include "Earthgunnery.h"
+#include "Earthsoldiers.h"
+#include "Earthtanks.h"
+#include "earthArmy.h"
+#include"alienArmy.h"
+#include "Aliendrones.h"
+#include "Alienmonsters.h"
+#include "Alienmonsters.h"
+class Game;
+
 class randGen
 {
 private:

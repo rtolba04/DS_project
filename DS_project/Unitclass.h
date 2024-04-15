@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-#include "Game.h"
+class Game;
 using namespace std;
 
 class Unitclass

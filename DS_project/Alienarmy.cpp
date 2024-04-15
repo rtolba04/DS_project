@@ -36,35 +36,40 @@ void alienArmy::addUnit(Unitclass* unit)
 }
 
 void alienArmy::removeUnit(Unitclass* unit1, Unitclass* unit2) {
-	if (unit1->Gettype() == "AD" && unit2->Gettype() == "AD") {
+	 
 		// Check if the ADqueue has at least two elements
-		if (ADqueue.getcount() >= 2) {
-			// Dequeue the first Aliendrones object
-			Aliendrones* as1;
-			ADqueue.dequeue(as1);
-			// Dequeue the second Aliendrones object
-			Aliendrones* as2;
-			ADqueue.Dequeueback(as2);
-		}
+	if (ADqueue.getcount() >= 2) {
+		// Dequeue the first Aliendrones object
+		Aliendrones* ad1;
+		ADqueue.dequeue(ad1);
+		// Dequeue the second Aliendrones object
+		Aliendrones* ad2;
+		ADqueue.Dequeueback(ad2);
+
+		unit1 = ad1;
+		unit2 = ad2;
 	}
 }
-void alienArmy::removeUnit(Unitclass* unit)
+
+void alienArmy::removeUnit(Unitclass* unit,string type)
 {
-	if (unit->Gettype() == "AS")
+	if (type == "AS")
 	{
 		Aliensoldiers* as;
 		ASqueue.dequeue(as);
+		unit = as;
 	}
-	if (unit->Gettype() == "AD")
+	if (type == "AD")
 	{
-		Aliendrones* as;
-		ADqueue.dequeue(as);
-		
+		Aliendrones* ad;
+		ADqueue.dequeue(ad);
+		unit = ad;
 	}//////
-	if (unit->Gettype() == "AM")
+	if (type == "AM")
 	{
 		Alienmonsters* am = dynamic_cast<Alienmonsters*>(unit);
 		AMarray.remove(am);
+		unit = am;
 	}
 	//check if we need to add the killed to a list
 }

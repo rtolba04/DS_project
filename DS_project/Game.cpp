@@ -2,9 +2,7 @@
 #include "Game.h"
 #include <fstream>
 #include <iostream>
-#include "earthArmy.h"
-#include "Alienarmy.h"
-#include "randGen.h"
+
 using namespace std;
 
 
@@ -82,85 +80,100 @@ void Game::test()
         x = rand() % 100 + 1;
         if (x >= 0 && x <= 10)
         {
-            Earthsoldiers* es;
-            Earth.removeUnit(es);
-            Earth.addUnit(es);
-        }
+            Earthsoldiers* es= nullptr;
+            Earth.removeUnit(es,"ES");
+            if (es) {
+                Earth.addUnit(es);
+            }
+            }
         if (x > 10 && x <= 20)
         {
-            Earthtanks* et;
-            Earth.removeUnit(et);
+            Earthtanks* et = nullptr;
+            Earth.removeUnit(et,"ET");
+            if(et)
             kill(et);
         }
         if (x > 20 && x <= 30)
         {
-            Earthgunnery* eg;
-            Earth.removeUnit(eg);
-            int h = eg->GetHealth();
-            h = h / 2;
-            eg->SetHealth(h);
-            Earth.addUnit(eg);
-        }
+            Earthgunnery* eg = nullptr;
+            Earth.removeUnit(eg,"EG");
+            if (eg) {
+                int h = eg->GetHealth();
+                h = h / 2;
+                eg->SetHealth(h);
+
+                Earth.addUnit(eg);
+            }
+           }
         if (x > 30 && x <= 40)
         {
-            Aliensoldiers* a1, * a2, * a3, * a4, * a5;
+            Aliensoldiers* a1 = nullptr, * a2 = nullptr, * a3 = nullptr, * a4 = nullptr, * a5 = nullptr;
 
-            Alien.removeUnit(a1);
-            int h1 = a1->GetHealth();
-            h1 = h1 / 2;
-            a1->SetHealth(h1);
-            Alien.addUnit(a1);
-
-            Alien.removeUnit(a2);
-            int h2 = a2->GetHealth();
-            h2 = h2 / 2;
-            a2->SetHealth(h2);
-            Alien.addUnit(a2);
-
-            Alien.removeUnit(a3);
-            int h3 = a3->GetHealth();
-            h3 = h3 / 2;
-            a3->SetHealth(h3);
-            Alien.addUnit(a3);
-
-            Alien.removeUnit(a4);
-            int h4 = a4->GetHealth();
-            h4 = h4 / 2;
-            a4->SetHealth(h4);
-            Alien.addUnit(a4);
-
-            Alien.removeUnit(a5);
-            int h5 = a5->GetHealth();
-            h5 = h5 / 2;
-            a5->SetHealth(h5);
-            Alien.addUnit(a5);
-        }
+            Alien.removeUnit(a1,"AS");
+            if (a1) {
+                int h1 = a1->GetHealth();
+                h1 = h1 / 2;
+                a1->SetHealth(h1);
+                Alien.addUnit(a1);
+            }
+            Alien.removeUnit(a2,"AS");
+            if (a2) {
+                int h2 = a2->GetHealth();
+                h2 = h2 / 2;
+                a2->SetHealth(h2);
+                Alien.addUnit(a2);
+            }
+            
+            Alien.removeUnit(a3,"AS");
+            if (a3) {
+                int h3 = a3->GetHealth();
+                h3 = h3 / 2;
+                a3->SetHealth(h3);
+                Alien.addUnit(a3);
+            }
+            Alien.removeUnit(a4,"AS");
+            if (a4) {
+                int h4 = a4->GetHealth();
+                h4 = h4 / 2;
+                a4->SetHealth(h4);
+                Alien.addUnit(a4);
+            }
+            Alien.removeUnit(a5, "AS");
+            if (a5) {
+                int h5 = a5->GetHealth();
+                h5 = h5 / 2;
+                a5->SetHealth(h5);
+                Alien.addUnit(a5);
+            }
+            }
         if (x > 40 && x <= 50)
         {
-            Alienmonsters* a1, * a2, * a3, * a4, * a5;
-            Alien.removeUnit(a1);
-            Alien.removeUnit(a2);
-            Alien.removeUnit(a3);
-            Alien.removeUnit(a4);
-            Alien.removeUnit(a5);
-            Alien.addUnit(a1);
-            Alien.addUnit(a2);
-            Alien.addUnit(a3);
-            Alien.addUnit(a4);
-            Alien.addUnit(a5);
+            Alienmonsters* am1 = nullptr, * am2 = nullptr, * am3 = nullptr, * am4 = nullptr, * am5 = nullptr;
+            Alien.removeUnit(am1,"AM");
+            Alien.removeUnit(am2, "AM");
+            Alien.removeUnit(am3, "AM");
+            Alien.removeUnit(am4, "AM");
+            Alien.removeUnit(am5, "AM");
+            if(am1)
+            Alien.addUnit(am1);
+            if(am2)
+             Alien.addUnit(am2);
+            if (am3) Alien.addUnit(am3);
+            if (am4) Alien.addUnit(am4);
+            if (am5) Alien.addUnit(am5);
         }
         if (x > 50 && x <= 60)
         {
-            Aliendrones* a1, * a2, * a3, * a4, * a5, * a6;
-            Alien.removeUnit(a1, a6);
-            Alien.removeUnit(a2, a5);
-            Alien.removeUnit(a3, a4);
-            kill(a1);
-            kill(a2);
-            kill(a3);
-            kill(a4);
-            kill(a5);
-            kill(a6);
+            Aliendrones* ad1 = nullptr, * ad2 = nullptr, * ad3 = nullptr, * ad4 = nullptr, * ad5 = nullptr, * ad6 = nullptr;
+            Alien.removeUnit(ad1, ad6);
+            Alien.removeUnit(ad2, ad5);
+            Alien.removeUnit(ad3, ad4);
+            if(ad1) kill(ad1);
+            if (ad2) kill(ad2);
+            if (ad3) kill(ad3);
+            if (ad4) kill(ad4);
+            if (ad5) kill(ad5);
+            if (ad6) kill(ad6);
         }
         cout << "=========== Earth Army Alive Units ===========" << endl;
         Earth.print();

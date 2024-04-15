@@ -6,7 +6,7 @@
 class Game
 {private:
 	int time;
-	randGen random; //randgen obj
+	randGen randomgen; //randgen obj
 	earthArmy Earth;//Earth obj
 	alienArmy Alien;//alien obj
 	LinkedQueue<Unitclass*>*killed;
@@ -20,4 +20,6 @@ public:
 	bool loadfromfile();
 	void kill(Unitclass*);
 	void printKill();
+	void test();
+	~Game();
 };

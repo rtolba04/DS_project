@@ -31,21 +31,22 @@ void earthArmy::addUnit(Unitclass* unit)
 	}
 }
 
-void earthArmy::removeUnit(Unitclass* unit, string type)
+void earthArmy::removeUnit(Unitclass*& unit, string type)
 {
 	if (type == "ET")
 	{
 		Earthtanks* et;
 		ETstack.pop(et);
+		// et = dynamic_cast<Earthtanks*>(unit);
 		unit = et;
+	
 	}
 	if (type == "ES")
 	{
 		Earthsoldiers* es;
 		ESqueue.dequeue(es);
 		
-		Earthsoldiers x = *es;
-		es = &x;
+		unit = es;
 	}
 	if (type == "EG")
 	{

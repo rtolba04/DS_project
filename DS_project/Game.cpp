@@ -83,7 +83,9 @@ void Game::test()
         if (x >= 0 && x <= 10)
         {
             Earthsoldiers* es= nullptr;
-            Earth.removeUnit(es,"ES");
+            Unitclass* u = nullptr;
+             es = dynamic_cast<Earthsoldiers*>(u);
+            Earth.removeUnit(u,"ES");
             if (es) {
                 Earth.addUnit(es);
             }
@@ -91,14 +93,18 @@ void Game::test()
         if (x > 10 && x <= 20)
         {
             Earthtanks* et = nullptr;
-            Earth.removeUnit(et,"ET");
+            Unitclass* u = nullptr;
+            et = dynamic_cast<Earthtanks*>(u);
+            Earth.removeUnit(u,"ET");
             if(et)
             kill(et);
         }
         if (x > 20 && x <= 30)
         {
             Earthgunnery* eg = nullptr;
-            Earth.removeUnit(eg,"EG");
+            Unitclass* u = nullptr;
+            eg = dynamic_cast<Earthgunnery*>(u);
+            Earth.removeUnit(u,"EG");
             if (eg) {
                 int h = eg->GetHealth();
                 h = h / 2;

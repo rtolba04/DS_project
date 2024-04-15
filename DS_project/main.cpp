@@ -8,13 +8,13 @@ int main()
 //	g1.test();
 
 	Game g2;
-	Unitclass* yoyo=nullptr;
-	Earthsoldiers* es = new Earthsoldiers(7,8,8,8,8);
-	g2.getEA()->addUnit(es);
-	g2.getEA()->removeUnit(yoyo,"ES");
+	Unitclass* unit=nullptr;
+	Earthtanks* et = new Earthtanks(7,8,8,8,8);
+	g2.getEA()->addUnit(et);
+	g2.getEA().
 
-	cout << yoyo;
-
+	cout << unit;
+	cout << "wwwwwwwwwwwwwwwwwwwwwwwwwwwww";
 	//for (int time=1; time <= 50; time++)
 	//{
 	//	cout << "Current Timestep " << time << endl;

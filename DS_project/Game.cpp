@@ -64,6 +64,7 @@ void Game::kill(Unitclass* unit)
 
 void Game::printKill()
 {
+    cout << "=======================killed/destructed units=================" << endl;
     cout << killed->getcount() << "units" << endl;
     killed->printqueue();
 }
@@ -181,21 +182,13 @@ void Game::test()
     
       //  Alien.print();
         getAA()->print();
-        getEA()->print();
+     getEA()->print();
       
         printKill();
     }
 }
 
-void Game::testnew() {
-    for (int time = 1; time <= 50; time++)
-    {
-        cout << "Current Timestep " << time << endl;
-        getrand()->createunits(time);
-        getAA()->print();
-        getEA()->print();
-    }
-}
+
 
 Game::~Game()
 {

@@ -76,6 +76,8 @@ void alienArmy::removeUnit(Unitclass* unit,string type)
 
 void alienArmy::print()
 {
+	
+	cout << "=========== Alien Army Alive Units ===========" << endl;
 
 	cout << ASqueue.getcount()<<" " << "AS" << " ";
 	ASqueue.printqueue();

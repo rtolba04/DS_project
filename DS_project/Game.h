@@ -20,10 +20,11 @@ public:
 	earthArmy* getEA();
 	alienArmy* getAA();
 	bool loadfromfile();
+
 	void kill(Unitclass* unit);
 	void printKill();
 	void test();
-	void testnew();
+	//void testnew();
 	~Game();
 };
 

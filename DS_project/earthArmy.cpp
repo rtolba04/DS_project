@@ -43,7 +43,9 @@ void earthArmy::removeUnit(Unitclass* unit, string type)
 	{
 		Earthsoldiers* es;
 		ESqueue.dequeue(es);
-		unit = es;
+		
+		Earthsoldiers x = *es;
+		es = &x;
 	}
 	if (type == "EG")
 	{

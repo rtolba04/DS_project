@@ -73,7 +73,7 @@ void randGen::generateunitearth(int& t) //adjusted so it creates and adds unit
 	
 		for (int i = 0; i < N; i++)
 		{
-			B = random(100) + 1;
+			int B = random(100) + 1;
 			if (B <= ESpr)
 			{
 				Earthsoldiers* es = new Earthsoldiers(earth_counter++, t, Eh, Ep, Eac);
@@ -105,7 +105,7 @@ void randGen::generateunitalien(int& t) //adjusted so it creates and adds unit
 	
 		for (int i = 0; i < N; i++)
 		{
-			B = random(100) + 1;
+			int B = random(100) + 1;
 			if (B <= ASpr)
 			{
 				Aliensoldiers* as = new Aliensoldiers(alien_counter++, t, Eh, Ep, Eac);

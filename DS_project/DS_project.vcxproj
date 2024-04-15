@@ -157,6 +157,7 @@
     <ClCompile Include="Earthsoldiers.cpp" />
     <ClCompile Include="Earthtanks.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="randGen.cpp" />
     <ClCompile Include="Unitclass.cpp" />
   </ItemGroup>

@@ -29,6 +29,7 @@ public:
 	void setstatusalien(int& p, int& h, int& ac);
 	void setProb(int p);
 	int random(int r);
+	void setGame(Game*);
 	Unitclass* generateunitearth(int& t);
 	Unitclass *generateunitalien(int& t);
 };

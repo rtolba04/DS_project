@@ -21,6 +21,6 @@ public:
 	void setProb(int p);
 	int random(int r);
 	Unitclass* generateunitearth(int& t);
-	Unitclass* generateunitalien(int& t);
+	Unitclass *generateunitalien(int& t);
 };
 

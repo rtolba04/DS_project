@@ -60,7 +60,12 @@ void randGen::setstatusearth(int& p, int& h, int& ac)
 int randGen::random(int r) 
 {
 	return rand()%r ;
-}    
+}
+
+void randGen::setGame(Game* g)
+{
+	game_ptr = g;
+}
 
 
 Unitclass* randGen::generateunitearth(int& t) //adjusted so it creates and adds unit

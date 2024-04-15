@@ -34,7 +34,7 @@ bool Game::loadfromfile() {
         cerr << "Error: Unable to open input file." << endl;
         return false; // Return error code
     }
-    input.close();
+   
     // Check if the read was successful
     if (input.fail()) {
         cerr << "Error: Failed to read range from input file." << endl;
@@ -52,8 +52,9 @@ bool Game::loadfromfile() {
         randomgen.setProb(Prob);
         randomgen.setstatusearth(Ep, Eh, Eac);
         randomgen.setstatusalien(Ap, Ah, Aac);
+        input.close();
         return true;
- 
+       
 }
 
 void Game::kill(Unitclass* unit)

@@ -17,7 +17,10 @@ class earthArmy
 public:
 	void attack();
 	void addUnit(Unitclass* unit);
-	void removeUnit(Unitclass*& unit,string type);
+	//void removeUnit(Unitclass*& unit,string type);
+	bool ET_remove(Earthtanks*& et);
+	bool ES_remove(Earthsoldiers*& es);
+	bool EG_remove(Earthgunnery *& eg,int& pri);
 	void print();
 };
 

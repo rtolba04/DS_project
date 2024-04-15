@@ -3,18 +3,18 @@ using namespace std;
 #include"Game.h"
 int main()
 {
-//	Game g1;
-//	g1.getrand()->setGame(&g1);
-//	g1.test();
+	Game g1;
+	g1.getrand()->setGame(&g1);
+	g1.test();
 
-	Game g2;
+	/*Game g2;
 	Unitclass* unit=nullptr;
 	Earthtanks* et = new Earthtanks(7,8,8,8,8);
 	g2.getEA()->addUnit(et);
-	g2.getEA().
+	g2.getEA()->removeUnit(unit, "ET");
 
 	cout << unit;
-	cout << "wwwwwwwwwwwwwwwwwwwwwwwwwwwww";
+	cout << "wwwwwwwwwwwwwwwwwwwwwwwwwwwww";*/
 	//for (int time=1; time <= 50; time++)
 	//{
 	//	cout << "Current Timestep " << time << endl;

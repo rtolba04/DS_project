@@ -1,11 +1,9 @@
 
 #include "Game.h"
-#include "Earthsoldiers.h"
 #include <fstream>
 #include <iostream>
 #include "earthArmy.h"
 #include "Alienarmy.h"
-#include "fstream"
 #include "randGen.h"
 using namespace std;
 
@@ -14,6 +12,7 @@ Game::Game()
 {
     time = 1;
     killed = new LinkedQueue<Unitclass*>;
+    temp = new LinkedQueue<Unitclass*>;
 }
 
 randGen* Game::getrand()
@@ -59,14 +58,13 @@ bool Game::loadfromfile() {
  
 }
 
-void Game::kill(Unitclass* u)
+void Game::kill(Unitclass* unit)
 {
-    killed->enqueue(u);
+    killed->enqueue(unit);
 }
 
 void Game::printKill()
 {
-    cout << "================ Killed Units ================ " << endl;
     cout << killed->getcount() << "units" << endl;
     killed->printqueue();
 }
@@ -77,6 +75,7 @@ void Game::test()
     loadfromfile();
     for (time; time < 51; time++)
     {
+        cout << "Current Timestep " << time << endl;
         randomgen.generateunitalien(time);
         randomgen.generateunitearth(time);
         int x;
@@ -104,7 +103,37 @@ void Game::test()
         }
         if (x > 30 && x <= 40)
         {
+            Aliensoldiers* a1, * a2, * a3, * a4, * a5;
 
+            Alien.removeUnit(a1);
+            int h1 = a1->GetHealth();
+            h1 = h1 / 2;
+            a1->SetHealth(h1);
+            Alien.addUnit(a1);
+
+            Alien.removeUnit(a2);
+            int h2 = a2->GetHealth();
+            h2 = h2 / 2;
+            a2->SetHealth(h2);
+            Alien.addUnit(a2);
+
+            Alien.removeUnit(a3);
+            int h3 = a3->GetHealth();
+            h3 = h3 / 2;
+            a3->SetHealth(h3);
+            Alien.addUnit(a3);
+
+            Alien.removeUnit(a4);
+            int h4 = a4->GetHealth();
+            h4 = h4 / 2;
+            a4->SetHealth(h4);
+            Alien.addUnit(a4);
+
+            Alien.removeUnit(a5);
+            int h5 = a5->GetHealth();
+            h5 = h5 / 2;
+            a5->SetHealth(h5);
+            Alien.addUnit(a5);
         }
         if (x > 40 && x <= 50)
         {
@@ -120,6 +149,25 @@ void Game::test()
             Alien.addUnit(a4);
             Alien.addUnit(a5);
         }
+        if (x > 50 && x <= 60)
+        {
+            Aliendrones* a1, * a2, * a3, * a4, * a5, * a6;
+            Alien.removeUnit(a1, a6);
+            Alien.removeUnit(a2, a5);
+            Alien.removeUnit(a3, a4);
+            kill(a1);
+            kill(a2);
+            kill(a3);
+            kill(a4);
+            kill(a5);
+            kill(a6);
+        }
+        cout << "=========== Earth Army Alive Units ===========" << endl;
+        Earth.print();
+        cout << "=========== Alien Army Alive Units ===========" << endl;
+        Alien.print();
+        cout << "=========== Killed/Destructed Units ===========" << endl;
+        printKill();
     }
 }
 

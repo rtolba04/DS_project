@@ -18,8 +18,11 @@ private:
 public:
 	void attack();
 	void addUnit(Unitclass* unit);
-	void removeUnit(Unitclass* unit1, Unitclass* unit2);
-	void removeUnit(Unitclass* unit, string type);
+	//void removeUnit(Unitclass*& unit1, Unitclass*& unit2);
+//void removeUnit(Unitclass*& unit, string type);
+	bool AS_remove(Aliensoldiers*& as);
+	bool AM_remove(Alienmonsters*& am);
+	bool AD_remove(Aliendrones*& ad1, Aliendrones*& ad2);
 	void print();
 };
 

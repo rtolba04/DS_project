@@ -15,7 +15,7 @@ class randGen
 private:
 	static int alien_counter;
 	static int earth_counter;
-	int N, Prob, ESpr, ETpr, EGpr, ASpr, AMpr, ADpr, Ep, Eh, Eac, Ap, Ah, Aac, A, B, e_minpower, e_maxpower, e_minhealth, e_maxhealth;
+	int N, Prob, ESpr, ETpr, EGpr, ASpr, AMpr, ADpr, Ep, Eh, Eac, Ap, Ah, Aac,  e_minpower, e_maxpower, e_minhealth, e_maxhealth;
 	int e_minac, e_maxac, a_minpower, a_maxpower, a_minhealth, a_maxhealth, a_minac, a_maxac;
 	Game* game_ptr;
 
@@ -30,7 +30,8 @@ public:
 	void setProb(int p);
 	int random(int r);
 	void setGame(Game*);
-	void generateunitearth(int& t);
+void generateunitearth(int& t);
 	void generateunitalien(int& t);
+	void createunits(int& t);
 };
 

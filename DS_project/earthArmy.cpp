@@ -31,32 +31,55 @@ void earthArmy::addUnit(Unitclass* unit)
 	}
 }
 
-void earthArmy::removeUnit(Unitclass* unit, string type)
+bool earthArmy::ET_remove(Earthtanks*& et)
 {
-	if (type == "ET")
-	{
-		Earthtanks* et;
-		ETstack.pop(et);
-		unit = et;
-	}
-	if (type == "ES")
-	{
-		Earthsoldiers* es;
-		ESqueue.dequeue(es);
-		unit = es;
-	}
-	if (type == "EG")
-	{
-		Earthgunnery* eg;
-		int pri;
-		EGpriqueue.dequeue(eg, pri);
-		unit =eg;
-	}
-	//check if we need to add the killed to a list
+	return ETstack.pop(et);
 }
+
+bool earthArmy::ES_remove(Earthsoldiers*& es)
+{
+	return ESqueue.dequeue(es);
+}
+
+bool earthArmy::EG_remove(Earthgunnery*& eg,int & pri)
+{
+	return EGpriqueue.dequeue(eg,pri);
+}
+
+
+
+//void earthArmy::removeUnit(Unitclass*& unit, string type)
+//{
+//	if (type == "ET")
+//	{
+//		Earthtanks* et;
+//		ETstack.pop(et);
+//		// et = dynamic_cast<Earthtanks*>(unit);
+//		unit = et;
+//	
+//	}
+//	if (type == "ES")
+//	{
+//		Earthsoldiers* es;
+//		ESqueue.dequeue(es);
+//		
+//		unit = es;
+//	}
+//	if (type == "EG")
+//	{
+//		Earthgunnery* eg;
+//		int pri;
+//		EGpriqueue.dequeue(eg, pri);
+//		unit =eg;
+//	}
+//	//check if we need to add the killed to a list
+//}
 
 void earthArmy::print()
 {
+	cout << "=========== Earth Army Alive Units ===========" << endl;
+	
+	
 	cout << ESqueue.getcount() << " ES ";
 	ESqueue.printqueue();
 	cout << endl;

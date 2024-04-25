@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-#include "Game.h"
+class Game;
 using namespace std;
 
 class Unitclass
@@ -30,7 +30,6 @@ public:
 	void print();
 	virtual void attack() = 0;
 	~Unitclass();
-
 };
 
 

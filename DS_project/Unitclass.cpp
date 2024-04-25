@@ -2,7 +2,6 @@
 #include <iostream>
 #include <sstream>
 using namespace std;
-// manage conflict motherfuckers
 Unitclass::Unitclass(int id, int h, int ac, int p, int jt, string type)
 {
 	ID = id;
@@ -12,7 +11,7 @@ Unitclass::Unitclass(int id, int h, int ac, int p, int jt, string type)
 	Attackcapacity = ac;
 	Type = type;
 }
-void attack() {
+void Unitclass::attack() {
 }
 void Unitclass::SetID(int id) {
 	ID=id;
@@ -23,8 +22,7 @@ void Unitclass::Settype(string type) {
 string Unitclass::Gettype() {
 	return Type;
 }
-void Unitclass::SetID(int id) {
-}
+
 int Unitclass::Getid() {
 	return ID;
 }

@@ -44,11 +44,12 @@ Single Node Case:
 
 #include "Node.h"
 #include "QueueADT.h"
-
+#include <iostream>
+using namespace std;
 template <typename T>
 class LinkedQueue:public QueueADT<T>
 {
-private :
+protected :
 	Node<T>* backPtr;
 	Node<T>* frontPtr;
 public :
@@ -56,7 +57,12 @@ public :
 	bool isEmpty() const ;
 	bool enqueue(const T& newEntry);
 	bool dequeue(T& frntEntry);  
-	bool peek(T& frntEntry)  const;	
+	int getcount();
+	Node<T>* getfrontPtr();
+	Node<T>* getbackPtr();
+	void printqueue();
+	bool peek(T& frntEntry)  const;
+	void printqueue_ptr(LinkedQueue<T>* qptr);
 	~LinkedQueue();
 };
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -97,7 +103,14 @@ Adds newEntry at the back of this queue.
 Input: newEntry .
 Output: True if the operation is successful; otherwise false.
 */
-
+template <class T>
+Node<T>* LinkedQueue<T>::getfrontPtr() {
+	return frontPtr;
+}
+template <class T>
+Node<T>* LinkedQueue<T>::getbackPtr() {
+	return backPtr;
+}
 template <typename T>
 bool LinkedQueue<T>::enqueue( const T& newEntry)
 {
@@ -142,7 +155,43 @@ bool LinkedQueue<T>:: dequeue(T& frntEntry)
 	return true;
 }
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+template <typename T>
+int LinkedQueue<T>::getcount()
+{
+	int count = 0;
+	if (isEmpty())
+		return count;
 
+	Node<T>* ptr = frontPtr;
+
+
+	while (ptr)
+	{
+
+		count++;
+		ptr = ptr->getNext();
+
+	}
+	return count;
+}
+template <typename T>
+void LinkedQueue<T>::printqueue()
+{
+
+	if (isEmpty())
+		return;
+	cout << "[";
+	Node<T>* ptr = frontPtr;
+
+	while (ptr)
+	{
+		cout << ptr->getItem() << ", ";
+		ptr = ptr->getNext();
+	}
+	cout << "]";
+
+}
 
 /////////////////////////////////////////////////////////////////////////////////////////
 
@@ -181,5 +230,22 @@ LinkedQueue<T>::~LinkedQueue()
 	cout<<"\n Is LinkedQueue Empty now?? ==> "<<boolalpha<<isEmpty();
 	cout<<"\nEnding LinkedQueue destructor..."<<endl;
 }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+template <typename T>
+void LinkedQueue<T>::printqueue_ptr(LinkedQueue<T>* qptr)
+{
+	if (!qptr)
+		return;
+	LinkedQueue<T>& queue = *qptr;
+	Node<T>* ptr = queue.frontPtr;
+	while (ptr)
+	{
+		cout << ptr->getItem() << ", ";
+		ptr = ptr->getNext();
+	}
+	
+}
+
 
 #endif

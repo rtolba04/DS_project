@@ -133,6 +133,7 @@
     <ClInclude Include="Aliensoldiers.h" />
     <ClInclude Include="ArrBag.h" />
     <ClInclude Include="Derivedqueue.h" />
+    <ClInclude Include="earthArmy.h" />
     <ClInclude Include="Earthgunnery.h" />
     <ClInclude Include="Earthsoldiers.h" />
     <ClInclude Include="Earthtanks.h" />
@@ -142,6 +143,7 @@
     <ClInclude Include="priNode.h" />
     <ClInclude Include="priQueue.h" />
     <ClInclude Include="QueueADT.h" />
+    <ClInclude Include="randGen.h" />
     <ClInclude Include="StackADT.h" />
     <ClInclude Include="Unitclass.h" />
   </ItemGroup>
@@ -152,11 +154,13 @@
     <ClCompile Include="Aliensoldiers.cpp" />
     <ClCompile Include="ArrBag.cpp" />
     <ClCompile Include="Derivedqueue.cpp" />
+    <ClCompile Include="earthArmy.cpp" />
     <ClCompile Include="Earthgunnery.cpp" />
     <ClCompile Include="Earthsoldiers.cpp" />
     <ClCompile Include="Earthtanks.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="trial.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="randGen.cpp" />
     <ClCompile Include="Unitclass.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

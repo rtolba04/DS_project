@@ -49,7 +49,7 @@ using namespace std;
 template <typename T>
 class LinkedQueue:public QueueADT<T>
 {
-private :
+protected :
 	Node<T>* backPtr;
 	Node<T>* frontPtr;
 public :
@@ -58,8 +58,11 @@ public :
 	bool enqueue(const T& newEntry);
 	bool dequeue(T& frntEntry);  
 	int getcount();
+	Node<T>* getfrontPtr();
+	Node<T>* getbackPtr();
 	void printqueue();
 	bool peek(T& frntEntry)  const;
+	void printqueue_ptr(LinkedQueue<T>* qptr);
 	~LinkedQueue();
 };
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -100,7 +103,14 @@ Adds newEntry at the back of this queue.
 Input: newEntry .
 Output: True if the operation is successful; otherwise false.
 */
-
+template <class T>
+Node<T>* LinkedQueue<T>::getfrontPtr() {
+	return frontPtr;
+}
+template <class T>
+Node<T>* LinkedQueue<T>::getbackPtr() {
+	return backPtr;
+}
 template <typename T>
 bool LinkedQueue<T>::enqueue( const T& newEntry)
 {
@@ -220,5 +230,22 @@ LinkedQueue<T>::~LinkedQueue()
 	cout<<"\n Is LinkedQueue Empty now?? ==> "<<boolalpha<<isEmpty();
 	cout<<"\nEnding LinkedQueue destructor..."<<endl;
 }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+template <typename T>
+void LinkedQueue<T>::printqueue_ptr(LinkedQueue<T>* qptr)
+{
+	if (!qptr)
+		return;
+	LinkedQueue<T>& queue = *qptr;
+	Node<T>* ptr = queue.frontPtr;
+	while (ptr)
+	{
+		cout << ptr->getItem() << ", ";
+		ptr = ptr->getNext();
+	}
+	
+}
+
 
 #endif

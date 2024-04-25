@@ -6,5 +6,4 @@ Earthsoldiers::Earthsoldiers(int id, int jt, int h, int p, int ac) :Unitclass(id
 {
 
 }
-void Earthsoldiers::attack() {
-}
+void Earthsoldiers :: attack() {}

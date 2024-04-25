@@ -24,7 +24,7 @@ public:
 	void PrintKilledList();
 
 	void kill(Unitclass* unit);
-	void printKill();
+
 	void test();
 	//void testnew();
 	~Game();

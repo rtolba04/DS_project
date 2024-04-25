@@ -85,7 +85,7 @@ void randGen::generateunitearth(int& t) //adjusted so it creates and adds unit
 			{
 				Earthtanks* et = new Earthtanks(earth_counter++, t, Eh, Ep, Eac);
 				game_ptr->getEA()->addUnit(et);
-				
+			
 			
 			}
 

@@ -5,7 +5,7 @@ using namespace std;
 
 class Unitclass
 {
-private:
+protected:
 	string Type;
 	int ID;
 	int Jointime;
@@ -13,6 +13,8 @@ private:
 	int Power;
 	int Attackcapacity;
 	Game* ptr;
+
+	
 public:
 	Unitclass(int id, int h, int ac, int p, int jt, string type);
 	void Settype(string type);

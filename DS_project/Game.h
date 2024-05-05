@@ -12,14 +12,18 @@ private:
 	earthArmy Earth;//Earth obj
 	alienArmy Alien;//alien obj
 	LinkedQueue<Unitclass*>* killed;
-	LinkedQueue<Unitclass*>* temp;
+	ArrayStack<Health*>HLstack;
+	
 
 
 public:
 	Game();
+	LinkedQueue<Earthtanks*>UMLtanks; 
+	priQueue<Earthsoldiers*>UMLsoldiers;
 	randGen* getrand();
 	earthArmy* getEA();
 	alienArmy* getAA();
+	int getTime();
 	bool loadfromfile();
 	void PrintKilledList();
 

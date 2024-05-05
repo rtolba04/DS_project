@@ -138,6 +138,7 @@
     <ClInclude Include="Earthsoldiers.h" />
     <ClInclude Include="Earthtanks.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Health.h" />
     <ClInclude Include="LinkedQueue.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="priNode.h" />
@@ -159,6 +160,7 @@
     <ClCompile Include="Earthsoldiers.cpp" />
     <ClCompile Include="Earthtanks.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Health.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="randGen.cpp" />
     <ClCompile Include="Unitclass.cpp" />

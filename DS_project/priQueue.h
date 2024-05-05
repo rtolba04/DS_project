@@ -60,6 +60,10 @@ public:
     bool isEmpty() const {
         return head == nullptr;
     }
+    priNode<T>* getHead()
+    {
+        return head;
+    }
 
     int getcount()
     {

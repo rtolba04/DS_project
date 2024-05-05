@@ -11,7 +11,7 @@ Game::Game()
     loadfromfile();
     time = 1;
     killed = new LinkedQueue<Unitclass*>;
-    temp = new LinkedQueue<Unitclass*>;
+    //temp = new LinkedQueue<Unitclass*>;
 }
 
 randGen* Game::getrand()
@@ -28,6 +28,12 @@ alienArmy* Game::getAA()
 {
     return &Alien;
 }
+
+int Game::getTime()
+{
+    return time;
+}
+
 
 bool Game::loadfromfile() {
     ifstream input("inputfile.txt");

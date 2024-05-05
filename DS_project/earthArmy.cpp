@@ -4,14 +4,20 @@
 #include "Health.h"
 using namespace std;
 
-
-
-
-
-
-
 void earthArmy::attack()
-{}
+{
+	Earthsoldiers* Esoldierpicked;
+	ESqueue.peek(Esoldierpicked);
+	Esoldierpicked->attack();
+	Earthtanks* tankpicked;
+	ETstack.peek(tankpicked);
+	tankpicked->attack();
+	Earthgunnery* gunnerypicked;
+	int pri;
+	EGpriqueue.peek(gunnerypicked,pri);
+	gunnerypicked->attack();
+
+}
 
 void earthArmy::addUnit(Unitclass* unit)
 {

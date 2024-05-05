@@ -26,9 +26,7 @@ public:
 	int getTime();
 	bool loadfromfile();
 	void PrintKilledList();
-
 	void kill(Unitclass* unit);
-
 	void test();
 	//void testnew();
 	~Game();

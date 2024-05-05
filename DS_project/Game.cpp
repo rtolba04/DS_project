@@ -101,7 +101,7 @@ void Game::PrintKilledList() {
 
 void Game::test()
 {
-    Game();
+    
     loadfromfile();
     for (time; time < 51; time++)
     {

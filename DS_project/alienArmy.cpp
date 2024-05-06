@@ -31,7 +31,7 @@ void alienArmy::addUnit(Unitclass* unit)
 	if (unit->Gettype() == "AD")
 	{
 		Aliendrones* typePtr = dynamic_cast<Aliendrones*>(unit);
-		ADqueue.enqueue(typePtr);
+		ADqueue.enqueue(typePtr);//
 	}
 }
 

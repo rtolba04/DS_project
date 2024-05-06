@@ -32,6 +32,11 @@ void earthArmy::addUnit(Unitclass* unit)
 	}
 }
 
+LinkedQueue<Earthsoldiers*> earthArmy::getESqueue()
+{
+	return ESqueue;
+}
+
 bool earthArmy::ET_remove(Earthtanks*& et)
 {
 	return ETstack.pop(et);

@@ -118,3 +118,8 @@ LinkedQueue<Aliensoldiers*> alienArmy::getASqueue()
 	return ASqueue;
 }
 
+ArrBag<Alienmonsters*> alienArmy::getAMarray()
+{
+	return AMarray;
+}
+

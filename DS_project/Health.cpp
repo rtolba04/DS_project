@@ -3,14 +3,15 @@
 #include "Unitclass.h"
 #include"Game.h"
 using namespace std;
-Health::Health(int id, int jt, int h , int p, int ac) :Unitclass(id, jt, h, p, ac, "HU")
+Health::Health(int id, int jt, int h, int p, int ac) :Unitclass(id, jt, h, p, ac, "HU")
 {
 }
+
 void Health::attack()
 {
 	LinkedQueue<Unitclass*>* temp = nullptr;
 	while (Attackcapacity != 0) {
-		if (ptr->UMLsoldiers.getHead())
+		while (ptr->UMLsoldiers.getHead())
 		{
 			int pri = -GetHealth();
 			Earthsoldiers* es = ptr->UMLsoldiers.getHead()->getItem(pri);
@@ -30,7 +31,7 @@ void Health::attack()
 			}
 
 		}
-		else if(ptr->UMLtanks.getfrontPtr()) {
+		 if(ptr->UMLtanks.getfrontPtr()) {
 			Earthtanks* et = ptr->UMLtanks.getfrontPtr()->getItem();
 			if (ptr->getTime() - et->Getjointime() > 10)
 			{

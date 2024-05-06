@@ -29,8 +29,8 @@ public:
 	void setstatusalien(int& p, int& h, int& ac);
 	void setProb(int p);
 	int random(int r);
-	void setGame(Game*);
-void generateunitearth(int& t);
+	void setGame(Game*ptr1);
+    void generateunitearth(int& t);
 	void generateunitalien(int& t);
 	void createunits(int& t);
 };

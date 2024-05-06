@@ -12,7 +12,7 @@ protected:
 	int Health;
 	int Power;
 	int Attackcapacity;
-	Game* ptr;
+	Game* ptr; //needs a setter 
 
 	
 public:
@@ -30,6 +30,7 @@ public:
 	string Gettype();
 	int Getattackcapacity();
 	void print();
+	void setgame(Game*);
 	virtual void attack() = 0;
 	~Unitclass();
 };

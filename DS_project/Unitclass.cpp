@@ -65,6 +65,12 @@ void Unitclass::print()
 
 }
 
+void Unitclass::setgame(Game*ptr1)
+{
+	ptr = ptr1;
+	
+}
+
 
 Unitclass::~Unitclass()
 {

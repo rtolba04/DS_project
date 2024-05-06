@@ -32,13 +32,14 @@ Earthsoldiers::Earthsoldiers(int id, int jt, int h, int p, int ac) :Unitclass(id
 		}//
 */
 void Earthsoldiers :: attack() {
-	LinkedQueue<Aliensoldiers*>* temp = nullptr;  // since earth soldiers only attack soldiers alien thentemp list doesnt  have to e unit class
-	
+ LinkedQueue<Unitclass*>* temp = new LinkedQueue<Unitclass*>();
+
 	int ac1 = Getattackcapacity();
 	while(ac1!=0){
 		Aliensoldiers* AS;
-		int Health_og = AS->GetHealth();
+	
 		ptr->getAA()->getASqueue().dequeue(AS); //dequeue first AS
+		int Health_og = AS->GetHealth(); //get its health
 		int Damage = ((GetPower()) * (GetHealth()) / 100) / sqrt(Health_og);
 		if (Damage >= Health_og) {
 			ptr->kill(AS);

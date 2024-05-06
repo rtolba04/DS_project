@@ -9,17 +9,19 @@ Earthtanks::Earthtanks(int id, int jt, int h, int p, int ac) :Unitclass(id, jt, 
 }
 void Earthtanks::attack()
 {
-	LinkedQueue<Unitclass*>* temp = nullptr; 
+	LinkedQueue<Unitclass*>* temp = new LinkedQueue<Unitclass*>();
 	int ac2 = Getattackcapacity();
 	int EScount = ptr->getEA()->getESqueue().getcount();
 	int AScount = ptr->getAA()->getASqueue().getcount(); 
+	int Damage;
 	if (EScount < (0.3 * AScount) ) { //keeps attacking soldiers till 80 percent then attacks  monsters
 		while (ac2 != 0 && EScount < (0.8 * AScount)) {
 			Alienmonsters* AM;
 			Aliensoldiers* AS;
-			int AMHealth_og = AM->GetHealth();
+			
 			ptr->getAA()->getAMarray().remove(AM);//dequeue RANDOM AM ??????????????
-			int Damage = ((GetPower()) * (GetHealth()) / 100) / sqrt(AMHealth_og);
+			int AMHealth_og = AM->GetHealth();
+			Damage = ((GetPower()) * (GetHealth()) / 100) / sqrt(AMHealth_og);
 			if (Damage >= AMHealth_og) {
 				ptr->kill(AM);
 
@@ -30,9 +32,9 @@ void Earthtanks::attack()
 			}
 			ac2--;
 			if (ac2 != 0) { return; }
-			int ASHealth_og = AS->GetHealth();
 			ptr->getAA()->getASqueue().dequeue(AS); //dequeue first AS
-			int Damage = ((GetPower()) * (GetHealth()) / 100) / sqrt(ASHealth_og);
+			int ASHealth_og = AS->GetHealth();
+			Damage = ((GetPower()) * (GetHealth()) / 100) / sqrt(ASHealth_og);
 			if (Damage >= ASHealth_og) {
 				ptr->kill(AS);
 
@@ -51,8 +53,8 @@ void Earthtanks::attack()
 	if (EScount >= 0.3 * AScount) {  // attack monsters if ES> 0.3AS
 		while (ac2 != 0) {
 			Alienmonsters* AM;
-			int Health_og = AM->GetHealth();
 			ptr->getAA()->getAMarray().remove(AM);//dequeue first AM
+			int Health_og = AM->GetHealth();
 			int Damage = ((GetPower()) * (GetHealth()) / 100) / sqrt(Health_og);
 			if (Damage >= Health_og) {
 				ptr->kill(AM);

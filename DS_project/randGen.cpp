@@ -78,14 +78,14 @@ void randGen::generateunitearth(int& t) //adjusted so it creates and adds unit
 			{
 				Earthsoldiers* es = new Earthsoldiers(earth_counter++, t, Eh, Ep, Eac);
 				game_ptr->getEA()->addUnit(es);
-			
+				es->setgame(game_ptr);
 			}
 
 			else	if (B <= ESpr + ETpr)
 			{
 				Earthtanks* et = new Earthtanks(earth_counter++, t, Eh, Ep, Eac);
 				game_ptr->getEA()->addUnit(et);
-			
+				et->setgame(game_ptr);
 			
 			}
 
@@ -93,7 +93,7 @@ void randGen::generateunitearth(int& t) //adjusted so it creates and adds unit
 			{
 				Earthgunnery* eg = new Earthgunnery(earth_counter++, t, Eh, Ep, Eac);
 				game_ptr->getEA()->addUnit(eg);
-				
+				eg->setgame(game_ptr);
 				//dont forget to tcalculate el function priority
 			}
 		}
@@ -102,8 +102,6 @@ void randGen::generateunitearth(int& t) //adjusted so it creates and adds unit
 
 void randGen::generateunitalien(int& t) //adjusted so it creates and adds unit
 {
-	
-	
 		for (int i = 0; i < N; i++)
 		{
 			int B = random(100) + 1;
@@ -111,20 +109,19 @@ void randGen::generateunitalien(int& t) //adjusted so it creates and adds unit
 			{
 				Aliensoldiers* as = new Aliensoldiers(alien_counter++, t, Eh, Ep, Eac);
 				game_ptr->getAA()->addUnit(as);
-				
+				as->setgame(game_ptr);
 			}
-
 			else	if (B <= ASpr + AMpr)
 			{
 				Alienmonsters* am = new Alienmonsters(alien_counter++, t, Eh, Ep, Eac);
 				game_ptr->getAA()->addUnit(am);
+				am->setgame(game_ptr);
 			}
-
 			else
 			{
 				Aliendrones* ad = new Aliendrones(alien_counter++, t, Eh, Ep, Eac);
 				game_ptr->getAA()->addUnit(ad);
-				
+				ad->setgame(game_ptr);
 			}
 		}
 
@@ -133,11 +130,7 @@ void randGen::createunits(int &t) {
 	int A = random(100) + 1;
 	if (A <= Prob) {
 		generateunitalien(t);
-		 generateunitearth(t);
-
-				
-			
-		
+		generateunitearth(t);		
 	}
 }
 

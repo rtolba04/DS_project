@@ -99,3 +99,7 @@ void earthArmy::print()
 	EGpriqueue.printpri();
 	cout << endl;
 }
+LinkedQueue<Earthsoldiers*> earthArmy::getESqueue()
+{
+	return ESqueue;
+}

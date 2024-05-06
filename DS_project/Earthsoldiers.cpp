@@ -50,6 +50,14 @@ void Earthsoldiers :: attack() {
 		}
 		ac1--;
 	}
-
+	while (temp->getfrontPtr())
+	{
+		Unitclass* u = temp->getfrontPtr()->getItem();
+		if (u->Gettype() == "AS") {
+		Aliensoldiers* AS = dynamic_cast<Aliensoldiers*>(u);
+			ptr->getAA()->addUnit(AS);
+		}
+		
+	}
 
 }

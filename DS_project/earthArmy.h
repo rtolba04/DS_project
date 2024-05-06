@@ -16,6 +16,7 @@ class earthArmy
 	ArrayStack<Earthtanks*>ETstack;
 	priQueue<Earthgunnery*>EGpriqueue;
 public:
+	
 	void attack();
 	void addUnit(Unitclass* unit);
 	//void removeUnit(Unitclass*& unit,string type);

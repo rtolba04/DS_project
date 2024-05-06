@@ -18,7 +18,10 @@ void earthArmy::attack()
 	gunnerypicked->attack();
 
 }
+void earthArmy::getASqueue() {
 
+
+}
 void earthArmy::addUnit(Unitclass* unit)
 {
 	if (unit->Gettype() == "ET")

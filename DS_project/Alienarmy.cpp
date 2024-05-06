@@ -1,21 +1,53 @@
 #include "alienArmy.h"
 #include "Unitclass.h"
 #include "Alienmonsters.h"
-#include "ArrBag.h"
 #include "Aliensoldiers.h"
 #include "Aliendrones.h"
 #include <iostream>
 using namespace std;
 
 
-
-
-
-
-
 void alienArmy::attack()
-{}
+{ 
+	Aliensoldiers* as; //make one soldier attack (FIFO)
+	ASqueue.peek(as);
+	as->attack();
+	                 //make one randomly picked monster attack
+	int AM_ind; // randomly generated index from AM array
+	int AM_size = AMarray.getCount();
+	AM_ind = rand() % AM_size;
+	AMarray.getelement(AM_ind)->attack();
 
+	if (ADqueue.getcount() >= 2) // if more than 2 drones exist, attack
+	{
+		Aliendrones* AD1; //make 2 drones attack
+		Aliendrones* AD2;
+		ADqueue.peek(AD1);
+		ADqueue.peekback(AD2);
+		AD1->attack();
+		AD2->attack();
+	}
+	
+}
+/*void Earthsoldiers :: attack() {
+	LinkedQueue<Aliensoldiers*>* temp = nullptr;  // since earth soldiers only attack soldiers alien thentemp list doesnt  have to e unit class
+	Earthsoldiers* Esoldierpicked;
+	int ac1 = Esoldierpicked->Getattackcapacity();
+	while(ac1!=0){
+		Aliensoldiers* Asoldierpicked;
+		int oldsoldierhealth = Asoldierpicked->GetHealth();
+		int Damage = ((Esoldierpicked->GetPower()) * (Esoldierpicked->GetHealth()) / 100) / sqrt(oldsoldierhealth);
+		if (Damage < oldsoldierhealth) {
+			Asoldierpicked->SetHealth(oldsoldierhealth - Damage);
+			temp->enqueue(Asoldierpicked);
+		}
+		else{
+			ptr->kill(Asoldierpicked);
+		}
+		ac1--;
+	}
+
+}*/
 void alienArmy::addUnit(Unitclass* unit)
 {
 	if (unit->Gettype() == "AM")

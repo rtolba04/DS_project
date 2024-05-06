@@ -18,6 +18,7 @@ public:
 	int getCount();
 	bool remove(const T& anEntry);
 	void printarr();
+	T getelement(int index);
 };
 
 #include "ArrBag.h"
@@ -94,6 +95,12 @@ bool ArrBag<T>::remove(const T& anEntry)
 	return canRemove;
 }
 
+template<class T>
+T ArrBag<T>::getelement(int index)
+{
+	return items[index];
+}
+
 
 template<class T>
 inline ostream& operator<< (ostream& out, const ArrBag<T> *AB) {
@@ -102,4 +109,8 @@ inline ostream& operator<< (ostream& out, const ArrBag<T> *AB) {
 	}
 	return out;
 }
+
+
+
+
 #endif // !ARR_BAG

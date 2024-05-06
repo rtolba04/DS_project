@@ -5,8 +5,8 @@ using namespace std;
 Unitclass::Unitclass(int id, int h, int ac, int p, int jt, string type)
 {
 	ID = id;
-	Jointime = h;
-	Health = ac;
+	Jointime = jt;
+	Health = h;
 	Power = p;
 	Attackcapacity = ac;
 	Type = type;

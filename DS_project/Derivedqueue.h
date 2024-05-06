@@ -20,6 +20,7 @@ public:
 	bool enqueue(const T& newEntry);
 	bool dequeue(T& frntEntry);
 	int getcount();
+	bool peekback(T& backEntry) ;
 };
 template <typename T>
 int Derivedqueue<T>::getcount()
@@ -137,4 +138,16 @@ bool Derivedqueue<T>:: dequeue(T& frntEntry)
 	delete nodeToDeletePtr;
 
 	return true;
+}
+
+template<typename T>
+bool Derivedqueue<T>::peekback(T& backEntry)
+{
+
+	if (isEmpty())
+		return false;
+
+	backEntry = backPtr->getItem();
+	return true;
+
 }

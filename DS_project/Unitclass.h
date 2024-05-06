@@ -26,7 +26,7 @@ public:
 	int Getjointime();
 	int GetPower();
 	string Gettype();
-	int Getattackcapacity();
+	int Getattackcapacity(); 
 	void print();
 	virtual void attack() = 0;
 	~Unitclass();

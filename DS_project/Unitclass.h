@@ -30,7 +30,7 @@ public:
 	string Gettype();
 	int Getattackcapacity();
 	void print();
-	void setgame(Game*);
+	void setgame(Game* ptr1);
 	virtual void attack() = 0;
 	~Unitclass();
 };

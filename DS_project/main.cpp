@@ -4,10 +4,7 @@ using namespace std;
 int main()
 {
 	Game G;
-	G.getrand()->setGame(&G);
-	//G.test();
-
-
+//	G.getrand()->setGame(&G);
 Earthsoldiers* E1 = new Earthsoldiers(49, 2, 3, 500, 4);
 Aliensoldiers* a1 = new Aliensoldiers(145, 1, 60, 500, 4);
 Aliensoldiers* a2 = new Aliensoldiers(456, 3, 4, 1, 1);
@@ -26,6 +23,7 @@ G.getAA()->addUnit(a6);
 E1->setgame(&G);
 E1->attack();
 G.test();
+cout << "lol";
 //.getEA()->print();
 //G.getAA()->print();
 //A1->setgame(&G);

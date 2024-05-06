@@ -53,6 +53,7 @@ template < typename T>
 T Node<T>::getItem() const
 {
 	return item;
+
 } 
 
 template < typename T>

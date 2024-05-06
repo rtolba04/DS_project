@@ -16,6 +16,7 @@ using namespace std;
 void alienArmy::attack()
 {}
 
+
 void alienArmy::addUnit(Unitclass* unit)
 {
 	if (unit->Gettype() == "AM")
@@ -110,5 +111,10 @@ void alienArmy::print()
 	AMarray.printarr();
 	cout << endl;
 	
+}
+
+LinkedQueue<Aliensoldiers*> alienArmy::getASqueue()
+{
+	return ASqueue;
 }
 

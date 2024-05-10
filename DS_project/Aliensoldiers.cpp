@@ -15,12 +15,12 @@ void Aliensoldiers::attack()
 	while (ac != 0)
 	{
 		Earthsoldiers* es;
-		int Health_og = es->GetHealth(); //original health
 		ptr->getEA()->getESqueue().dequeue(es); //dequeue first ES
+		int Health_og = es->GetHealth(); //original health
 		int Damage = ((GetPower()) * (GetHealth()) / 100) / sqrt(es->GetHealth()); //calculate damage 
 		if (Damage >= es->GetHealth())   //if damage already greater than initial health, kill 3alatool
 			ptr->kill(es);
-		es->SetHealth(es->GetHealth() - Damage); //set new health (after damage)
+		es->SetHealth(Health_og - Damage); //set new health (after damage)
 		if (es->GetHealth() <= 0.2 * Health_og && es->GetHealth() > 0)
 		{
 			int pri = -(es->GetHealth());
@@ -29,9 +29,13 @@ void Aliensoldiers::attack()
 		else if (es->GetHealth() > 0.2 * Health_og && es->GetHealth() < Health_og)
 		{
 			temp->enqueue(es);
-		}//
-
+		}
+		ac--;
 	}
+	Earthsoldiers* es;
+	while (temp->dequeue(es))
+		ptr->getEA()->getESqueue().enqueue(es);
+	
 }
 /*//int damage= (unit1power*unit1health/100)/rootunithealth2
 	LinkedQueue<Aliensoldiers*>* temp = nullptr;  // since earth soldiers only attack soldiers alien thentemp list doesnt  have to e unit class

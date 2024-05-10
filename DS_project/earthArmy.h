@@ -24,5 +24,6 @@ public:
 	bool EG_remove(Earthgunnery *& eg,int& pri);
 	void print();
 	LinkedQueue<Earthsoldiers*> getESqueue();
+
 };
 

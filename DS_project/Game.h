@@ -27,7 +27,7 @@ public:
 	bool loadfromfile();
 	void PrintKilledList();
 	void kill(Unitclass* unit);
-	void test();
+	void simulate();
 	//void testnew();
 	~Game();
 };

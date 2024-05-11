@@ -7,14 +7,15 @@ using namespace std;
 void earthArmy::attack()
 {
 	Earthsoldiers* Esoldierpicked;
-	ESqueue.peek(Esoldierpicked);
-	Esoldierpicked->attack();
+	if (ESqueue.peek(Esoldierpicked))
+Esoldierpicked->attack();
+
 	Earthtanks* tankpicked;
-	ETstack.peek(tankpicked);
+	if (ETstack.peek(tankpicked))
 	tankpicked->attack();
 	Earthgunnery* gunnerypicked;
 	int pri;
-	EGpriqueue.peek(gunnerypicked,pri);
+	if(EGpriqueue.peek(gunnerypicked,pri))
 	gunnerypicked->attack();
 
 }

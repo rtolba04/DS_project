@@ -99,15 +99,19 @@ void Game::PrintKilledList() {
 //    cout << endl;
 //}
 
-void Game::test()
+void Game::simulate()
 {
     
-  // loadfromfile();
-    for (time; time < 10; time++)
+  
+    for (time; time < 11; time++)
     {
+        loadfromfile();
         cout << "Current Timestep " << time << endl;
-      //    getrand()->createunits(time);    
-    
+        
+        getrand()->createunits(time);    
+       
+          Earth.attack();
+          //Alien.attack();
        Earth.print();
        Alien.print();
        

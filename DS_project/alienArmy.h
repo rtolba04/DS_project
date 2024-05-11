@@ -24,9 +24,9 @@ public:
 	bool AM_remove(Alienmonsters*& am);
 	bool AD_remove(Aliendrones*& ad1, Aliendrones*& ad2);
 	void print();
-    LinkedQueue<Aliensoldiers*> getASqueue();
-	ArrBag<Alienmonsters*>getAMarray();
-	//Derivedqueue<Aliendrones*> ADqueue;
+    LinkedQueue<Aliensoldiers*>& getASqueue();
+	ArrBag<Alienmonsters*>& getAMarray();
+	Derivedqueue<Aliendrones*>& getADqueue();
 
 };
 

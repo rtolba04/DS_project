@@ -113,13 +113,18 @@ void alienArmy::print()
 	
 }
 
-LinkedQueue<Aliensoldiers*> alienArmy::getASqueue()
+LinkedQueue<Aliensoldiers*>& alienArmy::getASqueue()
 {
 	return ASqueue;
 }
 
-ArrBag<Alienmonsters*> alienArmy::getAMarray()
+ArrBag<Alienmonsters*>& alienArmy::getAMarray()
 {
 	return AMarray;
+}
+
+Derivedqueue<Aliendrones*>& alienArmy::getADqueue()
+{
+	return ADqueue;
 }
 

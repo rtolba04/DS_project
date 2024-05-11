@@ -19,8 +19,21 @@ public:
 	bool Dequeueback(T& backEntry);
 	bool enqueue(const T& newEntry);
 	bool dequeue(T& frntEntry);
+	bool peekback(T& backEntry);
 	int getcount();
 };
+
+template<typename T>
+bool Derivedqueue<T>::peekback(T& backEntry)
+{
+
+	if (isEmpty())
+		return false;
+
+	backEntry = backPtr->getItem();
+	return true;
+
+}
 template <typename T>
 int Derivedqueue<T>::getcount()
 {

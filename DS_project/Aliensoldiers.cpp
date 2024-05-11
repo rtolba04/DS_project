@@ -24,7 +24,8 @@ void Aliensoldiers::attack()
 		if (es->GetHealth() <= 0.2 * Health_og && es->GetHealth() > 0)
 		{
 			int pri = -(es->GetHealth());
-			ptr->UMLsoldiers.enqueue(es, pri);    //need to get time joined UML!!!!!!!!!!
+			ptr->UMLsoldiers.enqueue(es, pri);    
+			es->set_tj_uml(ptr->getTime()); //getting tj uml
 		}
 		else if (es->GetHealth() > 0.2 * Health_og && es->GetHealth() < Health_og)
 		{

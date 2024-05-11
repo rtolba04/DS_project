@@ -10,3 +10,12 @@ void Earthtanks::attack()
 {
 }
 
+void Earthtanks::set_tj_uml(int tjuml)
+{
+	tj_uml = tjuml;
+}
+
+int Earthtanks::get_tj_uml()
+{
+	return tj_uml;
+}

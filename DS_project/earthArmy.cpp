@@ -32,7 +32,7 @@ void earthArmy::addUnit(Unitclass* unit)
 	}
 }
 
-LinkedQueue<Earthsoldiers*> earthArmy::getESqueue()
+LinkedQueue<Earthsoldiers*>& earthArmy::getESqueue()
 {
 	return ESqueue;
 }
@@ -50,6 +50,15 @@ bool earthArmy::ES_remove(Earthsoldiers*& es)
 bool earthArmy::EG_remove(Earthgunnery*& eg,int & pri)
 {
 	return EGpriqueue.dequeue(eg,pri);
+}
+
+ArrayStack<Earthtanks*>& earthArmy::getETstack()
+{
+	return ETstack;
+}
+priQueue<Earthgunnery*>& earthArmy::getEGpriqueue()
+{
+	return EGpriqueue;
 }
 
 

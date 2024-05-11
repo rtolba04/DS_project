@@ -2,11 +2,13 @@
 #include"Earthgunnery.h"
 #include"Earthsoldiers.h"
 #include"Earthtanks.h"
+#include "ArrBag.h"
 #include"LinkedQueue.h"
 #include"ArrayStack.h"
 #include"priQueue.h"
 #include"Unitclass.h"
 #include"Health.h"
+#include "Derivedqueue.h"
 
 
 
@@ -24,7 +26,11 @@ public:
 	bool ES_remove(Earthsoldiers*& es);
 	bool EG_remove(Earthgunnery *& eg,int& pri);
 	void print();
-	LinkedQueue<Earthsoldiers*> getESqueue();
+	LinkedQueue<Earthsoldiers*>& getESqueue();
+
+	ArrayStack<Earthtanks*>& getETstack();
+
+	priQueue<Earthgunnery*>& getEGpriqueue();
 	
 };
 

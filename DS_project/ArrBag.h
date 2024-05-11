@@ -18,6 +18,7 @@ public:
 	int getCount();
 	bool remove(const T& anEntry);
 	void printarr();
+	T getelement(int index);
 };
 
 #include "ArrBag.h"
@@ -33,6 +34,11 @@ int ArrBag<T>::getCount() {
 	return count;
 
 };
+template<class T>
+T ArrBag<T>::getelement(int index)
+{
+	return items[index];
+}
 template<class T>
 void ArrBag<T>::printarr() {
 	cout << "[";

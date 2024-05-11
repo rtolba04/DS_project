@@ -103,15 +103,14 @@ void Game::test()
 {
     
   // loadfromfile();
-    for (time; time < 51; time++)
+    for (time; time < 10; time++)
     {
         cout << "Current Timestep " << time << endl;
-          getrand()->createunits(time);    
+      //    getrand()->createunits(time);    
     
        Earth.print();
        Alien.print();
-       getAA()->print();
-       getEA()->print();
+       
        PrintKilledList();
     }
 }

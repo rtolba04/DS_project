@@ -58,7 +58,7 @@ void Earthsoldiers :: attack() {
 		Aliensoldiers* AS = dynamic_cast<Aliensoldiers*>(u);
 			ptr->getAA()->addUnit(AS);
 		}
-		
+		temp->dequeue(u);
 	}
 
 }

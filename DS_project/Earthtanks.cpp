@@ -1,5 +1,6 @@
 #include "Earthtanks.h"
 #include "Game.h"
+#include "ArrBag.h"
 #include <iostream>
 using namespace std;
 
@@ -18,7 +19,10 @@ void Earthtanks::attack()
 		while (ac2 != 0 && EScount < (0.8 * AScount)) {
 			Alienmonsters* AM;
 			Aliensoldiers* AS;
-			
+			 // randomly generated index from AM array
+			int AM_size = ptr->getAA()->getAMarray().getCount();
+			int AM_ind = rand() % AM_size;
+			AM = ptr->getAA()->getAMarray().getelement(AM_ind);
 			ptr->getAA()->getAMarray().remove(AM);//dequeue RANDOM AM ??????????????
 			int AMHealth_og = AM->GetHealth();
 			Damage = ((GetPower()) * (GetHealth()) / 100) / sqrt(AMHealth_og);
@@ -31,7 +35,7 @@ void Earthtanks::attack()
 				temp->enqueue(AM);
 			}
 			ac2--;
-			if (ac2 != 0) { return; }
+			if (ac2 ==0) { return; }
 			ptr->getAA()->getASqueue().dequeue(AS); //dequeue first AS
 			int ASHealth_og = AS->GetHealth();
 			Damage = ((GetPower()) * (GetHealth()) / 100) / sqrt(ASHealth_og);
@@ -53,7 +57,10 @@ void Earthtanks::attack()
 	if (EScount >= 0.3 * AScount) {  // attack monsters if ES> 0.3AS
 		while (ac2 != 0) {
 			Alienmonsters* AM;
-			ptr->getAA()->getAMarray().remove(AM);//dequeue first AM
+			int AM_size = ptr->getAA()->getAMarray().getCount();
+			int AM_ind = rand() % AM_size;
+			AM = ptr->getAA()->getAMarray().getelement(AM_ind);
+			ptr->getAA()->getAMarray().remove(AM);
 			int Health_og = AM->GetHealth();
 			int Damage = ((GetPower()) * (GetHealth()) / 100) / sqrt(Health_og);
 			if (Damage >= Health_og) {
@@ -78,6 +85,7 @@ void Earthtanks::attack()
 			Aliensoldiers* AS = dynamic_cast<Aliensoldiers*>(u);
 			ptr->getAA()->addUnit(AS);
 		}
+		temp->dequeue(u);
 	}
 }
 

@@ -10,6 +10,17 @@ Earthsoldiers::Earthsoldiers(int id, int jt, int h, int p, int ac) :Unitclass(id
 {
 
 }
+void Earthsoldiers :: attack() {}
+
+void Earthsoldiers::set_tj_uml(int tjuml)
+{
+	tj_uml = tjuml;
+}
+
+int Earthsoldiers::get_tj_uml()
+{
+	return tj_uml;
+}
 /*int ac = Getattackcapacity();
 	LinkedQueue<Earthsoldiers*>* temp = nullptr;
 	while (ac != 0)

@@ -105,12 +105,12 @@ void Game::simulate()
   
     for (time; time < 11; time++)
     {
-        loadfromfile();
+       // loadfromfile();
         cout << "Current Timestep " << time << endl;
         
-        getrand()->createunits(time);    
+      //  getrand()->createunits(time);    
        
-          Earth.attack();
+        //  Earth.attack();
           //Alien.attack();
        Earth.print();
        Alien.print();

@@ -17,10 +17,10 @@ void Aliendrones :: attack() {
 		Earthtanks* et;
 		ptr->getEA()->getETstack().pop(et);
 		int Health_og_et = et->GetHealth();
-		int Damage = ((GetPower()) * (GetHealth()) / 100) / sqrt(et->GetHealth());
-		if (Damage >= Health_og_et)   //if damage already greater than initial health, kill 3alatool
+		int Damage1 = ((GetPower()) * (GetHealth()) / 100) / sqrt(et->GetHealth());
+		if (Damage1 >= Health_og_et)   //if damage already greater than initial health, kill 3alatool
 			ptr->kill(et);
-		et->SetHealth(Health_og_et - Damage); //set new health (after damage)
+		et->SetHealth(Health_og_et - Damage1); //set new health (after damage)
 		if (et->GetHealth() <= 0.2 * Health_og_et && et->GetHealth() > 0)
 		{
 			ptr->UMLtanks.enqueue(et);    
@@ -38,10 +38,10 @@ void Aliendrones :: attack() {
 		int pri;
 		ptr->getEA()->getEGpriqueue().dequeue(eg,pri);
 		int Health_og_eg = eg->GetHealth();
-		int Damage = ((GetPower()) * (GetHealth()) / 100) / sqrt(eg->GetHealth());
-		if (Damage >= Health_og_eg)   //if damage already greater than initial health, kill 3alatool
+		int Damage2 = ((GetPower()) * (GetHealth()) / 100) / sqrt(eg->GetHealth());
+		if (Damage2 >= Health_og_eg)   //if damage already greater than initial health, kill 3alatool
 			ptr->kill(eg);
-		eg->SetHealth(Health_og_eg - Damage); //set new health (after damage)
+		eg->SetHealth(Health_og_eg - Damage2); //set new health (after damage)
 		temp_eg->enqueue(eg);
 		ac--;
 	}

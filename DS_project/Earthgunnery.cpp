@@ -24,6 +24,7 @@ void Earthgunnery::attack()
 			Aliendrones* AD2;
 			if (ac2 != 0 || ac2 == 1) {// randomly generated index from AM array
 				int AM_size = ptr->getAA()->getAMarray().getCount();
+				
 				int AM_ind = rand() % AM_size;
 				AM = ptr->getAA()->getAMarray().getelement(AM_ind);
 				ptr->getAA()->getAMarray().remove(AM);//dequeue RANDOM AM ??????????????

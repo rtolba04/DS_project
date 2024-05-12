@@ -41,11 +41,7 @@ T ArrBag<T>::getelement(int index)
 	return items[index];
 }
 
-template<class T>
-T ArrBag<T>::getelement(int index)
-{
-	return items[index];
-}
+
 template<class T>
 void ArrBag<T>::printarr() {
 	cout << "[";

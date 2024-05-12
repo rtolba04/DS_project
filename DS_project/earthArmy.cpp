@@ -1,6 +1,6 @@
 #include "earthArmy.h"
 #include "Unitclass.h"
-#include "Earthtanks.h"
+
 #include "Health.h"
 using namespace std;
 
@@ -113,16 +113,4 @@ void earthArmy::print()
 	cout << EGpriqueue.getcount() << " EG ";
 	EGpriqueue.printpri();
 	cout << endl;
-}
-LinkedQueue<Earthsoldiers*>& earthArmy::getESqueue()
-{
-	return ESqueue;
-}
-ArrayStack<Earthtanks*>& earthArmy::getETstack()
-{
-	return ETstack;
-}
-priQueue<Earthgunnery*>& earthArmy::getEGpriqueue()
-{
-	return EGpriqueue;
 }

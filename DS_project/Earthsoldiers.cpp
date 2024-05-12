@@ -62,7 +62,7 @@ void Earthsoldiers :: attack() {
 	}
 
 }
-void Earthsoldiers :: attack() {}
+
 
 void Earthsoldiers::set_tj_uml(int tjuml)
 {

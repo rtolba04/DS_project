@@ -12,14 +12,15 @@ void alienArmy::attack()
 
 {
 	Aliensoldiers* as; //make one soldier attack (FIFO)
-	ASqueue.peek(as);
+	if(ASqueue.peek(as))
 	as->attack();
 	//make one randomly picked monster attack
 	int AM_ind; // randomly generated index from AM array
 	int AM_size = AMarray.getCount();
-	AM_ind = rand() % AM_size;
-	AMarray.getelement(AM_ind)->attack();
-
+	if (AM_size != 0) {
+		AM_ind = rand() % AM_size;
+		AMarray.getelement(AM_ind)->attack();
+	}
 	if (ADqueue.getcount() >= 2) // if more than 2 drones exist, attack
 	{
 		Aliendrones* AD1; //make 2 drones attack

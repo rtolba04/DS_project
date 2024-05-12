@@ -22,25 +22,28 @@ void Earthgunnery::attack()
 			Alienmonsters* AM;
 			Aliendrones* AD1;
 			Aliendrones* AD2;
-			if (ac2 != 0 || ac2 == 1) {// randomly generated index from AM array
+			if (ac2 != 0) {// randomly generated index from AM array
 				int AM_size = ptr->getAA()->getAMarray().getCount();
+				if (AM_size != 0) {
 				int AM_ind = rand() % AM_size;
-				AM = ptr->getAA()->getAMarray().getelement(AM_ind);
-				ptr->getAA()->getAMarray().remove(AM);//dequeue RANDOM AM ??????????????
-				int AMHealth_og = AM->GetHealth();
-				Damage = ((GetPower()) * (GetHealth()) / 100) / sqrt(AMHealth_og);
-				if (Damage >= AMHealth_og) {
-					ptr->kill(AM);
+					AM = ptr->getAA()->getAMarray().getelement(AM_ind);
+					ptr->getAA()->getAMarray().remove(AM);//dequeue RANDOM AM ??????????????
+					int AMHealth_og = AM->GetHealth();
+					Damage = ((GetPower()) * (GetHealth()) / 100) / sqrt(AMHealth_og);
+					if (Damage >= AMHealth_og) {
+						ptr->kill(AM);
 
+					}
+					else if (Damage < AMHealth_og) {
+						AM->SetHealth(AMHealth_og - Damage);
+						temp->enqueue(AM);
+					}
 				}
-				else if (Damage < AMHealth_og) {
-					AM->SetHealth(AMHealth_og - Damage);
-					temp->enqueue(AM);
-				}
+				ac2--;
+			
 			}
-			ac2--;
 			if (ac2 == 0) { break; }
-			if (ac2 != 0 || ac2 >= 2) {
+			if (ac2 != 0 && ac2!=1) {
 				if (ptr->getAA()->getADqueue().getcount() >= 2) {
 					ptr->getAA()->getADqueue().dequeue(AD1);
 					ptr->getAA()->getADqueue().Dequeueback(AD2);
@@ -77,12 +80,13 @@ void Earthgunnery::attack()
 					ptr->kill(AD1);
 
 				}
-				else if (Damage < AD1Health_og) {
+				else if (Damage1 < AD1Health_og) {
 					AD1->SetHealth(AD1Health_og - Damage);
 					temp->enqueue(AD1);
 				}
 				ac2--;
 			}
+		
 		}
 		int flag = 0;
 		while (temp->getfrontPtr())

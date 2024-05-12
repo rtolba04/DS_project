@@ -10,7 +10,6 @@ Earthsoldiers::Earthsoldiers(int id, int jt, int h, int p, int ac) :Unitclass(id
 {
 
 }
-void Earthsoldiers :: attack() {}
 
 void Earthsoldiers::set_tj_uml(int tjuml)
 {
@@ -46,21 +45,24 @@ void Earthsoldiers :: attack() {
  LinkedQueue<Unitclass*>* temp = new LinkedQueue<Unitclass*>();
 
 	int ac1 = Getattackcapacity();
-	while(ac1!=0){
+	while (ac1 != 0) {
 		Aliensoldiers* AS;
-	
-		ptr->getAA()->getASqueue().dequeue(AS); //dequeue first AS
-		int Health_og = AS->GetHealth(); //get its health
-		int Damage = ((GetPower()) * (GetHealth()) / 100) / sqrt(Health_og);
-		if (Damage >= Health_og) {
-			ptr->kill(AS);
-			
+		if (!ptr->getAA()->getASqueue().isEmpty()) {
+			ptr->getAA()->getASqueue().dequeue(AS); //dequeue first AS
+			int Health_og = AS->GetHealth(); //get its health
+			int Damage = ((GetPower()) * (GetHealth()) / 100) / sqrt(Health_og);
+			if (Damage >= Health_og) {
+				ptr->kill(AS);
+
+			}
+			else if (Damage < Health_og) {
+				AS->SetHealth(Health_og - Damage);
+				temp->enqueue(AS);
+			}
+			ac1--;
 		}
-		else if( Damage< Health_og){
-			AS->SetHealth(Health_og - Damage);
-			temp->enqueue(AS);
-		}
-		ac1--;
+		else if (ptr->getAA()->getASqueue().isEmpty())
+			break;
 	}
 	while (temp->getfrontPtr())
 	{

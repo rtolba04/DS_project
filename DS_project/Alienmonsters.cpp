@@ -20,10 +20,10 @@ void Alienmonsters::attack()
 		Earthsoldiers* es;
 		ptr->getEA()->getESqueue().dequeue(es);
 		int Health_og_es = es->GetHealth();
-		int Damage = ((GetPower()) * (GetHealth()) / 100) / sqrt(es->GetHealth());
-		if (Damage >= es->GetHealth())   //if damage already greater than initial health, kill 3alatool
+		int Damage1 = ((GetPower()) * (GetHealth()) / 100) / sqrt(es->GetHealth());
+		if (Damage1 >= es->GetHealth())   //if damage already greater than initial health, kill 3alatool
 			ptr->kill(es);
-		es->SetHealth(Health_og_es - Damage); //set new health (after damage)
+		es->SetHealth(Health_og_es - Damage1); //set new health (after damage)
 		if (es->GetHealth() <= 0.2 * Health_og_es && es->GetHealth() > 0)
 		{
 			int pri = -(es->GetHealth());
@@ -41,10 +41,10 @@ void Alienmonsters::attack()
 		Earthtanks* et;
 		ptr->getEA()->getETstack().pop(et);
 		int Health_og_et= et->GetHealth();
-		int Damage = ((GetPower()) * (GetHealth()) / 100) / sqrt(et->GetHealth());
-		if (Damage >= et->GetHealth())   //if damage already greater than initial health, kill 3alatool
+		int Damage2 = ((GetPower()) * (GetHealth()) / 100) / sqrt(et->GetHealth());
+		if (Damage2 >= et->GetHealth())   //if damage already greater than initial health, kill 3alatool
 			ptr->kill(et);
-		et->SetHealth(Health_og_et - Damage); //set new health (after damage)
+		et->SetHealth(Health_og_et - Damage2); //set new health (after damage)
 		if (et->GetHealth() <= 0.2 * Health_og_es && es->GetHealth() > 0)
 		{
 			ptr->UMLtanks.enqueue(et);    

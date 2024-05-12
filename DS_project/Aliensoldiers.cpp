@@ -2,7 +2,6 @@
 #include "LinkedQueue.h"
 #include "Game.h"
 #include <iostream>
-#include "Game.h"
 using namespace std;
 
 Aliensoldiers::Aliensoldiers(int id, int jt, int h, int p, int ac) :Unitclass(id, jt, h, p, ac, "AS")
@@ -12,28 +11,32 @@ Aliensoldiers::Aliensoldiers(int id, int jt, int h, int p, int ac) :Unitclass(id
 void Aliensoldiers::attack()
 {
 	int ac = Getattackcapacity();
-	LinkedQueue<Earthsoldiers*>* temp = nullptr;
+	LinkedQueue<Earthsoldiers*>* temp = new LinkedQueue<Earthsoldiers*>();
 	while (ac != 0)
 	{
 		Earthsoldiers* es;
-		ptr->getEA()->getESqueue().dequeue(es); //dequeue first ES
-		int Health_og = es->GetHealth(); //original health
-		int Damage = ((GetPower()) * (GetHealth()) / 100) / sqrt(es->GetHealth()); //calculate damage 
-		if (Damage >= es->GetHealth())   //if damage already greater than initial health, kill 3alatool
-			ptr->kill(es);
-		es->SetHealth(Health_og - Damage); //set new health (after damage)
-		if (es->GetHealth() <= 0.2 * Health_og && es->GetHealth() > 0)
-		{
-			int pri = -(es->GetHealth());
-			ptr->UMLsoldiers.enqueue(es, pri);    
-			es->set_tj_uml(ptr->getTime()); //getting tj uml
+		if (!ptr->getEA()->getESqueue().isEmpty()) { // if queue not empty 
+			ptr->getEA()->getESqueue().dequeue(es); //dequeue first ES
+			int Health_og = es->GetHealth(); //original health
+			int Damage = ((GetPower()) * (GetHealth()) / 100) / sqrt(es->GetHealth()); //calculate damage 
+			if (Damage >= es->GetHealth())   //if damage already greater than initial health, kill 3alatool
+				ptr->kill(es);
+			es->SetHealth(Health_og - Damage); //set new health (after damage)
+			if (es->GetHealth() <= 0.2 * Health_og && es->GetHealth() > 0)
+			{
+				int pri = -(es->GetHealth());
+				ptr->UMLsoldiers.enqueue(es, pri);
+				es->set_tj_uml(ptr->getTime()); //getting tj uml
+			}
+			else if (es->GetHealth() > 0.2 * Health_og && es->GetHealth() < Health_og)
+			{
+				temp->enqueue(es);
+			}
+			ac--;
 		}
-		else if (es->GetHealth() > 0.2 * Health_og && es->GetHealth() < Health_og)
-		{
-			temp->enqueue(es);
+		 else if(ptr->getEA()->getESqueue().isEmpty())
+			break;
 		}
-		ac--;
-	}
 	Earthsoldiers* es;
 	while (temp->dequeue(es))
 		ptr->getEA()->getESqueue().enqueue(es);

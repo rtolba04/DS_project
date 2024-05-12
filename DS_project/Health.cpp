@@ -6,6 +6,7 @@ using namespace std;
 Health::Health(int id, int jt, int h, int p, int ac) :Unitclass(id, jt, h, p, ac, "HU")
 {
 }
+
 void Health::attack()
 {
 	LinkedQueue<Unitclass*>* temp = nullptr;

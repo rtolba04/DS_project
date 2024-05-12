@@ -26,11 +26,5 @@ public:
 	bool ES_remove(Earthsoldiers*& es);
 	bool EG_remove(Earthgunnery *& eg,int& pri);
 	void print();
-	LinkedQueue<Earthsoldiers*>& getESqueue();
-
-	ArrayStack<Earthtanks*>& getETstack();
-
-	priQueue<Earthgunnery*>& getEGpriqueue();
-	
 };
 

@@ -6,6 +6,7 @@ using namespace std;
 Health::Health(int id, int jt, int h, int p, int ac) :Unitclass(id, jt, h, p, ac, "HU")
 {
 }
+
 void Health::attack()
 {
 	LinkedQueue<Unitclass*>* temp = nullptr;
@@ -30,7 +31,7 @@ void Health::attack()
 			}
 
 		}
-		if (ptr->UMLtanks.getfrontPtr()) {
+		else if(ptr->UMLtanks.getfrontPtr()) {
 			Earthtanks* et = ptr->UMLtanks.getfrontPtr()->getItem();
 			if (ptr->getTime() - et->Getjointime() > 10) //nafs el ghalta
 			{

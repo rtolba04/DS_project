@@ -1,6 +1,5 @@
 #include "earthArmy.h"
 #include "Unitclass.h"
-
 #include "Health.h"
 using namespace std;
 

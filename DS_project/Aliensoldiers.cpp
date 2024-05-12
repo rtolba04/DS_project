@@ -1,5 +1,6 @@
 #include "Aliensoldiers.h"
 #include "LinkedQueue.h"
+#include "earthArmy.h"
 #include "Game.h"
 #include <iostream>
 using namespace std;

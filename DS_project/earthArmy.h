@@ -21,10 +21,13 @@ public:
 	
 	void attack();
 	void addUnit(Unitclass* unit);
+	LinkedQueue<Earthsoldiers*>& getESqueue();
 	//void removeUnit(Unitclass*& unit,string type);
 	bool ET_remove(Earthtanks*& et);
 	bool ES_remove(Earthsoldiers*& es);
 	bool EG_remove(Earthgunnery *& eg,int& pri);
+	ArrayStack<Earthtanks*>& getETstack();
+	priQueue<Earthgunnery*>& getEGpriqueue();
 	void print();
 };
 

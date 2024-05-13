@@ -69,6 +69,11 @@ void Game::addHeal(Health* h)
     HLstack.push(h);
 }
 
+void Game::removeHeal(Health*& hu)
+{
+    HLstack.pop(hu);
+}
+
 void Game::addUMLtank(Earthtanks* et)
 {
     UMLtanks.enqueue(et);
@@ -272,23 +277,6 @@ void Game::test()
         if (x > 40 && x <= 50)
         {
             Alienmonsters* am1 = nullptr, * am2 = nullptr, * am3 = nullptr, * am4 = nullptr, * am5 = nullptr;
-        /*    Unitclass* u1 = nullptr;
-            Unitclass* u2 = nullptr;
-            Unitclass* u3 = nullptr;
-            Unitclass* u4 = nullptr;
-            Unitclass* u5 = nullptr;
-
-            am1 = dynamic_cast<Alienmonsters*>(u1);
-            am2 = dynamic_cast<Alienmonsters*>(u2);
-            am3 = dynamic_cast<Alienmonsters*>(u3);
-            am4 = dynamic_cast<Alienmonsters*>(u4);
-            am5 = dynamic_cast<Alienmonsters*>(u5);
-
-            Alien.removeUnit(u1,"AM");
-            Alien.removeUnit(u2, "AM");
-            Alien.removeUnit(u3, "AM");
-            Alien.removeUnit(u4, "AM");
-            Alien.removeUnit(u5, "AM");*/
             Alien.AM_remove(am1);
             Alien.AM_remove(am2);
             Alien.AM_remove(am3);
@@ -305,22 +293,6 @@ void Game::test()
         if (x > 50 && x <= 60)
         {
             Aliendrones* ad1 = nullptr, * ad2 = nullptr, * ad3 = nullptr, * ad4 = nullptr, * ad5 = nullptr, * ad6 = nullptr;
-         /*   Unitclass* u1 = nullptr;
-            Unitclass* u2= nullptr;
-            Unitclass* u3 = nullptr;
-            Unitclass* u4 = nullptr;
-            Unitclass* u5 = nullptr;
-            Unitclass* u6 = nullptr;
-            ad1 = dynamic_cast<Aliendrones*>(u1);
-            ad2 = dynamic_cast<Aliendrones*>(u2);
-            ad3 = dynamic_cast<Aliendrones*>(u3);
-            ad4 = dynamic_cast<Aliendrones*>(u4);
-            ad5 = dynamic_cast<Aliendrones*>(u5);
-            ad6 = dynamic_cast<Aliendrones*>(u6);
-
-            Alien.removeUnit(u1, u6);
-            Alien.removeUnit(u2, u5);
-            Alien.removeUnit(u3, u4);*/
             Alien.AD_remove(ad1,ad6);
             Alien.AD_remove(ad2,ad5);
             Alien.AD_remove(ad3,ad4);
@@ -333,7 +305,6 @@ void Game::test()
         }
         
     //    Earth.print();
-    
       //  Alien.print();
         printscreen();
     }

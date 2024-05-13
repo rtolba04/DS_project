@@ -73,6 +73,8 @@ void Health::attack()
 			ptr->addUMLtank(et);
 		}
 	}
+	Health* h;
+	ptr->removeHeal(* &h);
 	//kill hu?
 	
 }

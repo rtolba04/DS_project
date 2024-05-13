@@ -25,6 +25,7 @@ public:
 	int getTime();
 	bool loadfromfile();
 	void addHeal(Health* h);
+	void removeHeal(Health* &hu);
 	void addUMLtank(Earthtanks* et);
 	void addUMLsold(Earthsoldiers* es, int pri);
 	void removeUMLsold(Earthsoldiers* es, int pri);

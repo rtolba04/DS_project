@@ -8,3 +8,9 @@ public:
 	void attack();
 };
 
+inline ostream& operator <<(ostream& out, Health*& h)
+{
+	out << h->Getid();
+	return out;
+}
+

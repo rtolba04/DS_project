@@ -31,11 +31,12 @@ void randGen::setN(int n)
 	N = n;
 }
 
-void randGen::setpercentage(int e1, int e2, int e3, int a1, int a2, int a3)
+void randGen::setpercentage(int e1, int e2, int e3,int h, int a1, int a2, int a3)
 {
 	ESpr = e1;
 	ETpr = e2;
 	EGpr = e3;
+	HUpr = h;
 	ASpr = a1;
 	AMpr = a2;
 	ADpr = a3;
@@ -74,6 +75,8 @@ void randGen::generateunitearth(int& t) //adjusted so it creates and adds unit
 		for (int i = 0; i < N; i++)
 		{
 			int B = random(100) + 1;
+			Health* hu = new Health(earth_counter++, t, Eh, Ep, Eac);
+			game_ptr->addHeal(hu);
 			if (B <= ESpr)
 			{
 				Earthsoldiers* es = new Earthsoldiers(earth_counter++, t, Eh, Ep, Eac);

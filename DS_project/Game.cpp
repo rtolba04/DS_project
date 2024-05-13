@@ -47,27 +47,94 @@ bool Game::loadfromfile() {
         cerr << "Error: Failed to read range from input file." << endl;
         return false; // Return error code
     }
-	int N, Prob, ESpr, ETpr, EGpr, ASpr, AMpr, ADpr, Ep, Eh, Eac, Ap, Ah, Aac, e_minpower, e_maxpower, e_minhealth, e_maxhealth;
+	int N, Prob, ESpr, ETpr, EGpr, HUpr, ASpr, AMpr, ADpr, Ep, Eh, Eac, Ap, Ah, Aac, e_minpower, e_maxpower, e_minhealth, e_maxhealth;
 	int e_minac, e_maxac, a_minpower, a_maxpower, a_minhealth, a_maxhealth, a_minac, a_maxac;
-        input >> N >> ESpr >> ETpr >> EGpr >> ASpr >> AMpr >> ADpr >> Prob >> e_minpower >> e_maxpower >> e_minhealth >> e_maxhealth;
+        input >> N >> ESpr >> ETpr >> EGpr >> HUpr >> ASpr >> AMpr >> ADpr >> Prob >> e_minpower >> e_maxpower >> e_minhealth >> e_maxhealth;
         input >> e_minac >> e_maxac >> a_minpower >> a_maxpower >> a_minhealth >> a_maxhealth >> a_minac >> a_maxac;
         randomgen.setN(N);
         randomgen.setac(e_minac, e_maxac, a_minac, a_maxac);
         randomgen.sethealth(e_minhealth, e_maxhealth, a_minhealth, a_maxhealth);
         randomgen.setpwr(e_minpower, e_maxpower, a_minpower, a_maxpower);
-        randomgen.setpercentage(ESpr, ETpr, EGpr, ASpr, AMpr, ADpr);
+        randomgen.setpercentage(ESpr, ETpr, EGpr,HUpr, ASpr, AMpr, ADpr);
         randomgen.setProb(Prob);
         randomgen.setstatusearth(Ep, Eh, Eac);
         randomgen.setstatusalien(Ap, Ah, Aac);
         input.close();
         return true;
-       
+       //
+}
+
+void Game::addHeal(Health* h)
+{
+    HLstack.push(h);
+}
+
+void Game::removeHeal(Health*& hu)
+{
+    HLstack.pop(hu);
+}
+
+void Game::addUMLtank(Earthtanks* et)
+{
+    UMLtanks.enqueue(et);
+}
+
+void Game::addUMLsold(Earthsoldiers* es, int pri)
+{
+    UMLsoldiers.enqueue(es,pri);
+}
+
+void Game::removeUMLsold(Earthsoldiers* es, int pri)
+{
+    UMLsoldiers.dequeue(es, pri);
+}
+
+void Game::removeUMLtank(Earthtanks* et)
+{
+    UMLtanks.dequeue(et);
+}
+
+void Game::printUMLtank()
+{
+    if (checkUMLtank())
+        return;
+    cout << "[";
+    Node<Earthtanks*> *ptr = UMLtanks.getfrontPtr();
+
+    while (ptr)
+    {
+        cout << ptr->getItem()->Getid() << ", ";
+        ptr = ptr->getNext();
+    }
+    cout << "]";
+}
+
+bool Game::checkUMLsold()
+{
+    return UMLsoldiers.isEmpty();
+}
+
+bool Game::checkUMLtank()
+{
+    return UMLtanks.isEmpty();
+}
+
+Earthsoldiers* Game::UMLsoldHead()
+{
+    int pri;
+    return UMLsoldiers.getHead()->getItem(pri);
+}
+
+Earthtanks* Game::UMLtankHead()
+{
+    return UMLtanks.getfrontPtr()->getItem();
 }
 
 void Game::kill(Unitclass* unit)
 {
     killed->enqueue(unit);
 }
+
 void Game::PrintKilledList() {
     cout << "=======================killed/destructed units=================" << endl;
     cout << killed->getcount() << " units ";
@@ -90,14 +157,27 @@ void Game::PrintKilledList() {
     }
     cout << "]" << endl;
 
+void Game::printscreen()
+{
+    cout << "Current Timestep " << time << endl;
+    getAA()->print();
+    getEA()->print();
+    //units fighting
+    PrintKilledList();
+    cout << "=======================Healing units=================" << endl;
+    cout << HLstack.getcount() << " units";
+    HLstack.printstack();
+    cout << endl;
+    cout << "=======================UML for earth soldiers=================" << endl;
+    cout << UMLsoldiers.getcount() << " units";
+    UMLsoldiers.printpri();
+    cout << endl;
+    cout << "=======================UML for earth tanks=================" << endl;
+    cout << UMLtanks.getcount() << " units";
+    printUMLtank();
+    cout << endl;
+    cout << "Press enter to move to next timestep" << endl;
 }
-//void Game::printKill()
-//{
-//    cout << "=======================killed/destructed units=================" << endl;
-//    cout << killed->getcount() << " units " << endl;
-//    killed->printqueue_ptr(killed);
-//    cout << endl;
-//}
 
 void Game::simulate()
 {

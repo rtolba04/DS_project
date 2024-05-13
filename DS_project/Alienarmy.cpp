@@ -8,6 +8,46 @@
 using namespace std;
 
 
+void alienArmy::setASshooting(int ASID)
+{
+	ASshooting = ASID;
+}
+
+int alienArmy::getASshooting()
+{
+	return ASshooting;
+}
+int alienArmy::getAMshooting()
+{
+	return AMshooting;
+}
+
+int alienArmy::getADshooting1()
+{
+	return ADshooting1;
+}
+
+void alienArmy::setADshooting2(int ADID)
+{
+	ADshooting2 = ADID;
+}
+
+int alienArmy::getADshooting2()
+{
+	return ADshooting2;
+}
+
+
+void alienArmy::setAMshooting(int AMID)
+{
+	AMshooting = AMID;
+}
+
+void alienArmy::setADshooting1(int ADID)
+{
+	ADshooting1 = ADID;
+}
+
 void alienArmy::attack()
 
 {

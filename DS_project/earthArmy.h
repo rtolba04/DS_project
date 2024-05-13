@@ -17,8 +17,17 @@ class earthArmy
 	LinkedQueue<Earthsoldiers*>ESqueue;
 	ArrayStack<Earthtanks*>ETstack;
 	priQueue<Earthgunnery*>EGpriqueue;
+	int ESshooting;
+	int ETshooting;
+	int EGshooting;
+
 public:
-	
+	void setESshooting(int ESID);
+	int getESshooting();
+	void setETshooting(int ETID);
+	int getETshooting();
+	void setEGshooting(int EGID);
+	int getEGshooting();
 	void attack();
 	void addUnit(Unitclass* unit);
 	//void removeUnit(Unitclass*& unit,string type);

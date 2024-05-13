@@ -15,7 +15,20 @@ private:
 	LinkedQueue<Aliensoldiers*>ASqueue;
 	ArrBag<Alienmonsters*>AMarray;
 	Derivedqueue<Aliendrones*> ADqueue;
+	int ASshooting;
+	int AMshooting;
+	int ADshooting1;
+	int ADshooting2;
+
 public:
+	void setASshooting(int ASID);
+	int getASshooting();
+	void setAMshooting(int AMID);
+	int getAMshooting();
+	void setADshooting1(int ADID);
+	int getADshooting1();
+	void setADshooting2(int ADID);
+	int getADshooting2();
 	void attack();
 	void addUnit(Unitclass* unit);
 	//void removeUnit(Unitclass*& unit1, Unitclass*& unit2);

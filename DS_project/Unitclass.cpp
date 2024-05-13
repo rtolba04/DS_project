@@ -13,6 +13,46 @@ Unitclass::Unitclass(int id, int jt, int h, int p, int ac, string type)
 }
 void Unitclass::attack() {
 }
+void Unitclass::set_ta(int Ta)
+{
+	ta = Ta;
+}
+int Unitclass::get_ta()
+{
+	return ta;
+}
+void Unitclass::set_td(int Td)
+{
+	td = Td;
+}
+int Unitclass::get_td()
+{
+	return td;
+}
+void Unitclass::set_df()
+{
+	df = ta - Jointime;
+}
+int Unitclass::get_df()
+{
+	return df;
+}
+void Unitclass::set_dd()
+{
+	dd = td - ta;
+}
+int Unitclass::get_dd()
+{
+	return dd;
+}
+void Unitclass::set_db()
+{
+	db = td - Jointime;
+}
+int Unitclass::get_db()
+{
+	return db;
+}
 void Unitclass::SetID(int id) {
 	ID=id;
 }

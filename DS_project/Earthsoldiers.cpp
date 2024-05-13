@@ -45,14 +45,20 @@ void Earthsoldiers :: attack() {
  LinkedQueue<Unitclass*>* temp = new LinkedQueue<Unitclass*>();
 
 	int ac1 = Getattackcapacity();
+	ptr->getEA()->setESshooting(ID);
 	while (ac1 != 0) {
 		Aliensoldiers* AS;
 		if (!ptr->getAA()->getASqueue().isEmpty()) {
+			AS->set_ta(ptr->getTime());
+			AS->set_df();
 			ptr->getAA()->getASqueue().dequeue(AS); //dequeue first AS
 			int Health_og = AS->GetHealth(); //get its health
 			int Damage = ((GetPower()) * (GetHealth()) / 100) / sqrt(Health_og);
 			if (Damage >= Health_og) {
 				ptr->kill(AS);
+				AS->set_td(ptr->getTime());
+				AS->set_dd();
+				AS->set_db();
 
 			}
 			else if (Damage < Health_og) {

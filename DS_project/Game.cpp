@@ -192,6 +192,7 @@ void Game::simulate()
         getrand()->createunits(time);    
        //if(!Earth.getEGpriqueue().isEmpty()|| !Earth.getESqueue().isEmpty()|| !Earth.getETstack().isEmpty())
          Earth.attack();
+
       // if (!Alien.getADqueue().isEmpty() || !Alien.getAMarray().isEmpty() || !Alien.getASqueue().isEmpty())
          Alien.attack();
          printscreen();

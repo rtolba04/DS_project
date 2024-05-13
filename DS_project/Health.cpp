@@ -33,7 +33,7 @@ void Health::attack()
 			}
 
 		}
-		else if(ptr->UMLtanks.getfrontPtr()) {
+		 if(ptr->UMLtanks.getfrontPtr()) {
 			Earthtanks* et = ptr->UMLtanks.getfrontPtr()->getItem();
 			if (ptr->getTime() - et->Getjointime() > 10)
 			{

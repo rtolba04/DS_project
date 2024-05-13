@@ -15,6 +15,7 @@ void Earthtanks::attack()
 	int EScount = ptr->getEA()->getESqueue().getcount();
 	int AScount = ptr->getAA()->getASqueue().getcount();
 	int Damage;
+	ptr->getEA()->setETshooting(ID);
 
 	if (EScount < (0.3 * AScount)) { //keeps attacking soldiers till 80 percent then attacks  monsters
 		while (ac2 != 0 && EScount < (0.8 * AScount)) {
@@ -25,6 +26,8 @@ void Earthtanks::attack()
 
 
 			if (AM_size != 0) {
+				AM->set_ta(ptr->getTime());
+				AM->set_df();
 				int AM_ind = rand() % AM_size;
 				AM = ptr->getAA()->getAMarray().getelement(AM_ind);
 				ptr->getAA()->getAMarray().remove(AM);
@@ -33,6 +36,9 @@ void Earthtanks::attack()
 				Damage = ((GetPower()) * (GetHealth()) / 100) / sqrt(AMHealth_og);
 				if (Damage >= AMHealth_og) {
 					ptr->kill(AM);
+					AM->set_td(ptr->getTime());
+					AM->set_dd();
+					AM->set_db();
 
 				}
 				else if (Damage < AMHealth_og) {
@@ -43,11 +49,16 @@ void Earthtanks::attack()
 			}
 			if (ac2 == 0) { return; }
 			if (!ptr->getAA()->getASqueue().isEmpty()) {
+				AS->set_ta(ptr->getTime());
+				AS->set_df();
 				ptr->getAA()->getASqueue().dequeue(AS); //dequeue first AS
 				int ASHealth_og = AS->GetHealth();
 				Damage = ((GetPower()) * (GetHealth()) / 100) / sqrt(ASHealth_og);
 				if (Damage >= ASHealth_og) {
 					ptr->kill(AS);
+					AS->set_td(ptr->getTime());
+					AS->set_dd();
+					AS->set_db();
 
 				}
 				else if (Damage < ASHealth_og) {

@@ -17,7 +17,9 @@ void Earthgunnery::attack()
 	int Damage;
 	int Damage1;
 	int Damage2;
-	{ //keeps attacking soldiers till 80 percent then attacks  monsters
+	ptr->getEA()->setEGshooting(ID);
+
+	{//keeps attacking soldiers till 80 percent then attacks  monsters
 		while (ac2 != 0) {
 			Alienmonsters* AM;
 			Aliendrones* AD1;
@@ -25,14 +27,18 @@ void Earthgunnery::attack()
 			if (ac2 != 0) {// randomly generated index from AM array
 				int AM_size = ptr->getAA()->getAMarray().getCount();
 				if (AM_size != 0) {
+					AM->set_ta(ptr->getTime());
+					AM->set_df();
 				int AM_ind = rand() % AM_size;
 					AM = ptr->getAA()->getAMarray().getelement(AM_ind);
-					ptr->getAA()->getAMarray().remove(AM);//dequeue RANDOM AM ??????????????
+					ptr->getAA()->getAMarray().remove(AM);
 					int AMHealth_og = AM->GetHealth();
 					Damage = ((GetPower()) * (GetHealth()) / 100) / sqrt(AMHealth_og);
 					if (Damage >= AMHealth_og) {
 						ptr->kill(AM);
-
+						AM->set_td(ptr->getTime());
+						AM->set_dd();
+						AM->set_db();
 					}
 					else if (Damage < AMHealth_og) {
 						AM->SetHealth(AMHealth_og - Damage);

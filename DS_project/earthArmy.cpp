@@ -4,6 +4,37 @@
 #include "Health.h"
 using namespace std;
 
+void earthArmy::setESshooting(int ESID)
+{
+	ESshooting = ESID;
+}
+
+int earthArmy::getESshooting()
+{
+	return ESshooting;
+}
+
+void earthArmy::setETshooting(int ETID)
+{
+	ETshooting = ETID;
+}
+
+int earthArmy::getETshooting()
+{
+	return ETshooting;
+}
+
+void earthArmy::setEGshooting(int EGID)
+{
+	EGshooting = EGID;
+}
+
+int earthArmy::getEGshooting()
+{
+	return EGshooting;
+}
+
+
 void earthArmy::attack()
 {
 	Earthsoldiers* Esoldierpicked;

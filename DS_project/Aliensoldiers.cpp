@@ -12,15 +12,25 @@ void Aliensoldiers::attack()
 {
 	int ac = Getattackcapacity();
 	LinkedQueue<Earthsoldiers*>* temp = new LinkedQueue<Earthsoldiers*>();
+	ptr->getAA()->setASshooting(ID);
+
 	while (ac != 0)
 	{
 		Earthsoldiers* es;
 		if (!ptr->getEA()->getESqueue().isEmpty()) { // if queue not empty 
+			es->set_ta(ptr->getTime());
+			es->set_df();
 			ptr->getEA()->getESqueue().dequeue(es); //dequeue first ES
 			int Health_og = es->GetHealth(); //original health
 			int Damage = ((GetPower()) * (GetHealth()) / 100) / sqrt(es->GetHealth()); //calculate damage 
 			if (Damage >= es->GetHealth())   //if damage already greater than initial health, kill 3alatool
+			{
 				ptr->kill(es);
+				es->set_td(ptr->getTime());
+				es->set_dd();
+				es->set_db();
+			}
+				
 			es->SetHealth(Health_og - Damage); //set new health (after damage)
 			if (es->GetHealth() <= 0.2 * Health_og && es->GetHealth() > 0)
 			{

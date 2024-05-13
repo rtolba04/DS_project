@@ -12,6 +12,14 @@ protected:
 	int Health;
 	int Power;
 	int Attackcapacity;
+
+	int ta; //time attacked
+	int td;  //destruction time
+	int df;  //first attack delay
+	int dd;  //destruction delay
+	int db;  //battle time
+
+
 	Game* ptr; //needs a setter 
 
 	
@@ -32,6 +40,19 @@ public:
 	void print();
 	void setgame(Game* ptr1);
 	virtual void attack() = 0;
+
+
+	void set_ta(int Ta);
+	int get_ta();
+	void set_td(int Td);
+	int get_td();
+	void set_df();
+	int get_df();
+	void set_dd();
+	int get_dd();
+	void set_db();
+	int get_db();
+
 	~Unitclass();
 };
 

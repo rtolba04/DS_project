@@ -105,13 +105,14 @@ void Game::simulate()
   
     for (time; time < 11; time++)
     {
-        //loadfromfile();
+        loadfromfile();
         cout << "Current Timestep " << time << endl;
         
-        //getrand()->createunits(time);    
-       
-          //Earth.attack();
-          //Alien.attack();
+        getrand()->createunits(time);    
+       //if(!Earth.getEGpriqueue().isEmpty()|| !Earth.getESqueue().isEmpty()|| !Earth.getETstack().isEmpty())
+         Earth.attack();
+      // if (!Alien.getADqueue().isEmpty() || !Alien.getAMarray().isEmpty() || !Alien.getASqueue().isEmpty())
+         Alien.attack();
        Earth.print();
        Alien.print();
        

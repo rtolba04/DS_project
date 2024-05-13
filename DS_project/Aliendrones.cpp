@@ -49,7 +49,7 @@ void Aliendrones :: attack() {
 			ac--;
 		}
 		if (ptr->getEA()->getEGpriqueue().isEmpty() && ptr->getEA()->getETstack().isEmpty())
-			return;
+			break;
 	}
 
 	Earthgunnery* eg;

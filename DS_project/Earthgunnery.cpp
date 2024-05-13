@@ -55,8 +55,8 @@ void Earthgunnery::attack()
 						ptr->kill(AD1);
 
 					}
-					else if (Damage < AD1Health_og) {
-						AD1->SetHealth(AD1Health_og - Damage);
+					else if (Damage1< AD1Health_og) {
+						AD1->SetHealth(AD1Health_og - Damage1);
 						temp->enqueue(AD1);
 					}
 					ac2--;
@@ -65,7 +65,7 @@ void Earthgunnery::attack()
 
 					}
 					else if (Damage2 < AD2Health_og) {
-						AD2->SetHealth(AD2Health_og - Damage);
+						AD2->SetHealth(AD2Health_og - Damage2);
 						temp->enqueue(AD2);
 					}
 				}
@@ -81,7 +81,7 @@ void Earthgunnery::attack()
 
 				}
 				else if (Damage1 < AD1Health_og) {
-					AD1->SetHealth(AD1Health_og - Damage);
+					AD1->SetHealth(AD1Health_og - Damage1);
 					temp->enqueue(AD1);
 				}
 				ac2--;

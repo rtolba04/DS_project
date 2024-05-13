@@ -81,7 +81,7 @@ void randGen::generateunitearth(int& t) //adjusted so it creates and adds unit
 				es->setgame(game_ptr);
 			}
 
-			else	if (B <= ESpr + ETpr)
+			else if (B <= ESpr + ETpr)
 			{
 				Earthtanks* et = new Earthtanks(earth_counter++, t, Eh, Ep, Eac);
 				game_ptr->getEA()->addUnit(et);

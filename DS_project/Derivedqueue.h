@@ -20,9 +20,19 @@ public:
 	bool enqueue(const T& newEntry);
 	bool dequeue(T& frntEntry);
 	bool peekback(T& backEntry);
+	bool peek(T& frntEntry) const;
 	int getcount();
 };
+template <typename T>
+bool Derivedqueue<T>::peek(T& frntEntry) const
+{
+	if (isEmpty())
+		return false;
 
+	frntEntry = frontPtr->getItem();
+	return true;
+
+}
 template<typename T>
 bool Derivedqueue<T>::peekback(T& backEntry)
 {

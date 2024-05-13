@@ -26,11 +26,12 @@ void Earthtanks::attack()
 
 
 			if (AM_size != 0) {
-				AM->set_ta(ptr->getTime());
-				AM->set_df();
+				
 				int AM_ind = rand() % AM_size;
 				AM = ptr->getAA()->getAMarray().getelement(AM_ind);
 				ptr->getAA()->getAMarray().remove(AM);
+				AM->set_ta(ptr->getTime());
+				AM->set_df();
 				//dequeue RANDOM AM ??????????????
 				int AMHealth_og = AM->GetHealth();
 				Damage = ((GetPower()) * (GetHealth()) / 100) / sqrt(AMHealth_og);
@@ -49,9 +50,10 @@ void Earthtanks::attack()
 			}
 			if (ac2 == 0) { return; }
 			if (!ptr->getAA()->getASqueue().isEmpty()) {
+				
+				ptr->getAA()->getASqueue().dequeue(AS); //dequeue first AS
 				AS->set_ta(ptr->getTime());
 				AS->set_df();
-				ptr->getAA()->getASqueue().dequeue(AS); //dequeue first AS
 				int ASHealth_og = AS->GetHealth();
 				Damage = ((GetPower()) * (GetHealth()) / 100) / sqrt(ASHealth_og);
 				if (Damage >= ASHealth_og) {

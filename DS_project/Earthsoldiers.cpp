@@ -49,9 +49,10 @@ void Earthsoldiers :: attack() {
 	while (ac1 != 0) {
 		Aliensoldiers* AS;
 		if (!ptr->getAA()->getASqueue().isEmpty()) {
+		
+			ptr->getAA()->getASqueue().dequeue(AS); //dequeue first AS
 			AS->set_ta(ptr->getTime());
 			AS->set_df();
-			ptr->getAA()->getASqueue().dequeue(AS); //dequeue first AS
 			int Health_og = AS->GetHealth(); //get its health
 			int Damage = ((GetPower()) * (GetHealth()) / 100) / sqrt(Health_og);
 			if (Damage >= Health_og) {

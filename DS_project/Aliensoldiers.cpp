@@ -18,9 +18,10 @@ void Aliensoldiers::attack()
 	{
 		Earthsoldiers* es;
 		if (!ptr->getEA()->getESqueue().isEmpty()) { // if queue not empty 
+			
+			ptr->getEA()->getESqueue().dequeue(es); //dequeue first ES
 			es->set_ta(ptr->getTime());
 			es->set_df();
-			ptr->getEA()->getESqueue().dequeue(es); //dequeue first ES
 			int Health_og = es->GetHealth(); //original health
 			int Damage = ((GetPower()) * (GetHealth()) / 100) / sqrt(es->GetHealth()); //calculate damage 
 			if (Damage >= es->GetHealth())   //if damage already greater than initial health, kill 3alatool

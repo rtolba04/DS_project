@@ -3,15 +3,13 @@
 #include "Unitclass.h"
 #include"Game.h"
 using namespace std;
-Health::Health(int id, int jt, int h, int p, int ac) :Unitclass(id, jt, h, p, ac, "HU")
-{
-}
+Health::Health(int id, int jt, int h, int p, int ac) :Unitclass(id, jt, h, p, ac, "HU") {}
 
 void Health::attack()
 {
 	LinkedQueue<Unitclass*>* temp = nullptr;
-	while (Attackcapacity != 0) {
-		while (ptr->UMLsoldiers.getHead())
+	while (Getattackcapacity() != 0) {
+		if (!ptr->checkUMLsold())
 		{
 			int pri = -GetHealth();
 			Earthsoldiers* es = ptr->UMLsoldHead();
@@ -21,9 +19,12 @@ void Health::attack()
 			}
 			else {
 				int oldhealth = es->GetHealth();
-				int healthimp = (Power * GetHealth() / 100) / sqrt(oldhealth);
-				SetHealth(healthimp + GetHealth());
-				if (es->GetHealth() > (oldhealth)*20/100) {
+				int healthimp = (GetPower() * GetHealth() / 100) / sqrt(oldhealth);
+				es->SetHealth(healthimp + oldhealth);
+				Setattackcapacity(Attackcapacity - 1);
+				if (es->GetHealth() > (oldhealth) * 20 / 100)
+				{
+					ptr->removeUMLsold(es, -es->GetHealth());
 					ptr->getEA()->addUnit(es);
 				}
 				else {
@@ -31,11 +32,10 @@ void Health::attack()
 					temp->enqueue(es);
 				}
 			}
-
 		}
-		 if(ptr->UMLtanks.getfrontPtr()) {
-			Earthtanks* et = ptr->UMLtanks.getfrontPtr()->getItem();
-			if (ptr->getTime() - et->Getjointime() > 10)
+		else if (!ptr->checkUMLtank()) {
+			Earthtanks* et = ptr->UMLtankHead();
+			if (ptr->getTime() - et->Getjointime() > 10) // edit so it is time joined UML
 			{
 				ptr->kill(et);
 			}
@@ -54,7 +54,7 @@ void Health::attack()
 					temp->enqueue(et);
 				}
 			}
-			//
+			
 		}
 
 	}

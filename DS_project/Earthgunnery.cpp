@@ -27,11 +27,12 @@ void Earthgunnery::attack()
 			if (ac2 != 0) {// randomly generated index from AM array
 				int AM_size = ptr->getAA()->getAMarray().getCount();
 				if (AM_size != 0) {
-					AM->set_ta(ptr->getTime());
-					AM->set_df();
+					
 				int AM_ind = rand() % AM_size;
 					AM = ptr->getAA()->getAMarray().getelement(AM_ind);
 					ptr->getAA()->getAMarray().remove(AM);
+					AM->set_ta(ptr->getTime());
+					AM->set_df();
 					int AMHealth_og = AM->GetHealth();
 					Damage = ((GetPower()) * (GetHealth()) / 100) / sqrt(AMHealth_og);
 					if (Damage >= AMHealth_og) {

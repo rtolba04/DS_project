@@ -186,7 +186,7 @@ void Game::simulate()
 {
     
   
-    for (time; time < 11; time++)
+    for (time; time < 20; time++)
     {
         loadfromfile();        
         getrand()->createunits(time);    

@@ -8,46 +8,51 @@ Health::Health(int id, int jt, int h , int p, int ac) :Unitclass(id, jt, h, p, a
 }
 void Health::attack()
 {
-	Health* HU;
 	LinkedQueue<Unitclass*>* temp = nullptr;
-	while (HU->Getattackcapacity() != 0) {
-		if (ptr->UMLsoldiers.getHead())
+	while (Getattackcapacity() != 0) {
+		if (!ptr->checkUMLsold())
 		{
 			int pri = -GetHealth();
-			Earthsoldiers* es = ptr->UMLsoldiers.getHead()->getItem(pri);
+			Earthsoldiers* es = ptr->UMLsoldHead();
 			if (ptr->getTime() - es->Getjointime() > 10) //edit to time join UML
 			{
 				ptr->kill(es);
 			}
 			else {
 				int oldhealth = es->GetHealth();
-				int healthimp = (HU->GetPower() * HU->GetHealth() / 100) / sqrt(oldhealth);
+				int healthimp = (GetPower() * GetHealth() / 100) / sqrt(oldhealth);
 				es->SetHealth(healthimp + oldhealth);
-				HU->Setattackcapacity(Attackcapacity - 1);
-				if (es->GetHealth() > (oldhealth)*20/100) {
+				Setattackcapacity(Attackcapacity - 1);
+				if (es->GetHealth() > (oldhealth)*20/100) 
+				{
+					ptr->removeUMLsold(es, -es->GetHealth());
 					ptr->getEA()->addUnit(es);
 				}
 				else {
+					ptr->removeUMLsold(es, -es->GetHealth());
 					temp->enqueue(es);
 				}
 			}
 
 		}
-		else if(ptr->UMLtanks.getfrontPtr()) {
-			Earthtanks* et = ptr->UMLtanks.getfrontPtr()->getItem();
+		else if(!ptr->checkUMLtank()) {
+			Earthtanks* et = ptr->UMLtankHead();
 			if (ptr->getTime() - et->Getjointime() > 10) // edit so it is time joined UML
 			{
 				ptr->kill(et);
 			}
 			else {
 				int oldhealth = et->GetHealth();
-				int healthimp = (HU->GetPower() * HU->GetHealth() / 100) / sqrt(oldhealth);
+				int healthimp = (GetPower() * GetHealth() / 100) / sqrt(oldhealth);
 				et->SetHealth(healthimp + oldhealth);
-				HU->Setattackcapacity(Attackcapacity - 1);
-				if (et->GetHealth() > (oldhealth) * 20 / 100) {
+				Setattackcapacity(Attackcapacity - 1);
+				if (et->GetHealth() > (oldhealth) * 20 / 100)
+				{
+					ptr->removeUMLtank(et);
 					ptr->getEA()->addUnit(et);
 				}
 				else {
+					ptr->removeUMLtank(et);
 					temp->enqueue(et);
 				}
 			}
@@ -61,14 +66,14 @@ void Health::attack()
 		if (u->Gettype() == "ES") {
 			int pri = -(u->GetHealth());
 			Earthsoldiers* es = dynamic_cast<Earthsoldiers*>(u);
-			ptr->UMLsoldiers.enqueue(es, pri);
+			ptr->addUMLsold(es, pri);
 		}
 		if (u->Gettype() == "ET") {
 			Earthtanks* et = dynamic_cast<Earthtanks*>(u);
-			ptr->UMLtanks.enqueue(et);
+			ptr->addUMLtank(et);
 		}
 	}
-
-	delete HU;
-	//3ayzin n delete HU HOW???
+	//kill hu?
+	
 }
+

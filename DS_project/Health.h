@@ -6,5 +6,7 @@ private:
 public:
 	Health(int id = 0, int jt = 0, int h = 0, int p = 0, int ac = 0);
 	void attack();
+//	void addHeal(Health* hu);
+//	void removeHeal(Health* hu);
 };
 

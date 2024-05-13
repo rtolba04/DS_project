@@ -47,21 +47,67 @@ bool Game::loadfromfile() {
         cerr << "Error: Failed to read range from input file." << endl;
         return false; // Return error code
     }
-	int N, Prob, ESpr, ETpr, EGpr, ASpr, AMpr, ADpr, Ep, Eh, Eac, Ap, Ah, Aac, e_minpower, e_maxpower, e_minhealth, e_maxhealth;
+	int N, Prob, ESpr, ETpr, EGpr, HUpr, ASpr, AMpr, ADpr, Ep, Eh, Eac, Ap, Ah, Aac, e_minpower, e_maxpower, e_minhealth, e_maxhealth;
 	int e_minac, e_maxac, a_minpower, a_maxpower, a_minhealth, a_maxhealth, a_minac, a_maxac;
-        input >> N >> ESpr >> ETpr >> EGpr >> ASpr >> AMpr >> ADpr >> Prob >> e_minpower >> e_maxpower >> e_minhealth >> e_maxhealth;
+        input >> N >> ESpr >> ETpr >> EGpr >> HUpr >> ASpr >> AMpr >> ADpr >> Prob >> e_minpower >> e_maxpower >> e_minhealth >> e_maxhealth;
         input >> e_minac >> e_maxac >> a_minpower >> a_maxpower >> a_minhealth >> a_maxhealth >> a_minac >> a_maxac;
         randomgen.setN(N);
         randomgen.setac(e_minac, e_maxac, a_minac, a_maxac);
         randomgen.sethealth(e_minhealth, e_maxhealth, a_minhealth, a_maxhealth);
         randomgen.setpwr(e_minpower, e_maxpower, a_minpower, a_maxpower);
-        randomgen.setpercentage(ESpr, ETpr, EGpr, ASpr, AMpr, ADpr);
+        randomgen.setpercentage(ESpr, ETpr, EGpr,HUpr, ASpr, AMpr, ADpr);
         randomgen.setProb(Prob);
         randomgen.setstatusearth(Ep, Eh, Eac);
         randomgen.setstatusalien(Ap, Ah, Aac);
         input.close();
         return true;
        
+}
+
+void Game::addHeal(Health* h)
+{
+    HLstack.push(h);
+}
+
+void Game::addUMLtank(Earthtanks* et)
+{
+    UMLtanks.enqueue(et);
+}
+
+void Game::addUMLsold(Earthsoldiers* es, int pri)
+{
+    UMLsoldiers.enqueue(es,pri);
+}
+
+void Game::removeUMLsold(Earthsoldiers* es, int pri)
+{
+    UMLsoldiers.dequeue(es, pri);
+}
+
+void Game::removeUMLtank(Earthtanks* et)
+{
+    UMLtanks.dequeue(et);
+}
+
+bool Game::checkUMLsold()
+{
+    return UMLsoldiers.isEmpty();
+}
+
+bool Game::checkUMLtank()
+{
+    return UMLtanks.isEmpty();
+}
+
+Earthsoldiers* Game::UMLsoldHead()
+{
+    int pri;
+    return UMLsoldiers.getHead()->getItem(pri);
+}
+
+Earthtanks* Game::UMLtankHead()
+{
+    return UMLtanks.getfrontPtr()->getItem();
 }
 
 void Game::kill(Unitclass* unit)

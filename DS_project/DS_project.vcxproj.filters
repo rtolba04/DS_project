@@ -72,6 +72,9 @@
     <ClInclude Include="earthArmy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Health.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Unitclass.cpp">
@@ -114,6 +117,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="earthArmy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Health.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

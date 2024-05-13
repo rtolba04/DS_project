@@ -89,6 +89,21 @@ void Game::removeUMLtank(Earthtanks* et)
     UMLtanks.dequeue(et);
 }
 
+void Game::printUMLtank()
+{
+    if (checkUMLtank())
+        return;
+    cout << "[";
+    Node<Earthtanks*> *ptr = UMLtanks.getfrontPtr();
+
+    while (ptr)
+    {
+        cout << ptr->getItem()->Getid() << ", ";
+        ptr = ptr->getNext();
+    }
+    cout << "]";
+}
+
 bool Game::checkUMLsold()
 {
     return UMLsoldiers.isEmpty();
@@ -114,6 +129,7 @@ void Game::kill(Unitclass* unit)
 {
     killed->enqueue(unit);
 }
+
 void Game::PrintKilledList() {
     cout << "=======================killed/destructed units=================" << endl;
     cout << killed->getcount() << " units ";
@@ -134,16 +150,32 @@ void Game::PrintKilledList() {
             ptr = ptr->getNext();
         }
     }
-    cout << "]";
+    cout << "]"<<endl;
 
 }
-//void Game::printKill()
-//{
-//    cout << "=======================killed/destructed units=================" << endl;
-//    cout << killed->getcount() << " units " << endl;
-//    killed->printqueue_ptr(killed);
-//    cout << endl;
-//}
+
+
+void Game::printscreen()
+{
+    cout << "Current Timestep " << time << endl;
+    getAA()->print();
+    getEA()->print();
+    //units fighting
+    PrintKilledList();
+    cout << "=======================Healing units=================" << endl;
+    cout << HLstack.getcount() << " units";
+    HLstack.printstack();
+    cout << endl;
+    cout << "=======================UML for earth soldiers=================" << endl;
+    cout << UMLsoldiers.getcount() << " units";
+    UMLsoldiers.printpri();
+    cout << endl;
+    cout << "=======================UML for earth tanks=================" << endl;
+    cout << UMLtanks.getcount() << " units";
+    printUMLtank();
+    cout << endl;
+    cout << "Press enter to move to next timestep" << endl;
+}
 
 void Game::test()
 {
@@ -151,8 +183,6 @@ void Game::test()
     loadfromfile();
     for (time; time < 51; time++)
     {
-        cout << "Current Timestep " << time << endl;
-       
             getrand()->createunits(time);
             
         int x;
@@ -164,6 +194,7 @@ void Game::test()
             Earth.ES_remove(es);
             if (es) {
                 Earth.addUnit(es);
+                addUMLsold(es, 0);
             }
             }
         if (x > 10 && x <= 20)
@@ -171,8 +202,8 @@ void Game::test()
             Earthtanks* et = nullptr;
           
             Earth.ET_remove(et);
-            if(et)
-            kill(et);
+            if (et)
+                addUMLtank(et);
         }
         if (x > 20 && x <= 30)
         {
@@ -304,16 +335,13 @@ void Game::test()
     //    Earth.print();
     
       //  Alien.print();
-        getAA()->print();
-     getEA()->print();
-      
-       PrintKilledList();
+        printscreen();
     }
 }
-
 
 
 Game::~Game()
 {
     delete killed;
 }
+

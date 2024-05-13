@@ -29,13 +29,14 @@ public:
 	void addUMLsold(Earthsoldiers* es, int pri);
 	void removeUMLsold(Earthsoldiers* es, int pri);
 	void removeUMLtank(Earthtanks* et);
+	void printUMLtank();
 	bool checkUMLsold();
 	bool checkUMLtank();
 	Earthsoldiers* UMLsoldHead();
 	Earthtanks* UMLtankHead();
 	void PrintKilledList();
 	void kill(Unitclass* unit);
-
+	void printscreen();
 	void test();
 	//void testnew();
 	~Game();

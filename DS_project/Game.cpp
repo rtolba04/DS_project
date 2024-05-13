@@ -61,7 +61,7 @@ bool Game::loadfromfile() {
         randomgen.setstatusalien(Ap, Ah, Aac);
         input.close();
         return true;
-       
+       //
 }
 
 void Game::addHeal(Health* h)

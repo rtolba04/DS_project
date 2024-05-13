@@ -38,7 +38,7 @@ public:
 	void PrintKilledList();
 	void kill(Unitclass* unit);
 	void printscreen();
-	void test();
+	
 	void simulate();
 	//void testnew();
 	~Game();

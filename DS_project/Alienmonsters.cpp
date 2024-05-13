@@ -28,7 +28,7 @@ void Alienmonsters::attack()
 			if (es->GetHealth() <= 0.2 * Health_og_es && es->GetHealth() > 0)
 			{
 				int pri = -(es->GetHealth());
-				ptr->UMLsoldiers.enqueue(es, pri);
+				ptr->addUMLsold(es, pri);
 				es->set_tj_uml(ptr->getTime());
 			}
 			else if (es->GetHealth() > 0.2 * Health_og_es && es->GetHealth() < Health_og_es)
@@ -51,7 +51,7 @@ void Alienmonsters::attack()
 			et->SetHealth(Health_og_et - Damage2); //set new health (after damage)
 			if (et->GetHealth() <= 0.2 * Health_og_et && et->GetHealth() > 0)
 			{
-				ptr->UMLtanks.enqueue(et);
+				ptr->addUMLtank(et);
 				et->set_tj_uml(ptr->getTime());
 			}
 			else if (et->GetHealth() > 0.2 * Health_og_et && et->GetHealth() < Health_og_et)

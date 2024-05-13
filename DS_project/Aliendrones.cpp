@@ -23,7 +23,8 @@ void Aliendrones :: attack() {
 			et->SetHealth(Health_og_et - Damage1); //set new health (after damage)
 			if (et->GetHealth() <= 0.2 * Health_og_et && et->GetHealth() > 0)
 			{
-				ptr->UMLtanks.enqueue(et);
+				ptr->addUMLtank(et);
+			//	ptr->UMLtanks.enqueue(et);
 				et->set_tj_uml(ptr->getTime());
 			}
 			else if (et->GetHealth() > 0.2 * Health_og_et && et->GetHealth() < Health_og_et)

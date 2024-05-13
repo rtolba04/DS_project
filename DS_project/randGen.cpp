@@ -75,8 +75,6 @@ void randGen::generateunitearth(int& t) //adjusted so it creates and adds unit
 		for (int i = 0; i < N; i++)
 		{
 			int B = random(100) + 1;
-			Health* hu = new Health(earth_counter++, t, Eh, Ep, Eac);
-			game_ptr->addHeal(hu);
 			if (B <= ESpr)
 			{
 				Earthsoldiers* es = new Earthsoldiers(earth_counter++, t, Eh, Ep, Eac);
@@ -92,12 +90,19 @@ void randGen::generateunitearth(int& t) //adjusted so it creates and adds unit
 			
 			}
 
-			else
+			else if (B<= ESpr + ETpr+ EGpr)
 			{
 				Earthgunnery* eg = new Earthgunnery(earth_counter++, t, Eh, Ep, Eac);
 				game_ptr->getEA()->addUnit(eg);
 				eg->setgame(game_ptr);
 				//dont forget to tcalculate el function priority
+			}
+			else
+			{
+				Health* hu = new Health(earth_counter++, t, Eh, Ep, Eac);
+				game_ptr->addHeal(hu);
+				hu->setgame(game_ptr);
+
 			}
 		}
 	

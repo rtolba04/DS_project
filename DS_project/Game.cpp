@@ -130,6 +130,8 @@ Earthtanks* Game::UMLtankHead()
     return UMLtanks.getfrontPtr()->getItem();
 }
 
+
+
 void Game::kill(Unitclass* unit)
 {
     killed->enqueue(unit);
@@ -156,6 +158,7 @@ void Game::PrintKilledList() {
         }
     }
     cout << "]" << endl;
+}
 
 void Game::printscreen()
 {
@@ -185,18 +188,17 @@ void Game::simulate()
   
     for (time; time < 11; time++)
     {
-        loadfromfile();
-        cout << "Current Timestep " << time << endl;
-        
+        loadfromfile();        
         getrand()->createunits(time);    
        //if(!Earth.getEGpriqueue().isEmpty()|| !Earth.getESqueue().isEmpty()|| !Earth.getETstack().isEmpty())
          Earth.attack();
       // if (!Alien.getADqueue().isEmpty() || !Alien.getAMarray().isEmpty() || !Alien.getASqueue().isEmpty())
          Alien.attack();
-       Earth.print();
-       Alien.print();
-       
-       PrintKilledList();
+         printscreen();
+       //Earth.print();
+       //Alien.print();
+       //
+       //PrintKilledList();
     }
 }
 

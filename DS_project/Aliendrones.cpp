@@ -8,42 +8,48 @@ Aliendrones::Aliendrones(int id, int jt, int h, int p, int ac) :Unitclass(id, jt
 }
 void Aliendrones :: attack() {
 	int ac = Getattackcapacity();
-	LinkedQueue<Earthgunnery*>* temp_eg = nullptr;
-	LinkedQueue<Earthtanks*>* temp_et = nullptr;
+	LinkedQueue<Earthgunnery*>* temp_eg = new LinkedQueue<Earthgunnery*>();
+	LinkedQueue<Earthtanks*>* temp_et = new LinkedQueue<Earthtanks*>();
 
 	while (ac != 0)
 	{
 		//attacking et
 		Earthtanks* et;
-		ptr->getEA()->getETstack().pop(et);
-		int Health_og_et = et->GetHealth();
-		int Damage1 = ((GetPower()) * (GetHealth()) / 100) / sqrt(et->GetHealth());
-		if (Damage1 >= Health_og_et)   //if damage already greater than initial health, kill 3alatool
-			ptr->kill(et);
-		et->SetHealth(Health_og_et - Damage1); //set new health (after damage)
-		if (et->GetHealth() <= 0.2 * Health_og_et && et->GetHealth() > 0)
-		{
-			ptr->UMLtanks.enqueue(et);    
-			et->set_tj_uml(ptr->getTime());
+		if (ptr->getEA()->getETstack().pop(et)) {
+			int Health_og_et = et->GetHealth();
+			int Damage1 = ((GetPower()) * (GetHealth()) / 100) / sqrt(et->GetHealth());
+			if (Damage1 >= Health_og_et)   //if damage already greater than initial health, kill 3alatool
+				ptr->kill(et);
+			et->SetHealth(Health_og_et - Damage1); //set new health (after damage)
+			if (et->GetHealth() <= 0.2 * Health_og_et && et->GetHealth() > 0)
+			{
+				ptr->UMLtanks.enqueue(et);
+				et->set_tj_uml(ptr->getTime());
+			}
+			else if (et->GetHealth() > 0.2 * Health_og_et && et->GetHealth() < Health_og_et)
+			{
+				temp_et->enqueue(et);
+			}
+			ac--;
 		}
-		else if (et->GetHealth() > 0.2 * Health_og_et && et->GetHealth() < Health_og_et)
-		{
-			temp_et->enqueue(et);
-		}
-		ac--;
+		
 
 		if (ac == 0) break;
 		//attacking eg
 		Earthgunnery* eg;
 		int pri;
-		ptr->getEA()->getEGpriqueue().dequeue(eg,pri);
-		int Health_og_eg = eg->GetHealth();
-		int Damage2 = ((GetPower()) * (GetHealth()) / 100) / sqrt(eg->GetHealth());
-		if (Damage2 >= Health_og_eg)   //if damage already greater than initial health, kill 3alatool
-			ptr->kill(eg);
-		eg->SetHealth(Health_og_eg - Damage2); //set new health (after damage)
-		temp_eg->enqueue(eg);
-		ac--;
+		if (ptr->getEA()->getEGpriqueue().dequeue(eg, pri))
+		{
+			int Health_og_eg = eg->GetHealth();
+			int Damage2 = ((GetPower()) * (GetHealth()) / 100) / sqrt(eg->GetHealth());
+			if (Damage2 >= Health_og_eg)   //if damage already greater than initial health, kill 3alatool
+				ptr->kill(eg);
+			eg->SetHealth(Health_og_eg - Damage2); //set new health (after damage)
+			temp_eg->enqueue(eg);
+			ac--;
+		}
+		if (ptr->getEA()->getEGpriqueue().isEmpty() && ptr->getEA()->getETstack().isEmpty())
+			return;
 	}
 
 	Earthgunnery* eg;

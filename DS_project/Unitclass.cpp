@@ -2,7 +2,7 @@
 #include <iostream>
 #include <sstream>
 using namespace std;
-Unitclass::Unitclass(int id, int h, int ac, int p, int jt, string type)
+Unitclass::Unitclass(int id, int jt, int h, int p, int ac, string type)
 {
 	ID = id;
 	Jointime = jt;

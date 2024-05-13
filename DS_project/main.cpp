@@ -5,9 +5,9 @@ int main()
 {
 	Game G;
 	//G.getrand()->setGame(&G);
-	Earthtanks* E1 = new Earthtanks(49, 2, 3, 500, 4);
-	Earthtanks* E2 = new Earthtanks(4, 2, 73, 500, 4);
-	Earthtanks* E3 = new Earthtanks(43, 2, 83, 500, 4);
+	Earthtanks* E1 = new Earthtanks(49, 2, 3, 90, 1);
+	Earthtanks* E2 = new Earthtanks(4, 2, 73, 50, 4);
+	Earthtanks* E3 = new Earthtanks(43, 2, 83, 50, 2);
 	Earthtanks* E4 = new Earthtanks(421, 2, 63, 500, 4);
 	Earthtanks* E5 = new Earthtanks(461, 2, 53, 500, 4);
 	Earthsoldiers* ES1 = new Earthsoldiers(91, 2, 3, 430, 4);
@@ -20,9 +20,9 @@ int main()
 	Earthgunnery* EG3 = new Earthgunnery(27, 2, 3, 50, 4);
 	Aliensoldiers* AS1 = new Aliensoldiers(1111, 15, 3, 500, 4);
 	Aliensoldiers* AS2 = new Aliensoldiers(1112, 2, 100, 500, 4);
-	Aliensoldiers* AS3 = new Aliensoldiers(1163, 2, 3, 500, 4);
-	Aliensoldiers* AS4 = new Aliensoldiers(1211, 2, 3, 500, 4);
-	Aliensoldiers* AS5 = new Aliensoldiers(1212, 2, 3, 500, 4);
+	Aliensoldiers* AS3 = new Aliensoldiers(1163, 2, 3, 50, 4);
+	Aliensoldiers* AS4 = new Aliensoldiers(1211, 2, 3, 90, 4);
+	Aliensoldiers* AS5 = new Aliensoldiers(1212, 2, 3, 50, 4);
 	Aliensoldiers* AS6 = new Aliensoldiers(1263, 2, 3, 500, 4);
 	Alienmonsters* a1 = new Alienmonsters(1145, 1, 60, 500, 4);
 	Alienmonsters* a2 = new Alienmonsters(1456, 3, 4, 1, 1);
@@ -92,7 +92,9 @@ int main()
 	AD2->setgame(&G);
 	AD3->setgame(&G);
 	AD4->setgame(&G);
-	E1->attack();
+	
+	AD1->attack();
+//	E3->attack();
 	//AS2->attack(); (tried AS attack)
 	//AD1->attack();
 	G.simulate();

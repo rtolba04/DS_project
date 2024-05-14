@@ -52,9 +52,9 @@ Esoldierpicked->attack();
 	gunnerypicked->attack();
 
 	Health* healpicked;
-	if (!gptr->getHLstack().isEmpty())
+	if (gptr->getHLstack().pop(healpicked));
 	{
-		gptr->getHLstack().pop(healpicked);
+		
 		healpicked->attack();
 
 	}

@@ -9,11 +9,7 @@
 #include"Unitclass.h"
 #include"Health.h"
 #include "Derivedqueue.h"
-#include "Game.h"
-
-
-
-
+class Game;
 
 class earthArmy
 {private:
@@ -26,6 +22,7 @@ class earthArmy
 	Game* gptr;
 
 public:
+	
 	void setESshooting(int ESID);
 	int getESshooting();
 	void setETshooting(int ETID);

@@ -9,6 +9,9 @@
 #include"Unitclass.h"
 #include"Health.h"
 #include "Derivedqueue.h"
+#include "Game.h"
+
+
 
 
 
@@ -20,6 +23,7 @@ class earthArmy
 	int ESshooting;
 	int ETshooting;
 	int EGshooting;
+	Game* gptr;
 
 public:
 	void setESshooting(int ESID);

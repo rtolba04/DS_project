@@ -53,6 +53,10 @@ int Unitclass::get_db()
 {
 	return db;
 }
+Game* Unitclass::getgameptr()
+{
+	return ptr;
+}
 void Unitclass::SetID(int id) {
 	ID=id;
 }

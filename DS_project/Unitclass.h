@@ -53,6 +53,8 @@ public:
 	void set_db();
 	int get_db();
 
+	Game* getgameptr();
+
 	~Unitclass();
 };
 

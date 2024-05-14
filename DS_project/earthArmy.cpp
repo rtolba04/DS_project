@@ -2,6 +2,8 @@
 #include "Unitclass.h"
 #include "Earthtanks.h"
 #include "Health.h"
+#include "Game.h"
+
 using namespace std;
 
 void earthArmy::setESshooting(int ESID)
@@ -48,6 +50,15 @@ Esoldierpicked->attack();
 	int pri;
 	if(EGpriqueue.peek(gunnerypicked,pri))
 	gunnerypicked->attack();
+
+	Health* healpicked;
+	if (!gptr->getHLstack().isEmpty())
+	{
+		gptr->getHLstack().pop(healpicked);
+		healpicked->attack();
+
+	}
+		
 
 }
 

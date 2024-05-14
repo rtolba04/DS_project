@@ -9,10 +9,14 @@ void Health::attack()
 {
 	LinkedQueue<Unitclass*>* temp = new LinkedQueue<Unitclass*>();
 	while (Getattackcapacity() != 0) {
-		while (!ptr->checkUMLsold())
+		while (!ptr->checkUMLsold()) //while uml soldiers msh fadya
 		{
-			int pri = -GetHealth();
-			Earthsoldiers* es = ptr->UMLsoldHead();
+			Earthsoldiers* es;
+			int pri;
+			//Earthsoldiers* es = ptr->UMLsoldHead();
+		    ptr->removeUMLsold(es,pri);
+			
+
 			if (ptr->getTime() - es->get_tj_uml() > 10) //edit to time join UML
 			{
 				ptr->kill(es);
@@ -21,20 +25,23 @@ void Health::attack()
 				int oldhealth = es->GetHealth();
 				int healthimp = (GetPower() * GetHealth() / 100) / sqrt(oldhealth);
 				es->SetHealth(healthimp + oldhealth);
-				Setattackcapacity(Attackcapacity - 1);
+				//Setattackcapacity(Attackcapacity - 1);
+				Attackcapacity--;
 				if (es->GetHealth() > (oldhealth) * 20 / 100)
 				{
-					ptr->removeUMLsold(es, -es->GetHealth());
+					
 					ptr->getEA()->addUnit(es);
 				}
 				else {
-					ptr->removeUMLsold(es, -es->GetHealth());
+					
 					temp->enqueue(es);
 				}
+				if (Attackcapacity == 0) break;
 			}
 		}
 		 if (!ptr->checkUMLtank()) {
-			Earthtanks* et = ptr->UMLtankHead();
+			 Earthtanks* et;
+			ptr->removeUMLtank(et);
 			if (ptr->getTime() - et->get_tj_uml() > 10) // edit so it is time joined UML
 			{
 				ptr->kill(et);
@@ -43,14 +50,14 @@ void Health::attack()
 				int oldhealth = et->GetHealth();
 				int healthimp = (GetPower() * GetHealth() / 100) / sqrt(oldhealth);
 				et->SetHealth(healthimp + oldhealth);
-				Setattackcapacity(Attackcapacity - 1);
+				Attackcapacity--;
 				if (et->GetHealth() > (oldhealth) * 20 / 100)
 				{
-					ptr->removeUMLtank(et);
+					
 					ptr->getEA()->addUnit(et);
 				}
 				else {
-					ptr->removeUMLtank(et);
+					
 					temp->enqueue(et);
 				}
 			}
@@ -60,7 +67,8 @@ void Health::attack()
 	}
 	while (temp->getfrontPtr())
 	{
-		Unitclass* u = temp->getfrontPtr()->getItem();
+		Unitclass* u;
+		temp->dequeue(u);
 		if (u->Gettype() == "ES") {
 			int pri = -(u->GetHealth());
 			Earthsoldiers* es = dynamic_cast<Earthsoldiers*>(u);
@@ -70,9 +78,10 @@ void Health::attack()
 			Earthtanks* et = dynamic_cast<Earthtanks*>(u);
 			ptr->addUMLtank(et);
 		}
+
 	}
 	Health* h;
-	ptr->removeHeal(* &h);
+	ptr->getHLstack().pop(h);
 	//kill hu?
 	
 }

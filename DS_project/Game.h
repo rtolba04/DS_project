@@ -28,8 +28,8 @@ public:
 	void removeHeal(Health* &hu);
 	void addUMLtank(Earthtanks* et);
 	void addUMLsold(Earthsoldiers* es, int pri);
-	void removeUMLsold(Earthsoldiers* es, int pri);
-	void removeUMLtank(Earthtanks* et);
+	void removeUMLsold(Earthsoldiers* &es, int& pri);
+	void removeUMLtank(Earthtanks*& et);
 	void printUMLtank();
 	bool checkUMLsold();
 	bool checkUMLtank();
@@ -38,6 +38,7 @@ public:
 	void PrintKilledList();
 	void kill(Unitclass* unit);
 	void printscreen();
+	ArrayStack<Health*>& getHLstack();
 	
 	void simulate();
 	//void testnew();

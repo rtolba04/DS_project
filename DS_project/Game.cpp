@@ -69,7 +69,7 @@ void Game::addHeal(Health* h)
     HLstack.push(h);
 }
 
-void Game::removeHeal(Health*& hu)
+void Game::removeHeal(Health* &hu)
 {
     HLstack.pop(hu);
 }
@@ -84,12 +84,12 @@ void Game::addUMLsold(Earthsoldiers* es, int pri)
     UMLsoldiers.enqueue(es,pri);
 }
 
-void Game::removeUMLsold(Earthsoldiers* es, int pri)
+void Game::removeUMLsold(Earthsoldiers*& es, int &pri)
 {
     UMLsoldiers.dequeue(es, pri);
 }
 
-void Game::removeUMLtank(Earthtanks* et)
+void Game::removeUMLtank(Earthtanks* &et)
 {
     UMLtanks.dequeue(et);
 }
@@ -182,11 +182,16 @@ void Game::printscreen()
     cout << "Press enter to move to next timestep" << endl;
 }
 
+ArrayStack<Health*>& Game::getHLstack()
+{
+    return HLstack;
+}
+
 void Game::simulate()
 {
     
   
-    for (time; time < 25; time++)
+    for (time; time < 50; time++)
     {
         loadfromfile();        
         getrand()->createunits(time);    

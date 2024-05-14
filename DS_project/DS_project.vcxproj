@@ -132,6 +132,7 @@
     <ClInclude Include="Aliendrones.h" />
     <ClInclude Include="Alienmonsters.h" />
     <ClInclude Include="Aliensoldiers.h" />
+    <ClInclude Include="ArrayStack.h" />
     <ClInclude Include="ArrBag.h" />
     <ClInclude Include="Derivedqueue.h" />
     <ClInclude Include="earthArmy.h" />

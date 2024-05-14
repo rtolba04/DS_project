@@ -39,6 +39,7 @@ void Health::attack()
 				if (Attackcapacity == 0) break;
 			}
 		}
+		if (Attackcapacity == 0) break;
 		 if (!ptr->checkUMLtank()) {
 			 Earthtanks* et;
 			ptr->removeUMLtank(et);
@@ -63,7 +64,7 @@ void Health::attack()
 			}
 			
 		}
-
+		if(ptr->checkUMLsold()&& ptr->checkUMLtank()) break;
 	}
 	while (temp->getfrontPtr())
 	{
@@ -80,9 +81,11 @@ void Health::attack()
 		}
 
 	}
-	Health* h;
-	ptr->getHLstack().pop(h);
-	//kill hu?
+	
+if (Attackcapacity==0|| (ptr->checkUMLsold() && ptr->checkUMLtank())){
+Health* h;
+ptr->getEA()->getHLstack().pop(h);
+	}
 	
 }
 

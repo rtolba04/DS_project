@@ -64,15 +64,7 @@ bool Game::loadfromfile() {
        //
 }
 
-void Game::addHeal(Health* h)
-{
-    HLstack.push(h);
-}
 
-void Game::removeHeal(Health* &hu)
-{
-    HLstack.pop(hu);
-}
 
 void Game::addUMLtank(Earthtanks* et)
 {
@@ -168,8 +160,8 @@ void Game::printscreen()
     //units fighting
     PrintKilledList();
     cout << "=======================Healing units=================" << endl;
-    cout << HLstack.getcount() << " units";
-    HLstack.printstack();
+    cout << Earth.getHLstack().getcount() << " units";
+    Earth.getHLstack().printstack();
     cout << endl;
     cout << "=======================UML for earth soldiers=================" << endl;
     cout << UMLsoldiers.getcount() << " units";
@@ -182,21 +174,18 @@ void Game::printscreen()
     cout << "Press enter to move to next timestep" << endl;
 }
 
-ArrayStack<Health*>& Game::getHLstack()
-{
-    return HLstack;
-}
+
 
 void Game::simulate()
 {
     
   
-    for (time; time < 30; time++)
+    for (time; time < 40; time++)
     {
         loadfromfile();        
         getrand()->createunits(time);    
        //if(!Earth.getEGpriqueue().isEmpty()|| !Earth.getESqueue().isEmpty()|| !Earth.getETstack().isEmpty())
-       Earth.attack();
+         Earth.attack();
 
       // if (!Alien.getADqueue().isEmpty() || !Alien.getAMarray().isEmpty() || !Alien.getASqueue().isEmpty())
          Alien.attack();

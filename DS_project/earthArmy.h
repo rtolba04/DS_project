@@ -11,6 +11,10 @@
 #include "Derivedqueue.h"
 class Game;
 
+
+
+
+
 class earthArmy
 {private:
 	LinkedQueue<Earthsoldiers*>ESqueue;
@@ -19,10 +23,9 @@ class earthArmy
 	int ESshooting;
 	int ETshooting;
 	int EGshooting;
-	Game* gptr;
+	ArrayStack<Health*>HLstack;
 
 public:
-	
 	void setESshooting(int ESID);
 	int getESshooting();
 	void setETshooting(int ETID);
@@ -41,6 +44,11 @@ public:
 	ArrayStack<Earthtanks*>& getETstack();
 
 	priQueue<Earthgunnery*>& getEGpriqueue();
+
+	void addHeal(Health* h);
+	void removeHeal(Health*& hu);
+
+	ArrayStack<Health*>& getHLstack();
 	
 };
 

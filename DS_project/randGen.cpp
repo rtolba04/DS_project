@@ -100,7 +100,7 @@ void randGen::generateunitearth(int& t) //adjusted so it creates and adds unit
 			else
 			{
 				Health* hu = new Health(earth_counter++, t, Eh, Ep, Eac);
-				game_ptr->getEA()->addHeal(hu);
+				game_ptr->getEA()->addUnit(hu);
 				hu->setgame(game_ptr);
 
 			}

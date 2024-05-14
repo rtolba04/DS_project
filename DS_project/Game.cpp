@@ -180,12 +180,12 @@ void Game::simulate()
 {
     
   
-    for (time; time < 30; time++)
+    for (time; time < 40; time++)
     {
         loadfromfile();        
         getrand()->createunits(time);    
        //if(!Earth.getEGpriqueue().isEmpty()|| !Earth.getESqueue().isEmpty()|| !Earth.getETstack().isEmpty())
-       Earth.attack();
+         Earth.attack();
 
       // if (!Alien.getADqueue().isEmpty() || !Alien.getAMarray().isEmpty() || !Alien.getASqueue().isEmpty())
          Alien.attack();

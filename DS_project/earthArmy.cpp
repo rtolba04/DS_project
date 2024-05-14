@@ -52,11 +52,9 @@ Esoldierpicked->attack();
 	gunnerypicked->attack();
 
 	Health* healpicked;
-	if (HLstack.pop(healpicked))
+	if (HLstack.peek(healpicked))
 	{
-	
 		healpicked->attack();
-
 	}
 		
 

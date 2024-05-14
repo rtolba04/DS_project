@@ -9,11 +9,11 @@ void Health::attack()
 {
 	LinkedQueue<Unitclass*>* temp = new LinkedQueue<Unitclass*>();
 	while (Getattackcapacity() != 0) {
-		if (!ptr->checkUMLsold())
+		while (!ptr->checkUMLsold())
 		{
 			int pri = -GetHealth();
 			Earthsoldiers* es = ptr->UMLsoldHead();
-			if (ptr->getTime() - es->Getjointime() > 10) //edit to time join UML
+			if (ptr->getTime() - es->get_tj_uml() > 10) //edit to time join UML
 			{
 				ptr->kill(es);
 			}
@@ -33,9 +33,9 @@ void Health::attack()
 				}
 			}
 		}
-		else if (!ptr->checkUMLtank()) {
+		 if (!ptr->checkUMLtank()) {
 			Earthtanks* et = ptr->UMLtankHead();
-			if (ptr->getTime() - et->Getjointime() > 10) // edit so it is time joined UML
+			if (ptr->getTime() - et->get_tj_uml() > 10) // edit so it is time joined UML
 			{
 				ptr->kill(et);
 			}

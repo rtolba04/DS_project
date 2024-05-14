@@ -7,7 +7,8 @@
 class Game
 {
 protected:
-	int time;
+	int time; 
+	string status;
 	randGen randomgen; //randgen obj
 	earthArmy Earth;//Earth obj
 	alienArmy Alien;//alien obj
@@ -24,6 +25,7 @@ public:
 	alienArmy* getAA();
 	int getTime();
 	bool loadfromfile();
+	void savetofile(const string& filename);
 	void addHeal(Health* h);
 	void removeHeal(Health* &hu);
 	void addUMLtank(Earthtanks* et);

@@ -68,6 +68,7 @@ void earthArmy::addUnit(Unitclass* unit)
 		Earthgunnery* typePtr = dynamic_cast<Earthgunnery*>(unit);
 		EGpriqueue.enqueue(typePtr,typePtr->getpri());
 	}
+	
 }
 
 LinkedQueue<Earthsoldiers*>& earthArmy::getESqueue()

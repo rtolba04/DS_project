@@ -5,22 +5,16 @@ int main()
 {
 	Game G;
 	G.getrand()->setGame(&G);
-	
-	
-	//AD1->attack();
-	//AD2->attack();
-//	E3->attack();
-	//AS2->attack(); (tried AS attack)
-	//AD1->attack();
-	G.simulate();
-	cout << "lol";
-}
 
-//Earthtanks* E1 = new Earthtanks(49, 2, 3, 90, 1);
-//Earthtanks* E2 = new Earthtanks(4, 2, 73, 50, 4);
-//Earthtanks* E3 = new Earthtanks(43, 2, 83, 50, 2);
-//Earthtanks* E4 = new Earthtanks(421, 2, 63, 500, 4);
+
+	G.simulate();
+}
+//Earthtanks* E1 = new Earthtanks(49, 2, 100, 90, 1);
+//Earthtanks* E2 = new Earthtanks(4, 2, 73, 100, 4);
+//Earthtanks* E3 = new Earthtanks(43, 2, 83, 100, 2);
+//Earthtanks* E4 = new Earthtanks(421, 2, 63, 100, 4);
 //Earthtanks* E5 = new Earthtanks(461, 2, 53, 500, 4);
+//Health* H1 = new Health(13, 2, 53, 20, 2);
 //Earthsoldiers* ES1 = new Earthsoldiers(91, 2, 3, 430, 4);
 //Earthsoldiers* ES2 = new Earthsoldiers(932, 2, 31, 10, 4);
 //Earthsoldiers* ES3 = new Earthsoldiers(90, 2, 3, 300, 4);
@@ -29,8 +23,8 @@ int main()
 //Earthgunnery* EG1 = new Earthgunnery(17, 2, 3, 1300, 3);
 //Earthgunnery* EG2 = new Earthgunnery(87, 2, 3, 320, 4);
 //Earthgunnery* EG3 = new Earthgunnery(27, 2, 3, 50, 4);
-//Aliensoldiers* AS1 = new Aliensoldiers(1111, 15, 3, 500, 4);
-//Aliensoldiers* AS2 = new Aliensoldiers(1112, 2, 100, 500, 4);
+//Aliensoldiers* AS1 = new Aliensoldiers(1111, 15, 3, 85, 4);
+//Aliensoldiers* AS2 = new Aliensoldiers(1112, 2, 100, 80, 4);
 //Aliensoldiers* AS3 = new Aliensoldiers(1163, 2, 3, 50, 4);
 //Aliensoldiers* AS4 = new Aliensoldiers(1211, 2, 3, 90, 4);
 //Aliensoldiers* AS5 = new Aliensoldiers(1212, 2, 3, 50, 4);
@@ -45,6 +39,7 @@ int main()
 //Aliendrones* AD2 = new Aliendrones(1564, 4, 2, 1132, 12);
 //Aliendrones* AD3 = new Aliendrones(1744, 4, 2, 1, 1);
 //Aliendrones* AD4 = new Aliendrones(1888, 4, 2, 1, 1);
+//G.addHeal(H1);
 //G.getAA()->addUnit(AD1);
 //G.getAA()->addUnit(AD2);
 //G.getAA()->addUnit(AD3);
@@ -74,6 +69,7 @@ int main()
 //G.getAA()->addUnit(a4);
 //G.getAA()->addUnit(a5);
 //G.getAA()->addUnit(a6);
+//H1->setgame(&G);
 //E1->setgame(&G);
 //E2->setgame(&G);
 //E3->setgame(&G);
@@ -103,3 +99,8 @@ int main()
 //AD2->setgame(&G);
 //AD3->setgame(&G);
 //AD4->setgame(&G);
+//AS1->attack();
+//AS2->attack();
+//H1->attack();
+//AS3->attack();
+//AS4->attack();

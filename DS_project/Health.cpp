@@ -7,7 +7,7 @@ Health::Health(int id, int jt, int h, int p, int ac) :Unitclass(id, jt, h, p, ac
 
 void Health::attack()
 {
-	LinkedQueue<Unitclass*>* temp = nullptr;
+	LinkedQueue<Unitclass*>* temp = new LinkedQueue<Unitclass*>();
 	while (Getattackcapacity() != 0) {
 		if (!ptr->checkUMLsold())
 		{

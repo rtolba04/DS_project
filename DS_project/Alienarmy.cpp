@@ -13,14 +13,16 @@ void alienArmy::attack()
 {
 	Aliensoldiers* as; //make one soldier attack (FIFO)
 	if (ASqueue.peek(as))
-		as->attack();
+	     as->attack();
 	//make one randomly picked monster attack
 	int AM_ind; // randomly generated index from AM array
 	int AM_size = AMarray.getCount();
 	if (AM_size != 0) {
 		AM_ind = rand() % AM_size;
 		AMarray.getelement(AM_ind)->attack();
+
 	}
+	
 	if (ADqueue.getcount() >= 2) // if more than 2 drones exist, attack
 	{
 		Aliendrones* AD1; //make 2 drones attack
@@ -63,7 +65,7 @@ bool alienArmy::AM_remove(Alienmonsters*& am)
 }
 bool alienArmy::AD_remove(Aliendrones*& ad1, Aliendrones*& ad2)
 {
-
+	
 	if (ADqueue.getcount() < 2)
 	{
 		return false;
@@ -113,10 +115,10 @@ bool alienArmy::AD_remove(Aliendrones*& ad1, Aliendrones*& ad2)
 
 void alienArmy::print()
 {
-
+	
 	cout << "=========== Alien Army Alive Units ===========" << endl;
 
-	cout << ASqueue.getcount() << " " << "AS" << " ";
+	cout << ASqueue.getcount()<<" " << "AS" << " ";
 	ASqueue.printqueue();
 	cout << endl;
 
@@ -124,10 +126,10 @@ void alienArmy::print()
 	ADqueue.printqueue();
 	cout << endl;
 
-	cout << AMarray.getCount() << " AM ";
+    cout << AMarray.getCount() << " AM ";
 	AMarray.printarr();
 	cout << endl;
-
+	
 }
 
 LinkedQueue<Aliensoldiers*>& alienArmy::getASqueue()

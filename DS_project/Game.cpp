@@ -153,15 +153,7 @@ void Game::savetofile(const string& filename)
     outFile.close();
 }
 
-void Game::addHeal(Health* h)
-{
-    HLstack.push(h);
-}
 
-void Game::removeHeal(Health* &hu)
-{
-    HLstack.pop(hu);
-}
 
 void Game::addUMLtank(Earthtanks* et)
 {
@@ -275,10 +267,7 @@ void Game::printscreen()
     cout << endl;
 }
 
-ArrayStack<Health*>& Game::getHLstack()
-{
-    return HLstack;
-}
+
 
 void Game::simulate()
 {

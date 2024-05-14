@@ -1,4 +1,4 @@
-
+#include<conio.h>
 #include "Game.h"
 #include <fstream>
 #include <iostream>
@@ -64,7 +64,104 @@ bool Game::loadfromfile() {
        //
 }
 
+void Game::savetofile(const string& filename)
+{
+    ofstream outFile(filename);
+    if (!outFile.is_open())
+    {
+        cerr<<"Error: Unable to open input file." << endl;
+        return;
+    }
+    outFile << "Td    " << "ID      " << "Tj      " << "Df    " << "Dd    " << "Db      " << endl;
+    Node<Unitclass*>* ptr = killed->getfrontPtr();
+    float Earthtotal, Alientotal, ES_killed = 0, ET_killed = 0, EG_killed = 0, AS_killed = 0, AM_killed = 0, AD_killed = 0, earthkilled = 0, alienkilled = 0,
+        EtotDf = 0, EtotDd = 0, EtotDb = 0, AtotDf = 0, AtotDd = 0, AtotDb = 0;
+    while (ptr)
+    {
+        outFile << ptr->getItem()->get_td() << "    " << ptr->getItem()->Getid() << "      " << ptr->getItem()->Getjointime() << "      " 
+            << ptr->getItem()->get_df() << "    " << ptr->getItem()->get_dd() << "    " << ptr->getItem()->get_db() << endl;
+        if (ptr->getItem()->Gettype() == "ES" || ptr->getItem()->Gettype() == "ET" || ptr->getItem()->Gettype() == "EG")
+        {
+            earthkilled++;
+            EtotDf = EtotDf + ptr->getItem()->get_df();
+            EtotDd = EtotDd + ptr->getItem()->get_dd();
+            EtotDb = EtotDb + ptr->getItem()->get_db();
+            if (ptr->getItem()->Gettype() == "ES")
+                ES_killed++;
+            else if (ptr->getItem()->Gettype() == "ET")
+            {
+                ET_killed++;
+            }
+            else if (ptr->getItem()->Gettype() == "EG")
+            {
+                EG_killed++;
+            }
+        }
+        else
+        {
+            alienkilled++;
+            AtotDf = AtotDf + ptr->getItem()->get_df();
+            AtotDd = AtotDd + ptr->getItem()->get_dd();
+            AtotDb = AtotDb + ptr->getItem()->get_db();
+            if (ptr->getItem()->Gettype() == "AS")
+                AS_killed++;
+            else if (ptr->getItem()->Gettype() == "AM")
+            {
+                AM_killed++;
+            }
+            else if (ptr->getItem()->Gettype() == "AD")
+            {
+                AD_killed++;
+            }
 
+        }
+        ptr = ptr->getNext();
+    }
+    Earthtotal = getEA()->getESqueue().getcount() + ES_killed + getEA()->getETstack().getcount() + ET_killed + getEA()->getEGpriqueue().getcount() + EG_killed;
+    Alientotal = getAA()->getASqueue().getcount() + AS_killed + getAA()->getAMarray().getCount() + AM_killed + getAA()->getADqueue().getcount() + AD_killed;
+
+    outFile << "Battle result: " << status << endl;
+    outFile << "For Earth army:" << endl;
+    outFile << "Total ES: " << getEA()->getESqueue().getcount() + ES_killed << endl;
+    outFile << "Total ET: " << getEA()->getETstack().getcount() + ET_killed << endl;
+    outFile << "Total EG: " << getEA()->getEGpriqueue().getcount() + EG_killed << endl;
+    outFile << "Percentage of killed ES to ES total: " << ES_killed / getEA()->getESqueue().getcount() + ES_killed << endl;
+    outFile << "Percentage of killed ET to ET total: " << ET_killed / getEA()->getETstack().getcount() + ET_killed << endl;
+    outFile << "Percentage of killed EG to EG total: " << EG_killed / getEA()->getEGpriqueue().getcount() + EG_killed << endl;
+    outFile << "Percentage of total killed to total units" << earthkilled / Earthtotal << endl;
+    outFile << "Average Df: " << EtotDf / earthkilled << endl;
+    outFile << "Average Dd: " << EtotDd / earthkilled << endl;
+    outFile << "Average Db: " << EtotDb / earthkilled << endl;
+    outFile << "Df/Db % = " << EtotDf / EtotDb << "%" << endl;
+    outFile << "Dd/Db % = " << EtotDd / EtotDb << "%" << endl << endl;
+
+    outFile << "For Alien army:" << endl;
+    outFile << "Total AS: " << getAA()->getASqueue().getcount() + AS_killed << endl;
+    outFile << "Total AM: " << getAA()->getAMarray().getCount() + AM_killed << endl;
+    outFile << "Total EG: " << getAA()->getADqueue().getcount() + AD_killed << endl;
+    outFile << "Percentage of killed AS to AS total: " << AS_killed / getAA()->getASqueue().getcount() + AS_killed << endl;
+    outFile << "Percentage of killed AM to AM total: " << ET_killed / getAA()->getAMarray().getCount() + AM_killed << endl;
+    outFile << "Percentage of killed AD to AD total: " << EG_killed / getAA()->getADqueue().getcount() + AD_killed << endl;
+    outFile << "Percentage of total killed to total units" << alienkilled / Alientotal << endl;
+    outFile << "Average Df: " << AtotDf / alienkilled << endl;
+    outFile << "Average Dd: " << AtotDd / alienkilled << endl;
+    outFile << "Average Db: " << AtotDb / alienkilled << endl;
+    outFile << "Df/Db % = " << AtotDf / AtotDb << "%" << endl;
+    outFile << "Dd/Db % = " << AtotDd / AtotDb << "%" << endl << endl;
+
+
+    outFile.close();
+}
+
+void Game::addHeal(Health* h)
+{
+    HLstack.push(h);
+}
+
+void Game::removeHeal(Health* &hu)
+{
+    HLstack.pop(hu);
+}
 
 void Game::addUMLtank(Earthtanks* et)
 {
@@ -155,13 +252,16 @@ void Game::PrintKilledList() {
 void Game::printscreen()
 {
     cout << "Current Timestep " << time << endl;
-    getAA()->print();
     getEA()->print();
+    cout << endl;
+    getAA()->print();
+    cout << endl;
     //units fighting
     PrintKilledList();
+    cout << endl;
     cout << "=======================Healing units=================" << endl;
-    cout << Earth.getHLstack().getcount() << " units";
-    Earth.getHLstack().printstack();
+    cout << HLstack.getcount() << " units";
+    HLstack.printstack();
     cout << endl;
     cout << "=======================UML for earth soldiers=================" << endl;
     cout << UMLsoldiers.getcount() << " units";
@@ -172,29 +272,116 @@ void Game::printscreen()
     printUMLtank();
     cout << endl;
     cout << "Press enter to move to next timestep" << endl;
+    cout << endl;
 }
 
-
+ArrayStack<Health*>& Game::getHLstack()
+{
+    return HLstack;
+}
 
 void Game::simulate()
 {
-    
-  
-    for (time; time < 40; time++)
+    cout << "Press 1 for silent mode or 2 for interactive mode" << endl;
+    char mode;
+    while (true) 
     {
-        loadfromfile();        
-        getrand()->createunits(time);    
-       //if(!Earth.getEGpriqueue().isEmpty()|| !Earth.getESqueue().isEmpty()|| !Earth.getETstack().isEmpty())
-         Earth.attack();
-
-      // if (!Alien.getADqueue().isEmpty() || !Alien.getAMarray().isEmpty() || !Alien.getASqueue().isEmpty())
-         Alien.attack();
-         printscreen();
-       //Earth.print();
-       //Alien.print();
-       //
-       //PrintKilledList();
+        mode = _getch();
+        if (mode == '1' || mode == '2') 
+        {
+            break;
+        }
     }
+    if (mode == '1') //silent mode
+    {
+        cout << "Silent Mode" << endl << "Simulation Starts..." << endl;
+        while (time)
+        {
+            loadfromfile();
+            getrand()->createunits(time);
+            Earth.attack();
+            Alien.attack();
+            time++;
+            if (time > 50)
+            {
+                if (Earth.getEGpriqueue().isEmpty() && Earth.getESqueue().isEmpty() && Earth.getETstack().isEmpty())
+                {
+                    status = "Earth Army Lost :(";
+                    break;
+                }
+                else if (Alien.getADqueue().isEmpty() && Alien.getAMarray().isEmpty() && Alien.getASqueue().isEmpty())
+                {
+                    status = "Earth Army Won!";
+                    break;
+                }
+            }
+            if (time > 500)
+            {
+                status = "Draw";
+                break;
+            }
+        }
+        cout << "Enter the name of the output file.";
+        string filename;
+        cin >> filename;
+
+        savetofile(filename);
+
+        cout << "Simulation ends, Output file is created";
+    }
+    else if (mode == '2') //interactive mode
+    {
+        while (time)
+        {
+            loadfromfile();
+            getrand()->createunits(time);    
+            Earth.attack();
+            Alien.attack();
+
+            printscreen();
+            while (_getch() != 13);
+            time++;
+            if (time > 50)
+            {
+                if (Earth.getEGpriqueue().isEmpty() && Earth.getESqueue().isEmpty() && Earth.getETstack().isEmpty())
+                {
+                    status = "Earth Army Lost :(";
+                    break;
+                }
+                else if (Alien.getADqueue().isEmpty() && Alien.getAMarray().isEmpty() && Alien.getASqueue().isEmpty())
+                {
+                    status = "Earth Army Won!";
+                    break;
+                }
+            }
+            if (time > 500)
+            {
+                status = "Draw";
+                break;
+            }
+        }
+        cout << "Enter the name of the output file.";
+        string filename;
+        cin >> filename;
+
+        savetofile(filename);
+        cout << "Simulation ends, Output file is created";
+    }
+// for (time; time < 50; time++)
+//    {
+//        loadfromfile();        
+//        getrand()->createunits(time);    
+//       //if(!Earth.getEGpriqueue().isEmpty()|| !Earth.getESqueue().isEmpty()|| !Earth.getETstack().isEmpty())
+//       Earth.attack();
+//
+//      // if (!Alien.getADqueue().isEmpty() || !Alien.getAMarray().isEmpty() || !Alien.getASqueue().isEmpty())
+//         Alien.attack();
+//         printscreen();
+//       //Earth.print();
+//       //Alien.print();
+//       //
+//       //PrintKilledList();
+//    }
 }
 
 

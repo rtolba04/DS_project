@@ -12,9 +12,10 @@ protected:
 	earthArmy Earth;//Earth obj
 	alienArmy Alien;//alien obj
 	LinkedQueue<Unitclass*>* killed;
-	ArrayStack<Health*>HLstack;
+	
 	priQueue<Earthsoldiers*>UMLsoldiers;
 	LinkedQueue<Earthtanks*>UMLtanks;
+	
 
 
 public:
@@ -24,8 +25,7 @@ public:
 	alienArmy* getAA();
 	int getTime();
 	bool loadfromfile();
-	void addHeal(Health* h);
-	void removeHeal(Health* &hu);
+	
 	void addUMLtank(Earthtanks* et);
 	void addUMLsold(Earthsoldiers* es, int pri);
 	void removeUMLsold(Earthsoldiers* &es, int& pri);
@@ -38,10 +38,13 @@ public:
 	void PrintKilledList();
 	void kill(Unitclass* unit);
 	void printscreen();
-	ArrayStack<Health*>& getHLstack();
+	
 	
 	void simulate();
 	//void testnew();
 	~Game();
+
+	
+
 };
 

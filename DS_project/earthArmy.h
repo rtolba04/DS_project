@@ -9,7 +9,7 @@
 #include"Unitclass.h"
 #include"Health.h"
 #include "Derivedqueue.h"
-#include "Game.h"
+class Game;
 
 
 
@@ -23,7 +23,7 @@ class earthArmy
 	int ESshooting;
 	int ETshooting;
 	int EGshooting;
-	Game* gptr;
+	ArrayStack<Health*>HLstack;
 
 public:
 	void setESshooting(int ESID);
@@ -44,6 +44,11 @@ public:
 	ArrayStack<Earthtanks*>& getETstack();
 
 	priQueue<Earthgunnery*>& getEGpriqueue();
+
+	void addHeal(Health* h);
+	void removeHeal(Health*& hu);
+
+	ArrayStack<Health*>& getHLstack();
 	
 };
 

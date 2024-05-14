@@ -52,9 +52,9 @@ Esoldierpicked->attack();
 	gunnerypicked->attack();
 
 	Health* healpicked;
-	if (!gptr->getHLstack().isEmpty())
+	if (HLstack.pop(healpicked))
 	{
-		gptr->getHLstack().pop(healpicked);
+	
 		healpicked->attack();
 
 	}
@@ -78,6 +78,10 @@ void earthArmy::addUnit(Unitclass* unit)
 	{
 		Earthgunnery* typePtr = dynamic_cast<Earthgunnery*>(unit);
 		EGpriqueue.enqueue(typePtr,typePtr->getpri());
+	}
+	if (unit->Gettype() == "HU") {
+		Health* typePtr = dynamic_cast<Health*>(unit);
+		HLstack.push(typePtr);
 	}
 	
 }
@@ -157,4 +161,20 @@ void earthArmy::print()
 	EGpriqueue.printpri();
 	cout << endl;
 }
+
+void earthArmy::addHeal(Health* h)
+{
+	HLstack.push(h);
+}
+
+void earthArmy::removeHeal(Health*& hu)
+{
+	HLstack.pop(hu);
+}
+
+ArrayStack<Health*>& earthArmy::getHLstack()
+{
+	return HLstack;
+}
+
 

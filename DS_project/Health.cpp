@@ -63,7 +63,7 @@ void Health::attack()
 			}
 			
 		}
-
+		if(ptr->checkUMLsold()&& ptr->checkUMLtank()) break;
 	}
 	while (temp->getfrontPtr())
 	{
@@ -81,7 +81,7 @@ void Health::attack()
 
 	}
 	Health* h;
-	ptr->getHLstack().pop(h);
+	ptr->getEA()->getHLstack().pop(h);
 	//kill hu?
 	
 }

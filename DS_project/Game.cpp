@@ -252,8 +252,8 @@ void Game::printscreen()
     PrintKilledList();
     cout << endl;
     cout << "=======================Healing units=================" << endl;
-    cout << HLstack.getcount() << " units";
-    HLstack.printstack();
+    cout << Earth.getHLstack().getcount() << " units";
+    Earth.getHLstack().printstack();
     cout << endl;
     cout << "=======================UML for earth soldiers=================" << endl;
     cout << UMLsoldiers.getcount() << " units";
